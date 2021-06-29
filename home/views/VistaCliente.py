@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout
 
 
-class VistaUtente(QWidget):
+class VistaCliente(QWidget):
     def __init__(self, parent=None):
-        super(VistaUtente, self).__init__(parent)
+        super(VistaCliente, self).__init__(parent)
         grid_layout = QGridLayout()
