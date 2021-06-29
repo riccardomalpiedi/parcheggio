@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
 class VistaHome(QWidget):
@@ -8,14 +9,18 @@ class VistaHome(QWidget):
         Cassiere_button = QPushButton("Vista Cassiere")
         Cassiere_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         Cassiere_button.clicked.connect(self.go_VistaCassiere)
+        Cassiere_button.setIcon(QIcon("icone/cash2.png"))
 
-        Clienti_button = QPushButton('Vista Clienti')
+
+        Clienti_button = QPushButton("Vista Clienti")
         Clienti_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         Clienti_button.clicked.connect(self.go_VistaClienti)
+        Clienti_button.setIcon(QIcon("icone/user2.png"))
 
-        Amministratore_button = QPushButton('Lista Dipendenti')
+        Amministratore_button = QPushButton("Vista Amministratore")
         Amministratore_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         Amministratore_button.clicked.connect(self.go_VistaAmministratore)
+        Amministratore_button.setIcon(QIcon("icone/administrator2.png"))
 
         grid_layout.addWidget(Cassiere_button, 0, 0)
         grid_layout.addWidget(Clienti_button, 0, 1)
