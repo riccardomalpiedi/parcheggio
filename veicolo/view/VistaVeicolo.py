@@ -13,7 +13,7 @@ class VistaVeicolo(QWidget):
 
         v_layout = QVBoxLayout()
 
-        label_targa = QLabel("veicolo di targa: "+self.controller.get_targa_veicolo()
+        label_targa = QLabel("veicolo di targa: "+self.controller.get_targa_veicolo())
         font_targa = label_targa.font()
         font_targa.setPointSize(30)
         label_targa.setFont(font_targa)
@@ -21,7 +21,7 @@ class VistaVeicolo(QWidget):
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        label_tipo = QLabel("Tipo: {}".format(self.controller.get_tipo_veicolo())
+        label_tipo = QLabel("Tipo: {}".format(self.controller.get_tipo_veicolo()))
         font_tipo = label_tipo.font()
         font_tipo.setPointSize(17)
         label_tipo.setFont(font_tipo)
