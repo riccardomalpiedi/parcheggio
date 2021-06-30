@@ -1,9 +1,10 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QListView, QPushButton
 
+from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
+from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 from veicolo.view.VistaVeicolo import VistaVeicolo
-from ListaVeicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
-from ListaVeicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
+
 
 
 class VistaListaVeicoli(QWidget):

@@ -1,7 +1,7 @@
 import pickle
 import os.path
 
-from ListaVeicoli.model.ListaVeicoli import ListaVeicoli
+from listaveicoli.model.ListaVeicoli import ListaVeicoli
 
 
 class ControlloreListaVeicoli():

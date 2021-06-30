@@ -5,7 +5,7 @@ from listaclienti.views.VistaListaClienti import VistaListaClienti
 from listadipendenti.views.VistaListaDipendenti import VistaListaDipendenti
 from listaposteggi.views.VistaListaPosteggi import VistaListaPosteggi
 from listaprenotazioni.views.VistaListaPrenotazioni import VistaListaPrenotazioni
-from listaveicoli.views.VistaListaVeicoli import VistaListaVeicoli
+from listaveicoli.view.VistaListaVeicoli import VistaListaVeicoli
 
 
 class VistaAmministratore(QWidget):
