@@ -30,5 +30,5 @@ class ListaPosteggi():
         return self.lista_posteggi
 
     def save_data(self):
-        with open('listaservizi/data/lista_servizi_salvata.pickle', 'wb') as handle:
+        with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as handle:
             pickle.dump(self.lista_posteggi, handle, pickle.HIGHEST_PROTOCOL)

@@ -39,24 +39,19 @@ class VistaAmministratore(QWidget):
     def go_vista_lista_clienti(self):
         self.vista_lista_clienti = VistaListaClienti()
         self.vista_lista_clienti.show()
-        pass
 
     def go_vista_lista_dipendenti(self):
         self.vista_lista_dipendenti = VistaListaDipendenti()
         self.vista_lista_dipendenti.show()
-        pass
 
     def go_vista_lista_posteggi(self):
         self.vista_lista_posteggi = VistaListaPosteggi()
         self.vista_lista_posteggi.show()
-        pass
 
     def go_vista_lista_prenotazioni(self):
         self.vista_lista_prenotazioni = VistaListaPrenotazioni()
         self.vista_lista_prenotazioni.show()
-        pass
 
     def go_vista_lista_veicoli(self):
         self.vista_lista_veicoli = VistaListaVeicoli()
         self.vista_lista_veicoli.show()
-        pass
