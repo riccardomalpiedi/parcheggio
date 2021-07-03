@@ -2,6 +2,7 @@ from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
 from ingresso.views.Ui_Ingresso import Ui_Ingresso
+from ingresso.views.VistaIngresso import VistaIngresso
 
 
 class VistaCliente(QWidget):
@@ -27,10 +28,8 @@ class VistaCliente(QWidget):
         return button
 
     def go_vista_ingresso(self):
-        Ingresso = QWidget()
-        ui = Ui_Ingresso()
-        ui.setupUi(Ingresso)
-        Ingresso.show()
+        self.vista_ingresso = VistaIngresso()
+        self.vista_ingresso.show()
 
     def go_vista_uscita(self):
         # self.vista_uscita = VistaUscita()

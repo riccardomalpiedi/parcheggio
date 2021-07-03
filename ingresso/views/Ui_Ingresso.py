@@ -35,6 +35,6 @@ class Ui_Ingresso(object):
 
     def retranslateUi(self, Ingresso):
         _translate = QtCore.QCoreApplication.translate
-        Ingresso.setWindowTitle(_translate("Ingresso", "Form"))
+        Ingresso.setWindowTitle(_translate("Ingresso", "Ingresso"))
         self.pushButton.setText(_translate("Ingresso", "Inserisci Ingresso Veicolo"))
         self.pushButton_2.setText(_translate("Ingresso", "Registra Veicolo"))
