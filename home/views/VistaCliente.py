@@ -1,8 +1,8 @@
 from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
-from ingresso.views.Ui_Ingresso import Ui_Ingresso
 from ingresso.views.VistaIngresso import VistaIngresso
+from uscita.views.VistaUscita import VistaUscita
 
 
 class VistaCliente(QWidget):
@@ -32,6 +32,5 @@ class VistaCliente(QWidget):
         self.vista_ingresso.show()
 
     def go_vista_uscita(self):
-        # self.vista_uscita = VistaUscita()
-        # self.vista_uscita.show()
-        pass
+        self.vista_uscita = VistaUscita()
+        self.vista_uscita.show()
