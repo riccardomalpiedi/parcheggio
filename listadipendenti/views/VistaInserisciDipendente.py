@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpacerItem, QSizePolicy, QPushButton, QLabel, QLineEdit, QMessageBox
 
+from dipendente.model.Dipendente import Dipendente
+
 
 class VistaInserisciDipendente(QWidget):
     def __init__(self, controller, callback):
