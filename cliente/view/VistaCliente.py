@@ -6,7 +6,7 @@ from cliente.controller.ControlloreCliente import ControlloreCliente
 
 class VistaCliente(QWidget):
     def __init__(self, cliente, elimina_cliente, elimina_callback, parent=None):
-        super(VistaCliente, self).__init__()
+        super(VistaCliente, self).__init__(parent)
         self.controller = ControlloreCliente(cliente)
         self.elimina_cliente = elimina_cliente
         self.elimina_callback = elimina_callback

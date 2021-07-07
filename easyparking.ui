@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>EasyParking</class>
+ <widget class="QDialog" name="EasyParking">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,33 +16,21 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(61, 61, 61);</string>
   </property>
-  <widget class="QPushButton" name="aboutus_button">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>550</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
-   </property>
-   <property name="text">
-    <string>About Us</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="cliente_button">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>460</y>
-     <width>161</width>
+     <x>400</x>
+     <y>400</y>
+     <width>191</width>
      <height>61</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);
+font: 12pt &quot;MS Shell Dlg 2&quot;; border-radius:20px; </string>
    </property>
    <property name="text">
     <string>Cliente</string>
@@ -51,14 +39,17 @@
   <widget class="QPushButton" name="help_button">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>550</y>
+     <x>340</x>
+     <y>540</y>
      <width>101</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202); border-radius:20px; </string>
    </property>
    <property name="text">
     <string>Help</string>
@@ -67,7 +58,7 @@
   <widget class="QLabel" name="label_titolo">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>40</y>
      <width>371</width>
      <height>91</height>
@@ -109,14 +100,18 @@
   <widget class="QPushButton" name="login_button">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>370</y>
-     <width>161</width>
+     <x>190</x>
+     <y>400</y>
+     <width>191</width>
      <height>61</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);
+font: 12pt &quot;MS Shell Dlg 2&quot;; border-radius:20px; </string>
    </property>
    <property name="text">
     <string>Login</string>
