@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QGridLayout, QWidget, QDialog
+from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from ingresso.views.VistaIngresso import VistaIngresso

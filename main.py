@@ -1,6 +1,5 @@
 import sys
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication
 
 # main
 from home.views.VistaWelcome import WelcomeScreen
