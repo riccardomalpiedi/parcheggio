@@ -1,36 +1,28 @@
-from PyQt5.QtGui import QFont, QIcon
-from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QGridLayout, QWidget, QDialog
+from PyQt5.uic import loadUi
 
 from ingresso.views.VistaIngresso import VistaIngresso
 from uscita.views.VistaUscita import VistaUscita
 
 
-class VistaCliente(QWidget):
-    def __init__(self, parent=None):
-        super(VistaCliente, self).__init__(parent)
-        grid_layout = QGridLayout()
+class VistaCliente(QDialog):
+    def __init__(self):
+        super(VistaCliente, self).__init__()
+        loadUi("Cliente.ui", self)
+        self.setFixedWidth(600)
+        self.setFixedHeight(400)
+        self.setWindowTitle("Cliente")
+        self.setWindowIcon(QIcon("icone/user2.png"))
+        self.ingresso_button.clicked.connect(self.go_ingresso)
+        self.uscita_button.clicked.connect(self.go_uscita)
 
-        vista_ingresso_button = self.create_button("Vista Ingresso", "icone/cash2.png", self.go_vista_ingresso)
-        vista_uscita_button = self.create_button("Vista Uscita", "icone/user2.png", self.go_vista_uscita)
+    def go_ingresso(self):
+        self.ingresso = VistaIngresso()
+        self.ingresso.show()
+        # pass
 
-        grid_layout.addWidget(vista_ingresso_button, 0, 0)
-        grid_layout.addWidget(vista_uscita_button, 0, 1)
-        self.setLayout(grid_layout)
-        self.resize(500, 400)
-        self.setWindowTitle('Vista Cliente')
-
-    def create_button(self, titolo, icona, on_click=None):
-        button = QPushButton(titolo)
-        button.setFont(QFont("arial", 12))
-        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        button.clicked.connect(on_click)
-        # button.setIcon(QIcon(icona))
-        return button
-
-    def go_vista_ingresso(self):
-        self.vista_ingresso = VistaIngresso()
-        self.vista_ingresso.show()
-
-    def go_vista_uscita(self):
-        self.vista_uscita = VistaUscita()
-        self.vista_uscita.show()
+    def go_uscita(self):
+        self.uscita = VistaUscita()
+        self.uscita.show()
+        # pass

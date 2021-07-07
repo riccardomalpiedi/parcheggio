@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QGridLayout, QWidget, QDialog
 from PyQt5.uic import loadUi
 
@@ -12,6 +13,8 @@ class VistaAmministratore(QDialog):
     def __init__(self):
         super(VistaAmministratore, self).__init__()
         loadUi("Amministratore.ui", self)
+        self.setWindowTitle("Amministratore")
+        self.setWindowIcon(QIcon("icone/administrator2.png"))
         self.vista_lista_clienti_button.clicked.connect(self.go_lista_vista_clienti)
         self.vista_lista_posteggi_button.clicked.connect(self.go_lista_vista_posteggi)
         self.vista_lista_veicoli_button.clicked.connect(self.go_lista_vista_veicoli)
