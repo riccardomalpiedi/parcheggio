@@ -1,20 +1,31 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QListView, QPushButton
+from PyQt5.QtGui import QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
-
 class VistaListaVeicoli(QWidget):
     def __init__(self, parent=None):
         super(VistaListaVeicoli, self).__init__(parent)
 
-        h_layout = QHBoxLayout()
         self.controller = ControlloreListaVeicoli()
+
+        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
+        h_layout.addWidget(self.list_view)
+
+        for veicolo in self.controller.get_lista_dei_veicoli():
+            item = QStandardItem()
+            item.setText(veicolo.targa)
+            item.setEditable(False)
+            font = item.font()
+            font.setPointSize(18)
+            item.setFont(font)
+            self.listview_model.appendRow(item)
+        self.list_view.setModel(self.listview_model)
         h_layout.addWidget(self.list_view)
 
         buttons_layout = QVBoxLayout()

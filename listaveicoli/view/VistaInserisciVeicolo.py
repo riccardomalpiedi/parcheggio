@@ -10,32 +10,31 @@ class VistaInserisciVeicolo(QWidget):
         self.controller = controller
         self.callback = callback
 
-        v_layout = QVBoxLayout()
+        self.v_layout = QVBoxLayout()
 
-        v_layout.addWidget(QLabel("Targa"))
-        self.text_targa = QLineEdit(self)
-        v_layout.addWidget(self.text_targa)
+        self.qlines = {}
+        self.add_info_text("targa", "Targa")
+        self.add_info_text("tipo", "TIpo")
 
-        v_layout.addWidget(QLabel("Tipo"))
-        self.text_tipo = QLineEdit(self)
-        v_layout.addWidget(self.text_tipo)
-
-        v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        self.v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         btn_ok = QPushButton("OK")
         btn_ok.clicked.connect(self.add_veicolo)
-        v_layout.addWidget(btn_ok)
+        self.v_layout.addWidget(btn_ok)
 
-        self.setLayout(v_layout)
+        self.setLayout(self.v_layout)
         self.setWindowTitle('Nuovo Veicolo')
 
     def add_veicolo(self):
-        targa = self.text_targa.text()
-        tipo = self.text_tipo.text()
+        for value in self.qlines.values():
+            if value.text() == "":
+                QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste.', QMessageBox.Ok, QMessageBox.Ok)
+                return
 
-        if(targa == "" or tipo == ""):
-            QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste", QMessageBox.Ok, QMessageBox.Ok)
-        else:
-            self.controller.aggiungi_veicolo(Veicolo(( 0  , targa, tipo)))
-            self.callback()
-            self.close()
+        self.controller.aggiungi_veicolo(Veicolo(
+            (self.qlines["targa"].text() ).lower(),
+            self.qlines["tipo"].text(),)
+        )
+
+        self.callback()
+        self.close()

@@ -33,6 +33,10 @@ class VistaVeicolo(QWidget):
         btn_elimina.clicked.connect(self.elimina_veicolo_click)
         v_layout.addWidget(btn_elimina)
 
+        btn_pagamento = QPushButton("Conferma pagamento")
+        btn_pagamento.clicked.connect((self.pagamento_veicolo_click))
+        v_layout.addWidget(btn_pagamento)
+
         self.setLayout(v_layout)
         self.setWindowTitle(Veicolo.targa)
 
@@ -40,3 +44,6 @@ class VistaVeicolo(QWidget):
             self.elimina_veicolo(self.controller.get_id_veicolo())
             self.elimina_callback()
             self.close()
+
+        def pagamento_veicolo_click (self):
+            self.set_pagato(self, True)
