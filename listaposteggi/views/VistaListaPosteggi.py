@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QGridLayout, QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 
 from listaposteggi.controller.ControlloreListaPosteggi import ControlloreListaPosteggi
 from posteggio.views.VistaPosteggio import VistaPosteggio
