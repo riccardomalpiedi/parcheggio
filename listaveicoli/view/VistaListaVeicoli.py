@@ -17,17 +17,6 @@ class VistaListaVeicoli(QWidget):
         self.update_ui()
         h_layout.addWidget(self.list_view)
 
-        for veicolo in self.controller.get_lista_dei_veicoli():
-            item = QStandardItem()
-            item.setText(veicolo.targa)
-            item.setEditable(False)
-            font = item.font()
-            font.setPointSize(18)
-            item.setFont(font)
-            self.listview_model.appendRow(item)
-        self.list_view.setModel(self.listview_model)
-        h_layout.addWidget(self.list_view)
-
         buttons_layout = QVBoxLayout()
         open_button = QPushButton("Apri")
         open_button.clicked.connect(self.show_selected_info)

@@ -5,9 +5,9 @@ from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 
 
 class VistaVeicolo(QWidget):
-    def __init__(self, Veicolo, elimina_veicolo, elimina_callback, parent=None, ):
-        super(VistaVeicolo, self).__init__()
-        self.controller = ControlloreVeicolo(Veicolo)
+    def __init__(self, veicolo, elimina_veicolo, elimina_callback, parent=None):
+        super(VistaVeicolo, self).__init__(parent)
+        self.controller = ControlloreVeicolo(veicolo)
         self.elimina_veicolo = elimina_veicolo
         self.elimina_callback = elimina_callback
 
@@ -32,18 +32,17 @@ class VistaVeicolo(QWidget):
         btn_elimina = QPushButton("Elimina")
         btn_elimina.clicked.connect(self.elimina_veicolo_click)
         v_layout.addWidget(btn_elimina)
-
         btn_pagamento = QPushButton("Conferma pagamento")
-        btn_pagamento.clicked.connect((self.pagamento_veicolo_click))
+        btn_pagamento.clicked.connect(self.pagamento_veicolo_click)
         v_layout.addWidget(btn_pagamento)
 
         self.setLayout(v_layout)
-        self.setWindowTitle(Veicolo.targa)
+        self.setWindowTitle(veicolo.targa)
 
-        def elimina_veicolo_click(self):
-            self.elimina_veicolo(self.controller.get_id_veicolo())
-            self.elimina_callback()
-            self.close()
+    def elimina_veicolo_click(self):
+        self.elimina_veicolo(self.controller.get_id_veicolo())
+        self.elimina_callback()
+        self.close()
 
-        def pagamento_veicolo_click (self):
-            self.set_pagato(self, True)
+    def pagamento_veicolo_click(self):
+        self.set_pagato(self, True)
