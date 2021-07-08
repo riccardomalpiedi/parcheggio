@@ -56,7 +56,7 @@ class VistaListaVeicoli(QWidget):
         self.listview_model = QStandardItemModel(self.list_view)
         for veicolo in self.controller.get_lista_dei_veicoli():
             item = QStandardItem()
-            item.setText("Targa: "+veicolo.traga)
+            item.setText("Targa: "+veicolo.targa)
             item.setEditable(False)
             font = item.font()
             font.setPointSize(18)

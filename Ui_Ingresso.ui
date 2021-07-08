@@ -27,7 +27,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="ingresso_button">
       <property name="font">
        <font>
         <family>Bahnschrift</family>
@@ -44,7 +44,7 @@ color: rgb(220, 220, 220)</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="inserisci_veicolo_button">
       <property name="font">
        <font>
         <family>Bahnschrift</family>
