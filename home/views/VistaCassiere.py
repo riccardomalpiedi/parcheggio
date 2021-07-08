@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QFont, QIcon
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
 from listaveicoli.view.VistaListaVeicoli import VistaListaVeicoli
@@ -25,5 +25,4 @@ class VistaCassiere(QWidget):
         button.setFont(QFont("arial", 12))
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         button.clicked.connect(on_click)
-        # button.setIcon(QIcon(icona))
         return button

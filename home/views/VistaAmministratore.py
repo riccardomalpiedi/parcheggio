@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QGridLayout, QWidget, QDialog
+from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from listaclienti.views.VistaListaClienti import VistaListaClienti
@@ -25,27 +25,22 @@ class VistaAmministratore(QDialog):
     def go_lista_vista_clienti(self):
         self.lista_vista_clienti = VistaListaClienti()
         self.lista_vista_clienti.show()
-        # pass
 
     def go_lista_vista_posteggi(self):
         self.lista_vista_posteggi = VistaListaPosteggi()
         self.lista_vista_posteggi.show()
-        # pass
 
     def go_lista_vista_veicoli(self):
         self.lista_vista_veicoli = VistaListaVeicoli()
         self.lista_vista_veicoli.show()
-        # pass
 
     def go_lista_vista_dipendenti(self):
         self.lista_vista_dipendenti = VistaListaDipendenti()
         self.lista_vista_dipendenti.show()
-        # pass
 
     def go_lista_vista_prenotazioni(self):
         self.lista_vista_prenotazioni = VistaListaPrenotazioni()
         self.lista_vista_prenotazioni.show()
-        # pass
 
     def go_back_button(self):
         self.close()

@@ -20,9 +20,7 @@ class VistaCliente(QDialog):
     def go_ingresso(self):
         self.ingresso = VistaIngresso()
         self.ingresso.show()
-        # pass
 
     def go_uscita(self):
         self.uscita = VistaUscita()
         self.uscita.show()
-        # pass

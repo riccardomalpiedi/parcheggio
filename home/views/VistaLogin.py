@@ -1,5 +1,4 @@
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QDialog, QMessageBox, QPushButton
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
@@ -34,19 +33,16 @@ class LoginScreen(QDialog):
                     QMessageBox.critical(self, 'Errore', "Inserisci tutte le informazioni richieste",
                                          QMessageBox.Ok, QMessageBox.Ok)
                 else:
-                    QMessageBox.critical(self, 'Errore', 'Controlla meglio quello che hai scritto perche non va',
+                    QMessageBox.critical(self, 'Errore', 'Le informazioni inserite non sono corrette. Ricontrolla!!!',
                                          QMessageBox.Ok, QMessageBox.Ok)
 
     def go_vista_amministratore(self):
         self.vista_amministratore = VistaAmministratore()
-        # self.setWindowIcon(QIcon("administrator2.png"))
         self.vista_amministratore.show()
-        # pass
 
     def go_vista_cassiere(self):
         self.vista_dipendente = VistaCassiere()
         self.vista_dipendente.show()
-        # pass
 
     def back_function(self):
         self.close()
