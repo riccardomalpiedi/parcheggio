@@ -16,3 +16,8 @@ class VistaIngresso(QWidget):
     def go_vista_inserisci_veicolo(self):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.vista_lista_veicoli.update_ui)
         self.vista_inserisci_veicolo.show()
+
+    def closeEvent(self, event):
+        print("ON CLOSE")
+        self.controller.save_data()
+        event.accept()
