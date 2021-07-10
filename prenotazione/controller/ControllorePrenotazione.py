@@ -1,5 +1,3 @@
-import pickle
-
 
 class ControllorePrenotazione():
     def __init__(self, prenotazione):
@@ -11,11 +9,11 @@ class ControllorePrenotazione():
     def get_cliente_prenotazione(self):
         return self.model.cliente
 
-    def get_servizio_prenotazione(self):
-        return self.model.servizio
+    def get_posteggio_prenotazione(self):
+        return self.model.posteggio
 
-    def get_datainizio_prenotazione(self):
-        return self.model.datainizio
+    def get_data_inizio_prenotazione(self):
+        return self.model.data_inizio
 
-    def get_datafine_prenotazione(self):
-        return self.model.datafine
+    def get_data_fine_prenotazione(self):
+        return self.model.data_fine

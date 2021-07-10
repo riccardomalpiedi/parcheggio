@@ -12,11 +12,11 @@ class Cliente():
                 self.abbonamento = None
 
      def add_abbonamento(self, abbonamento):
-                self.abbonamento = abbonamento
+         self.abbonamento = abbonamento
 
      def get_abbonamento(self):
          if self.abbonamento.is_scaduto():
-                self.abbonamento = None
-                return None
+             self.abbonamento = None
+             return None
          else:
-                return self.abbonamento
+             return self.abbonamento

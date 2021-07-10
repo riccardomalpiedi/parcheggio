@@ -1,19 +1,18 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QSpacerItem, QSizePolicy, QGridLayout
+from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QSpacerItem, QSizePolicy, QGridLayout
 
 from prenotazione.controller.ControllorePrenotazione import ControllorePrenotazione
-from prenotazione.model.Prenotazione import Prenotazione
 
 class VistaPrenotazione(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, prenotazione, disdici_prenotazione, elimina_callback, parent=None):
         super(VistaPrenotazione, self).__init__(parent)
 
-        self.controller = ControllorePrenotazione(Prenotazione)
-        self.disdisci_prenotazione = self.disdisci_prenotazione
-        self.elimina_callback = self.elimina_callback
+        self.controller = ControllorePrenotazione(prenotazione)
+        self.disdisci_prenotazione = disdici_prenotazione
+        self.elimina_callback = elimina_callback
 
         grid_layout = QGridLayout()
 
-        label_nome = QLabel(self.controller.get_servizio_prenotazione().nome)
+        label_nome = QLabel(self.controller.get_posteggio_prenotazione().nome)
         font_nome = label_nome.font()
         font_nome.setPointSize(30)
         label_nome.setFont(font_nome)
@@ -28,11 +27,17 @@ class VistaPrenotazione(QWidget):
         label_cf.setFont(font_cf)
         grid_layout.addWidget(label_cf)
 
-        label_datanascita = QLabel("Data: {}".format(self.controller.get_data_prenotazione()))
-        font_datanascita = label_datanascita.font()
-        font_datanascita.setPointSize(17)
-        label_datanascita.setFont(font_datanascita)
-        grid_layout.addWidget(label_datanascita)
+        label_data_inizio = QLabel("Data: {}".format(self.controller.get_data_inizio_prenotazione()))
+        font_data_inizio = label_data_inizio.font()
+        font_data_inizio.setPointSize(17)
+        label_data_inizio.setFont(font_data_inizio)
+        grid_layout.addWidget(label_data_inizio)
+
+        label_data_fine = QLabel("Data: {}".format(self.controller.get_data_fine_prenotazione()))
+        font_data_fine = label_data_fine.font()
+        font_data_fine.setPointSize(17)
+        label_data_fine.setFont(font_data_fine)
+        grid_layout.addWidget(label_data_fine)
 
         grid_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 

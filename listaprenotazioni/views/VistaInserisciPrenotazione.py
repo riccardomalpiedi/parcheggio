@@ -28,8 +28,7 @@ class VistaInserisciPrenotazione(QWidget):
         if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
             with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
                 self.lista_clienti_salvata = pickle.load(f)
-            self.lista_clienti_abbonati = [c for c in self.lista_clienti_salvata.get_lista_clienti() if c.get_abbonamento() and not c.get_abbonamento().is_scaduto()]
-            for cliente in self.lista_clienti_abbonati:
+            for cliente in self.lista_clienti_salvata:
                 item = QStandardItem()
                 item.setText(cliente.nome + " " + cliente.cognome)
                 item.setEditable(False)
@@ -46,7 +45,7 @@ class VistaInserisciPrenotazione(QWidget):
         if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
                 self.lista_posteggi_salvata = pickle.load(f)
-            self.lista_posteggi_disponibili = [s for s in self.lista_posteggi_salvata.get_lista_dei_posteggi() if s.is_disponibile()]
+            self.lista_posteggi_disponibili = [s for s in self.lista_posteggi_salvata if s.is_disponibile()]
             for posteggio in self.lista_posteggi_disponibili:
                 item = QStandardItem()
                 item.setText(posteggio.nome)
@@ -69,16 +68,16 @@ class VistaInserisciPrenotazione(QWidget):
         self.setWindowTitle('Nuovo Prenotazione')
 
     def add_prenotazione(self):
-        datainizio = self.text_datainizio.text()
-        datafine = self.text_datafine.text()
-        cliente = self.lista_clienti_abbonati[self.combo_clienti.currentIndex()]
-        servizio = self.lista_servizi_disponibili[self.combo_servizi.currentIndex()]
-        if datainizio == "" or not cliente or not servizio:
+        data_inizio = self.text_datainizio.text()
+        data_fine = self.text_datafine.text()
+        cliente = self.lista_clienti_salvata[self.combo_clienti.currentIndex()]
+        posteggio = self.lista_posteggi_disponibili[self.combo_posteggi.currentIndex()]
+        if data_inizio == "" or not cliente or not posteggio:
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste", QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.controller.aggiungi_prenotazione(Prenotazione((cliente.cognome+servizio.nome).lower(), cliente, servizio, datainizio, datafine))
-            servizio.prenota()
-            with open('listaservizi/data/lista_servizi_salvata.pickle', 'wb') as handle:
-                pickle.dump(self.lista_servizi_salvata, handle, pickle.HIGHEST_PROTOCOL)
+            self.controller.aggiungi_prenotazione(Prenotazione((cliente.cognome+posteggio.nome).lower(), cliente, posteggio, data_inizio, data_fine))
+            posteggio.prenota()
+            with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as handle:
+                pickle.dump(self.lista_posteggi_salvata, handle, pickle.HIGHEST_PROTOCOL)
             self.callback()
             self.close()

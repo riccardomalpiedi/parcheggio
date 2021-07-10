@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QSizePolicy, QListView, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QListView, QVBoxLayout
 
 from listaprenotazioni.controller.ControlloreListaPrenotazioni import ControlloreListaPrenotazioni
 from listaprenotazioni.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
@@ -10,8 +10,9 @@ class VistaListaPrenotazioni(QWidget):
     def __init__(self, parent=None):
         super(VistaListaPrenotazioni, self).__init__(parent)
 
-        h_layout = QHBoxLayout()
         self.controller = ControlloreListaPrenotazioni()
+
+        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
         h_layout.addWidget(self.list_view)
@@ -33,7 +34,8 @@ class VistaListaPrenotazioni(QWidget):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         prenotazione_selezionato = self.controller.get_prenotazione_by_index(selected)
-        self.vista_prenotazione = VistaPrenotazione(prenotazione_selezionato, self.controller.elimina_prenotazione_by_id, self.update_ui)
+        self.vista_prenotazione = VistaPrenotazione(prenotazione_selezionato,
+                                                    self.controller.elimina_prenotazione_by_id, self.update_ui)
         self.vista_prenotazione.show()
 
     def show_new_prenotazione(self):
@@ -44,7 +46,7 @@ class VistaListaPrenotazioni(QWidget):
         self.listview_model = QStandardItemModel(self.list_view)
         for prenotazione in self.controller.get_lista_delle_prenotazioni():
             item = QStandardItem()
-            item.setText(prenotazione.cliente.cognome + ": " + prenotazione.servizio.nome)
+            item.setText(prenotazione.cliente.cognome + ": " + prenotazione.cliente.nome)
             item.setEditable(False)
             font = item.font()
             font.setPointSize(18)
