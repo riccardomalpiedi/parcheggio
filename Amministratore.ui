@@ -30,6 +30,9 @@
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
    </property>
@@ -50,6 +53,9 @@
     <font>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
@@ -72,6 +78,9 @@
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
    </property>
@@ -92,6 +101,9 @@
     <font>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
@@ -114,6 +126,9 @@
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
    </property>
@@ -134,6 +149,9 @@
     <font>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>

@@ -20,15 +20,6 @@ class VistaCassiere(QDialog):
     def go_vista_lista_veicoli(self):
         self.vista_lista_veicoli = VistaListaVeicoli()
         self.vista_lista_veicoli.show()
-        # pass
-
-    # def create_button(self, titolo, on_click=None):
-        # button = QPushButton(titolo)
-        # button.setFont(QFont("arial", 12))
-        # button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        # button.clicked.connect(on_click)
-        # button.setIcon(QIcon(icona))
-        # return button
 
     def go_back(self):
         self.close()
