@@ -1,28 +1,34 @@
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QDialog
+
+from PyQt5.uic import loadUi
 
 from listaveicoli.view.VistaListaVeicoli import VistaListaVeicoli
 
-class VistaCassiere(QWidget):
+
+class VistaCassiere(QDialog):
     def __init__(self, parent=None):
         super(VistaCassiere, self).__init__(parent)
-        grid_layout = QGridLayout()
-
-        vistalistaveicoli_button = self.create_button("Vista Lista Veicoli", self.go_vista_lista_veicoli)
-
-        grid_layout.addWidget(vistalistaveicoli_button, 0, 0)
-
-        self.setLayout(grid_layout)
-        self.resize(500, 400)
+        loadUi("Cassiere.ui", self)
         self.setWindowTitle('Vista Cassiere')
+        self.setFixedHeight(400)
+        self.setFixedWidth(600)
+        self.setWindowIcon(QIcon("icone/accountant2.png"))
+        self.lista_veicoli_button.clicked.connect(self.go_vista_lista_veicoli)
+        self.back_button.clicked.connect(self.go_back)
 
     def go_vista_lista_veicoli(self):
         self.vista_lista_veicoli = VistaListaVeicoli()
         self.vista_lista_veicoli.show()
+        # pass
 
-    def create_button(self, titolo, on_click=None):
-        button = QPushButton(titolo)
-        button.setFont(QFont("arial", 12))
-        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        button.clicked.connect(on_click)
-        return button
+    # def create_button(self, titolo, on_click=None):
+        # button = QPushButton(titolo)
+        # button.setFont(QFont("arial", 12))
+        # button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # button.clicked.connect(on_click)
+        # button.setIcon(QIcon(icona))
+        # return button
+
+    def go_back(self):
+        self.close()

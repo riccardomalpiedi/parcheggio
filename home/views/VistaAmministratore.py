@@ -14,6 +14,8 @@ class VistaAmministratore(QDialog):
         super(VistaAmministratore, self).__init__()
         loadUi("Amministratore.ui", self)
         self.setWindowTitle("Amministratore")
+        self.setFixedHeight(522)
+        self.setFixedWidth(655)
         self.setWindowIcon(QIcon("icone/administrator2.png"))
         self.vista_lista_clienti_button.clicked.connect(self.go_lista_vista_clienti)
         self.vista_lista_posteggi_button.clicked.connect(self.go_lista_vista_posteggi)
