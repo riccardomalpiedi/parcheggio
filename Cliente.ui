@@ -34,7 +34,8 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);
+border-radius:20px; </string>
    </property>
    <property name="text">
     <string>Ingresso</string>
@@ -58,10 +59,31 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);
+border-radius:20px; </string>
    </property>
    <property name="text">
     <string>Uscita</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>30</y>
+     <width>261</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Cosa si vuole Registrare?</string>
    </property>
   </widget>
  </widget>
