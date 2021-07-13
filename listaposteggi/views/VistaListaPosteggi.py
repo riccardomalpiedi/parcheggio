@@ -1,17 +1,18 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.uic import loadUi
 
 from listaposteggi.controller.ControlloreListaPosteggi import ControlloreListaPosteggi
 from posteggio.views.VistaPosteggio import VistaPosteggio
 
 
-class VistaListaPosteggi(QWidget):
-    def __init__(self, parent=None):
-        super(VistaListaPosteggi, self).__init__(parent)
+class VistaListaPosteggi(QDialog):
+    def __init__(self):
+        super(VistaListaPosteggi, self).__init__()
+        loadUi("listaposteggi.ui", self)
 
         self.controller = ControlloreListaPosteggi()
 
-        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.listview_model = QStandardItemModel(self.list_view)
         for posteggio in self.controller.get_lista_dei_posteggi():
@@ -23,18 +24,13 @@ class VistaListaPosteggi(QWidget):
             item.setFont(font)
             self.listview_model.appendRow(item)
         self.list_view.setModel(self.listview_model)
-        h_layout.addWidget(self.list_view)
+        self.posteggi_layout.addWidget(self.list_view)
 
-        buttons_layout = QVBoxLayout()
-        open_button = QPushButton("Apri")
-        open_button.clicked.connect(self.show_selected_info)
-        buttons_layout.addWidget(open_button)
-        buttons_layout.addStretch()
-        h_layout.addLayout(buttons_layout)
+        self.open_button.clicked.connect(self.show_selected_info)
 
-        self.setLayout(h_layout)
-        self.resize(600, 300)
-        self.setWindowTitle('Lista Posteggi')
+        self.setWindowTitle("Lista Posteggi")
+        self.setFixedHeight(361)
+        self.setFixedWidth(709)
 
     def closeEvent(self, event):
         print("ON CLOSE")

@@ -1,35 +1,29 @@
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.uic import loadUi
 
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
-class VistaListaVeicoli(QWidget):
-    def __init__(self, parent=None):
-        super(VistaListaVeicoli, self).__init__(parent)
+class VistaListaVeicoli(QDialog):
+    def __init__(self):
+        super(VistaListaVeicoli, self).__init__()
+        loadUi("listaveicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
 
-        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
-        h_layout.addWidget(self.list_view)
+        self.veicoli_layout.addWidget(self.list_view)
 
-        buttons_layout = QVBoxLayout()
-        open_button = QPushButton("Apri")
-        open_button.clicked.connect(self.show_selected_info)
-        buttons_layout.addWidget(open_button)
-        new_button = QPushButton("Nuovo")
-        new_button.clicked.connect(self.show_new_veicolo)
-        buttons_layout.addWidget(new_button)
-        buttons_layout.addStretch()
-        h_layout.addLayout(buttons_layout)
+        self.open_button.clicked.connect(self.show_selected_info)
+        self.new_button.clicked.connect(self.show_new_veicolo)
 
-        self.setLayout(h_layout)
-        self.resize(600, 300)
-        self.setWindowTitle('Lista Veicoli')
+        self.setWindowTitle("Lista Veicoli")
+        self.setFixedHeight(361)
+        self.setFixedWidth(709)
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
@@ -45,7 +39,7 @@ class VistaListaVeicoli(QWidget):
         self.listview_model = QStandardItemModel(self.list_view)
         for veicolo in self.controller.get_lista_dei_veicoli():
             item = QStandardItem()
-            item.setText("Targa: "+veicolo.targa)
+            item.setText("Targa: " + veicolo.targa)
             item.setEditable(False)
             font = item.font()
             font.setPointSize(18)

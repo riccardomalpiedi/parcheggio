@@ -1,35 +1,29 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.uic import loadUi
 
 from dipendente.views.VistaDipendente import VistaDipendente
 from listadipendenti.controller.ControlloreListaDipendenti import ControlloreListaDipendenti
 from listadipendenti.views.VistaInserisciDipendente import VistaInserisciDipendente
 
 
-class VistaListaDipendenti(QWidget):
-    def __init__(self, parent=None):
-        super(VistaListaDipendenti, self).__init__(parent)
+class VistaListaDipendenti(QDialog):
+    def __init__(self):
+        super(VistaListaDipendenti, self).__init__()
+        loadUi("listadipendenti.ui", self)
 
         self.controller = ControlloreListaDipendenti()
 
-        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
-        h_layout.addWidget(self.list_view)
+        self.dipendenti_layout.addWidget(self.list_view)
 
-        buttons_layout = QVBoxLayout()
-        open_button = QPushButton('Apri')
-        open_button.clicked.connect(self.show_selected_info)
-        buttons_layout.addWidget(open_button)
-        new_button = QPushButton("Nuovo")
-        new_button.clicked.connect(self.show_new_dipendente)
-        buttons_layout.addWidget(new_button)
-        buttons_layout.addStretch()
-        h_layout.addLayout(buttons_layout)
+        self.open_button.clicked.connect(self.show_selected_info)
+        self.new_button.clicked.connect(self.show_new_dipendente)
 
-        self.setLayout(h_layout)
-        self.resize(600, 300)
-        self.setWindowTitle('Lista Dipendenti')
+        self.setWindowTitle("Lista Dipendenti")
+        self.setFixedHeight(361)
+        self.setFixedWidth(709)
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

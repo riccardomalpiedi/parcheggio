@@ -1,35 +1,29 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QListView, QVBoxLayout
+from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.uic import loadUi
 
 from listaprenotazioni.controller.ControlloreListaPrenotazioni import ControlloreListaPrenotazioni
 from listaprenotazioni.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
 from prenotazione.views.VistaPrenotazione import VistaPrenotazione
 
 
-class VistaListaPrenotazioni(QWidget):
-    def __init__(self, parent=None):
-        super(VistaListaPrenotazioni, self).__init__(parent)
+class VistaListaPrenotazioni(QDialog):
+    def __init__(self):
+        super(VistaListaPrenotazioni, self).__init__()
+        loadUi("prenotazioni.ui", self)
 
         self.controller = ControlloreListaPrenotazioni()
 
-        h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
-        h_layout.addWidget(self.list_view)
+        self.prenotazioni_layout.addWidget(self.list_view)
 
-        buttons_layout = QVBoxLayout()
-        open_button = QPushButton("Apri")
-        open_button.clicked.connect(self.show_selected_info)
-        buttons_layout.addWidget(open_button)
-        new_button = QPushButton("Nuova")
-        new_button.clicked.connect(self.show_new_prenotazione)
-        buttons_layout.addWidget(new_button)
-        buttons_layout.addStretch()
-        h_layout.addLayout(buttons_layout)
+        self.open_button.clicked.connect(self.show_selected_info)
+        self.new_button.clicked.connect(self.show_new_prenotazione)
 
-        self.setLayout(h_layout)
-        self.resize(600, 300)
-        self.setWindowTitle('Lista Prenotazioni')
+        self.setWindowTitle("Lista Prenotazioni")
+        self.setFixedHeight(361)
+        self.setFixedWidth(709)
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
