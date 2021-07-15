@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
@@ -31,6 +31,7 @@ class VistaListaPosteggi(QDialog):
         self.setWindowTitle("Lista Posteggi")
         self.setFixedHeight(361)
         self.setFixedWidth(709)
+        self.setWindowIcon(QIcon("icone/car2.png"))
 
     def closeEvent(self, event):
         print("ON CLOSE")

@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
@@ -26,6 +27,7 @@ class VistaCliente(QDialog):
         self.setFixedHeight(506)
         self.setFixedWidth(357)
         self.setWindowTitle(cliente.nome)
+        self.setWindowIcon(QIcon("icone/user2.png"))
 
     def check_abbonamento(self):
         self.vista_abbonamento = VistaAbbonamento(self.controller.get_abbonamento_cliente(),

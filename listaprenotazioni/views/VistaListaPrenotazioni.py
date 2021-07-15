@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
@@ -24,6 +24,7 @@ class VistaListaPrenotazioni(QDialog):
         self.setWindowTitle("Lista Prenotazioni")
         self.setFixedHeight(361)
         self.setFixedWidth(709)
+        self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()

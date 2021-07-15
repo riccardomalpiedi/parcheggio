@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 
@@ -15,3 +16,4 @@ class VistaPosteggio(QWidget):
         self.label_prezzo.setText("<font color='white'>Prezzo: €" + self.controller.get_prezzo_posteggio())
 
         self.setWindowTitle(posteggio.nome)
+        self.setWindowIcon(QIcon("icone/car2.png"))

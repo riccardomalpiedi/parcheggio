@@ -13,7 +13,7 @@ class VistaCassiere(QDialog):
         self.setWindowTitle('Vista Cassiere')
         self.setFixedHeight(400)
         self.setFixedWidth(600)
-        self.setWindowIcon(QIcon("icone/accountant2.png"))
+        self.setWindowIcon(QIcon("icone/cash2.png"))
         self.lista_veicoli_button.clicked.connect(self.go_vista_lista_veicoli)
         self.back_button.clicked.connect(self.go_back)
 

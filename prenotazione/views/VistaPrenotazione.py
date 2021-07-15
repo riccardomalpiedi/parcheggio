@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
@@ -25,6 +26,7 @@ class VistaPrenotazione(QDialog):
         self.setFixedHeight(363)
         self.setFixedWidth(357)
         self.setWindowTitle(self.controller.get_cliente_prenotazione().nome)
+        self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def disdici_prenotazione_click(self):
         self.disdisci_prenotazione(self.controller.get_id_prenotazione())

@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
@@ -24,6 +24,7 @@ class VistaListaDipendenti(QDialog):
         self.setWindowTitle("Lista Dipendenti")
         self.setFixedHeight(361)
         self.setFixedWidth(709)
+        self.setWindowIcon(QIcon("icone/accountant2.png"))
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

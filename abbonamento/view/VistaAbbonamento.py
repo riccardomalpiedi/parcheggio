@@ -15,9 +15,15 @@ class VistaAbbonamento(QDialog):
 
         if self.controller.is_abbonato():
             loadUi("VistaAbbonamento1.ui", self)
+            self.setWindowTitle("Abbonamento")
+            self.setFixedWidth(481)
+            self.setFixedHeight(81)
             self.scadenza_label.setText("<font color='white'>" + self.controller.get_scadenza_string())
         else:
             loadUi("VistaAbbonamento2.ui", self)
+            self.setWindowTitle("Nuova Scadenza")
+            self.setFixedWidth(444)
+            self.setFixedHeight(271)
             self.cliente_non_abbonato_label.setText("Cliente non abbonato")
             self.frase_label.setText("Aggiungi nuova data scadenza abbonamento (dd/MM/yyyy)")
             self.scadenza_lineedit.text()

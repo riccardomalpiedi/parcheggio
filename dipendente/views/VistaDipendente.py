@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
@@ -27,14 +28,7 @@ class VistaDipendente(QDialog):
         self.setFixedHeight(534)
         self.setFixedWidth(410)
         self.setWindowTitle(self.controller.get_nome_dipendente())
-
-    def get_info(self, text):
-        # label = QLabel(text)
-        # font = label.font()
-        # font.setPointSize(17)
-        # label.setFont(font)
-        # return label
-        pass
+        self.setWindowIcon(QIcon("icone/accountant2.png"))
 
     def elimina_dipendente_click(self):
         self.elimina_dipendente(self.controller.get_id_dipendente())

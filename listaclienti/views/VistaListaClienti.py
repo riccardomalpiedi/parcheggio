@@ -1,9 +1,8 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
 from cliente.view.VistaCliente import VistaCliente
-# from cliente.view.VistaCliente2 import VistaCliente2
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
 
@@ -17,13 +16,13 @@ class VistaListaClienti(QDialog):
         self.list_view = QListView()
         self.update_ui()
         self.clienti_layout.addWidget(self.list_view)
-        # self.clienti_layout.setStyleSheet("backgroud-color: rgb(100, 100, 100);")
         self.open_button.clicked.connect(self.show_selected_info)
         self.new_button.clicked.connect(self.show_new_client)
 
         self.setWindowTitle("Lista Clienti")
         self.setFixedHeight(361)
         self.setFixedWidth(709)
+        self.setWindowIcon(QIcon("icone/user2.png"))
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
