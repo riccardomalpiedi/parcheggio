@@ -1,5 +1,6 @@
 import os
 import pickle
+from datetime import datetime
 
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import QWidget
@@ -30,11 +31,18 @@ class VistaIngresso(QWidget):
             self.comboBox.setModel(self.comboveicoli_model)
 
         self.pushButton.clicked.connect(self.go_vista_inserisci_veicolo)
+        self.entra_button.clicked.connect(self.inserisci_ingresso_veicolo)
 
     def go_vista_inserisci_veicolo(self):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.vista_lista_veicoli.controller,
                                                              self.vista_lista_veicoli.update_ui)
         self.vista_inserisci_veicolo.show()
+
+    def inserisci_ingresso_veicolo(self):
+        targa = self.comboBox.currentText()
+        veicolo = self.vista_lista_veicoli.controller.get_veicolo_by_targa(targa)
+        veicolo.set_orario_ingresso(datetime.now())
+        print(datetime.now())
 
     def closeEvent(self, event):
         print("ON CLOSE")

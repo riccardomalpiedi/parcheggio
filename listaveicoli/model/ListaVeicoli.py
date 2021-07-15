@@ -24,6 +24,12 @@ class ListaVeicoli():
     def get_veicolo_by_index(self, index):
         return self.lista_veicoli[index]
 
+    def get_veicolo_by_targa(self, targa):
+        for veicolo in self.lista_veicoli:
+            if veicolo.targa == targa:
+                return veicolo
+        return None
+
     def get_lista_veicoli(self):
         return self.lista_veicoli
 

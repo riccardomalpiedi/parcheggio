@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>238</width>
-    <height>384</height>
+    <height>462</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -102,6 +102,11 @@ color: rgb(0, 0, 0);</string>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Posteggio</string>
    </property>
@@ -110,7 +115,7 @@ color: rgb(0, 0, 0);</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>350</y>
+     <y>420</y>
      <width>221</width>
      <height>23</height>
     </rect>
@@ -185,6 +190,51 @@ color: rgb(0, 0, 0);</string>
     <rect>
      <x>10</x>
      <y>240</y>
+     <width>221</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>325</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Veicolo</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="veicolo_comboBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>360</y>
+     <width>221</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>320</y>
      <width>221</width>
      <height>3</height>
     </rect>

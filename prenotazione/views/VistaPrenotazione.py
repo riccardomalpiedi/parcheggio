@@ -23,8 +23,8 @@ class VistaPrenotazione(QDialog):
 
         self.disdici_button.clicked.connect(self.disdici_prenotazione_click)
 
-        self.setFixedHeight(363)
-        self.setFixedWidth(357)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle(self.controller.get_cliente_prenotazione().nome)
         self.setWindowIcon(QIcon("icone/booking2.png"))
 

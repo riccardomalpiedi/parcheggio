@@ -48,9 +48,23 @@ class VistaInserisciPrenotazione(QDialog):
                 self.comboposteggi_model.appendRow(item)
             self.posteggio_comboBox.setModel(self.comboposteggi_model)
 
+        self.comboveicoli_model = QStandardItemModel(self.veicolo_comboBox)
+        if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
+            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
+                self.lista_veicoli_salvata = pickle.load(f)
+            for veicolo in self.lista_veicoli_salvata:
+                item = QStandardItem()
+                item.setText(veicolo.targa)
+                item.setEditable(False)
+                font = item.font()
+                font.setPointSize(18)
+                item.setFont(font)
+                self.comboveicoli_model.appendRow(item)
+            self.veicolo_comboBox.setModel(self.comboveicoli_model)
+
         self.ok_button.clicked.connect(self.add_prenotazione)
-        self.setFixedWidth(238)
-        self.setFixedHeight(384)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Prenotazione')
 
     def add_prenotazione(self):
@@ -58,12 +72,13 @@ class VistaInserisciPrenotazione(QDialog):
         data_fine = self.data_fine_lineEdit.text()
         cliente = self.lista_clienti_salvata[self.cliente_comboBox.currentIndex()]
         posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
+        veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()]
         if data_inizio == "" or not cliente or not posteggio:
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
             self.controller.aggiungi_prenotazione(
-                Prenotazione((cliente.cognome + posteggio.nome).lower(), cliente, posteggio, data_inizio, data_fine))
+                Prenotazione((cliente.cognome + posteggio.nome).lower(), cliente, veicolo, posteggio, data_inizio, data_fine))
             posteggio.prenota()
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as handle:
                 pickle.dump(self.lista_posteggi_salvata, handle, pickle.HIGHEST_PROTOCOL)

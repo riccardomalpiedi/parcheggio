@@ -17,6 +17,9 @@ class ControlloreListaVeicoli():
     def get_veicolo_by_index(self, index):
         return self.model.get_veicolo_by_index(index)
 
+    def get_veicolo_by_targa(self, targa):
+        return self.model.get_veicolo_by_targa(targa)
+
     def elimina_veicolo_by_id(self, id):
         self.model.rimuovi_veicolo_by_id(id)
 
