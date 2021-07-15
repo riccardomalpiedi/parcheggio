@@ -2,29 +2,24 @@ import os
 import pickle
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QLabel, QPushButton, QSpacerItem, QSizePolicy, QMessageBox, QComboBox
+from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.uic import loadUi
 
 from prenotazione.model.Prenotazione import Prenotazione
 
 
-class VistaInserisciPrenotazione(QWidget):
+class VistaInserisciPrenotazione(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciPrenotazione, self).__init__()
+        loadUi("NuovaPrenotazione.ui", self)
+
         self.controller = controller
         self.callback = callback
 
-        v_layout = QVBoxLayout()
+        self.data_inizio_lineEdit.text()
+        self.data_fine_lineEdit.text()
 
-        v_layout.addWidget(QLabel("Data di inizio (dd/MM/yyyy)"))
-        self.text_datainizio = QLineEdit(self)
-        v_layout.addWidget(self.text_datainizio)
-
-        v_layout.addWidget(QLabel("Data di fine (dd/MM/yyyy)"))
-        self.text_datafine = QLineEdit(self)
-        v_layout.addWidget(self.text_datafine)
-
-        self.combo_clienti = QComboBox()
-        self.comboclienti_model = QStandardItemModel(self.combo_clienti)
+        self.comboclienti_model = QStandardItemModel(self.cliente_comboBox)
         if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
             with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
                 self.lista_clienti_salvata = pickle.load(f)
@@ -36,12 +31,9 @@ class VistaInserisciPrenotazione(QWidget):
                 font.setPointSize(18)
                 item.setFont(font)
                 self.comboclienti_model.appendRow(item)
-            self.combo_clienti.setModel(self.comboclienti_model)
-        v_layout.addWidget(QLabel("Cliente"))
-        v_layout.addWidget(self.combo_clienti)
+            self.cliente_comboBox.setModel(self.comboclienti_model)
 
-        self.combo_posteggi = QComboBox()
-        self.comboposteggi_model = QStandardItemModel(self.combo_posteggi)
+        self.comboposteggi_model = QStandardItemModel(self.posteggio_comboBox)
         if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
                 self.lista_posteggi_salvata = pickle.load(f)
@@ -54,28 +46,24 @@ class VistaInserisciPrenotazione(QWidget):
                 font.setPointSize(18)
                 item.setFont(font)
                 self.comboposteggi_model.appendRow(item)
-            self.combo_posteggi.setModel(self.comboposteggi_model)
-        v_layout.addWidget(QLabel("Posteggio"))
-        v_layout.addWidget(self.combo_posteggi)
+            self.posteggio_comboBox.setModel(self.comboposteggi_model)
 
-        v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-
-        btn_ok = QPushButton("OK")
-        btn_ok.clicked.connect(self.add_prenotazione)
-        v_layout.addWidget(btn_ok)
-
-        self.setLayout(v_layout)
+        self.ok_button.clicked.connect(self.add_prenotazione)
+        self.setFixedWidth(238)
+        self.setFixedHeight(384)
         self.setWindowTitle('Nuovo Prenotazione')
 
     def add_prenotazione(self):
-        data_inizio = self.text_datainizio.text()
-        data_fine = self.text_datafine.text()
-        cliente = self.lista_clienti_salvata[self.combo_clienti.currentIndex()]
-        posteggio = self.lista_posteggi_disponibili[self.combo_posteggi.currentIndex()]
+        data_inizio = self.data_inizio_lineEdit.text()
+        data_fine = self.data_fine_lineEdit.text()
+        cliente = self.lista_clienti_salvata[self.cliente_comboBox.currentIndex()]
+        posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
         if data_inizio == "" or not cliente or not posteggio:
-            QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste", QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
+                                 QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.controller.aggiungi_prenotazione(Prenotazione((cliente.cognome+posteggio.nome).lower(), cliente, posteggio, data_inizio, data_fine))
+            self.controller.aggiungi_prenotazione(
+                Prenotazione((cliente.cognome + posteggio.nome).lower(), cliente, posteggio, data_inizio, data_fine))
             posteggio.prenota()
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as handle:
                 pickle.dump(self.lista_posteggi_salvata, handle, pickle.HIGHEST_PROTOCOL)
