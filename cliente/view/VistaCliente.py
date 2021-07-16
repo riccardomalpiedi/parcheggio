@@ -20,11 +20,12 @@ class VistaCliente(QDialog):
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
+        self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_veicolo_cliente())
 
         self.abbonamento_button.clicked.connect(self.check_abbonamento)
         self.elimina_button.clicked.connect(self.elimina_cliente_click)
 
-        self.setFixedHeight(506)
+        self.setFixedHeight(543)
         self.setFixedWidth(357)
         self.setWindowTitle(cliente.nome)
         self.setWindowIcon(QIcon("icone/user2.png"))

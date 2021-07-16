@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>357</width>
-    <height>506</height>
+    <height>543</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,8 +112,8 @@
   <widget class="QPushButton" name="elimina_button">
    <property name="geometry">
     <rect>
-     <x>13</x>
-     <y>460</y>
+     <x>15</x>
+     <y>500</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -128,8 +128,8 @@
   <widget class="QPushButton" name="abbonamento_button">
    <property name="geometry">
     <rect>
-     <x>13</x>
-     <y>410</y>
+     <x>15</x>
+     <y>450</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -178,6 +178,35 @@
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>340</y>
+     <width>331</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="targa_veicolo_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>350</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

@@ -25,6 +25,9 @@ class ControlloreCliente():
     def get_telefono_cliente(self):
         return self.model.telefono
 
+    def get_veicolo_cliente(self):
+        return self.model.veicolo
+
     def get_abbonamento_cliente(self):
         return self.model.abbonamento
 
