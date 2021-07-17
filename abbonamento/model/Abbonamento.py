@@ -5,4 +5,4 @@ class Abbonamento():
         self.scadenza = scadenza
 
     def is_scaduto(self):
-        return int(time.time()) > self.scadenz
+        return int(time.time()) > self.scadenza

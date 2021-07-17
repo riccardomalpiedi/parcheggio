@@ -24,7 +24,6 @@ class VistaInserisciDipendente(QDialog):
         cf = self.codice_fiscale_lineEdit.text()
         data_nascita = self.data_nascita_lineEdit.text()
         luogo_nascita = self.luogo_nascita_lineEdit.text()
-        # indirizzo = self.indirizzo_lineEdit.text()
         email = self.email_lineEdit.text()
         telefono = self.telefono_lineEdit.text()
         licenza = self.licenza_lineEdit.text()

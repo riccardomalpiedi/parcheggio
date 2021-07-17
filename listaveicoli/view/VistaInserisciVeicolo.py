@@ -26,6 +26,6 @@ class VistaInserisciVeicolo(QDialog):
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.controller.aggiungi_veicolo(Veicolo((targa).lower(), targa, tipo))
+            self.controller.aggiungi_veicolo(Veicolo(targa.lower(), targa, tipo))
             self.callback()
             self.close()
