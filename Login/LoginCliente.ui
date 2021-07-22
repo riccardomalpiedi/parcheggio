@@ -91,6 +91,9 @@ font-size:14pt;</string>
    <property name="text">
     <string>Login</string>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
