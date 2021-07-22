@@ -14,8 +14,8 @@ class RegistrazioneNuovoCliente(QDialog):
         self.vista_lista_clienti = VistaListaClienti()
         loadUi("Login/RegistrazioneNuovoCliente.ui", self)
 
-        self.setFixedHeight(600)
-        self.setFixedWidth(800)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle("Registrazione")
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
         self.conferma_password_field.setEchoMode(QtWidgets.QLineEdit.Password)

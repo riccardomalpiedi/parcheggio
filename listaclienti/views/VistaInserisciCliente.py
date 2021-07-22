@@ -33,8 +33,8 @@ class VistaInserisciCliente(QDialog):
         self.ok_button.clicked.connect(self.add_cliente)
         self.back_button.clicked.connect(self.go_back)
 
-        self.setFixedWidth(736)
-        self.setFixedHeight(618)
+        self.setFixedWidth(self.width())
+        self.setFixedHeight(self.height())
         self.setWindowTitle("Registrazione Nuovo Cliente")
 
     def add_cliente(self):
@@ -63,3 +63,8 @@ class VistaInserisciCliente(QDialog):
 
     def go_back(self):
         self.close()
+
+    def closeEvent(self, event):
+        print("ON CLOSE")
+        self.controller.save_data()
+        event.accept()
