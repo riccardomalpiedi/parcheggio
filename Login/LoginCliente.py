@@ -1,6 +1,6 @@
 import sqlite3
 
-from PyQt5.QtWidgets import QGridLayout, QWidget, QMessageBox, QDialog
+from PyQt5.QtWidgets import QMessageBox, QDialog
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
@@ -23,10 +23,6 @@ class LoginCliente(QDialog):
         user = self.username_field.text()
         password = self.password_field.text()
 
-        # if user == "mario" and password == "rossi":
-        #  self.go_vista_utente()
-        # self.close()
-        # else:
         if user == "" and password == "" or len(user) == 0 or len(password) == 0:
             QMessageBox.critical(self, 'Errore', "Inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
@@ -37,7 +33,6 @@ class LoginCliente(QDialog):
             cur.execute(query)
             var = cur.fetchone()[0]
             if var == password:
-                # self.go_vista_utente()
                 print("Loggato con successo")
                 self.go_vista_utente()
                 self.close()
@@ -48,7 +43,6 @@ class LoginCliente(QDialog):
     def go_vista_utente(self):
         self.vista_utente = VistaUtente()
         self.vista_utente.show()
-        # pass
 
     def back_function(self):
         self.close()

@@ -4,14 +4,11 @@ from PyQt5.uic import loadUi
 
 from Login.LoginCliente import LoginCliente
 from Login.RegistrazioneNuovoCliente import RegistrazioneNuovoCliente
-# from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
-# from listaclienti.views.VistaListaClienti import VistaListaClienti
 
 
 class VistaCliente(QDialog):
     def __init__(self):
         super(VistaCliente, self).__init__()
-        # self.vista_lista_clienti = VistaListaClienti()
         loadUi("home/BenvenutoCliente.ui", self)
 
         self.setFixedWidth(632)
@@ -28,6 +25,5 @@ class VistaCliente(QDialog):
 
     def go_registrati(self):
         self.registrati = RegistrazioneNuovoCliente()
-        # self.registrati = VistaInserisciCliente(self.vista_lista_clienti.controller, self.vista_lista_clienti.update_ui)
         self.registrati.show()
         self.close()
