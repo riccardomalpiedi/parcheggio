@@ -1,6 +1,11 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
+from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
+from Utente.Profilo.GestionePrenotazioni.GestionePrenotazione import GestionePrenotazioni
+from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
+from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
+from Utente.Profilo.UpdateFoto.UpdateFoto import UpdateFoto
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
@@ -30,16 +35,21 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_update_function(self):
-        pass
+        self.update_function = UpdateFoto()
+        self.update_function.show()
 
     def go_gestione_veicoli_function(self):
-        pass
+        self.gestione_veicoli_function = GestioneVeicoli()
+        self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
-        pass
+        self.gestisci_prenotazioni_function = GestionePrenotazioni()
+        self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        pass
+        self.modifica_profilo_function = ModificaProfilo()
+        self.modifica_profilo_function.show()
 
     def go_modifica_password(self):
-        pass
+        self.modifica_password = CambiaPassword()
+        self.modifica_password.show()
