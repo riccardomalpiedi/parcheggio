@@ -9,10 +9,11 @@ from prenotazione.model.Prenotazione import Prenotazione
 
 
 class GestioneInserisciPrenotazione(QDialog):
-    def __init__(self, controller, callback):
+    def __init__(self, cliente, controller, callback):
         super(GestioneInserisciPrenotazione, self).__init__()
-        loadUi("Utente/Profilo/GestioneNuovaPrenotazione.ui", self)
+        loadUi("Utente/Profilo/GestionePrenotazioni/GestioneNuovaPrenotazione.ui", self)
 
+        self.cliente = cliente
         self.controller = controller
         self.callback = callback
 
@@ -49,18 +50,27 @@ class GestioneInserisciPrenotazione(QDialog):
             self.posteggio_comboBox.setModel(self.comboposteggi_model)
 
         self.comboveicoli_model = QStandardItemModel(self.veicolo_comboBox)
-        if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
-            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
-                self.lista_veicoli_salvata = pickle.load(f)
-            for veicolo in self.lista_veicoli_salvata:
-                item = QStandardItem()
-                item.setText(veicolo.targa)
-                item.setEditable(False)
-                font = item.font()
-                font.setPointSize(18)
-                item.setFont(font)
-                self.comboveicoli_model.appendRow(item)
-            self.veicolo_comboBox.setModel(self.comboveicoli_model)
+        item = QStandardItem()
+        print(self.cliente.veicolo)
+        item.setText(self.cliente.veicolo.targa)
+        item.setEditable(False)
+        font = item.font()
+        font.setPointSize(18)
+        item.setFont(font)
+        self.comboveicoli_model.appendRow(item)
+        self.veicolo_comboBox.setModel(self.comboveicoli_model)
+        # if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
+        #     with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
+        #         self.lista_veicoli_salvata = pickle.load(f)
+        #     for veicolo in self.lista_veicoli_salvata:
+        #         item = QStandardItem()
+        #         item.setText(veicolo.targa)
+        #         item.setEditable(False)
+        #         font = item.font()
+        #         font.setPointSize(18)
+        #         item.setFont(font)
+        #         self.comboveicoli_model.appendRow(item)
+        #     self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
         self.ok_button.clicked.connect(self.add_prenotazione)
         self.setFixedHeight(self.height())
@@ -70,9 +80,9 @@ class GestioneInserisciPrenotazione(QDialog):
     def add_prenotazione(self):
         data_inizio = self.data_inizio_lineEdit.text()
         data_fine = self.data_fine_lineEdit.text()
-        cliente = self.lista_clienti_salvata[self.cliente_comboBox.currentIndex()]
+        cliente = self.cliente
         posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
-        veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()]
+        veicolo = self.cliente.veicolo
         if data_inizio == "" or not cliente or not posteggio:
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)

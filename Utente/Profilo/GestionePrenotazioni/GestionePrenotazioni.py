@@ -8,11 +8,12 @@ from prenotazione.views.VistaPrenotazione import VistaPrenotazione
 
 
 class GestionePrenotazioni(QDialog):
-    def __init__(self):
+    def __init__(self, cliente):
         super(GestionePrenotazioni, self).__init__()
-        loadUi("Utente/Profilo/GestionePrenotazioni.ui", self)
+        loadUi("Utente/Profilo/GestionePrenotazioni/GestionePrenotazioni.ui", self)
 
         self.controller = ControlloreListaPrenotazioni()
+        self.cliente = cliente
 
         self.list_view = QListView()
         self.update_ui()
@@ -22,8 +23,8 @@ class GestionePrenotazioni(QDialog):
         self.new_button.clicked.connect(self.show_new_prenotazione)
 
         self.setWindowTitle("Lista Prenotazioni")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def show_selected_info(self):
@@ -34,19 +35,20 @@ class GestionePrenotazioni(QDialog):
         self.vista_prenotazione.show()
 
     def show_new_prenotazione(self):
-        self.vista_inserisci_cliente = GestioneInserisciPrenotazione(self.controller, self.update_ui)
+        self.vista_inserisci_cliente = GestioneInserisciPrenotazione(self.cliente, self.controller, self.update_ui)
         self.vista_inserisci_cliente.show()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
         for prenotazione in self.controller.get_lista_delle_prenotazioni():
-            item = QStandardItem()
-            item.setText(prenotazione.cliente.cognome + ": " + prenotazione.cliente.nome)
-            item.setEditable(False)
-            font = item.font()
-            font.setPointSize(18)
-            item.setFont(font)
-            self.listview_model.appendRow(item)
+            if prenotazione.cliente == self.cliente:
+                item = QStandardItem()
+                item.setText(prenotazione.cliente.cognome + ": " + prenotazione.cliente.nome)
+                item.setEditable(False)
+                font = item.font()
+                font.setPointSize(18)
+                item.setFont(font)
+                self.listview_model.appendRow(item)
         self.list_view.setModel(self.listview_model)
 
     def closeEvent(self, event):
