@@ -1,11 +1,11 @@
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QDialog, QFileDialog
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
 from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
-from Utente.Profilo.UpdateFoto.UpdateFoto import UpdateFoto
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
@@ -36,8 +36,10 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_update_function(self):
-        self.update_function = UpdateFoto()
-        self.update_function.show()
+        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
+        var = fname[0]
+        print(var)
+        self.photo_label.setPixmap(QPixmap(var))
 
     def go_gestione_veicoli_function(self):
         self.gestione_veicoli_function = GestioneVeicoli()
