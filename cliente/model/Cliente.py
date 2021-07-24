@@ -1,6 +1,6 @@
 
 class Cliente():
-     def __init__(self, id, nome, cognome, cf, indirizzo, email, telefono, veicolo, username, password):
+     def __init__(self, id, nome, cognome, cf, indirizzo, email, telefono, veicolo, username, password, image):
                 super(Cliente, self).__init__()
                 self.id = id
                 self.nome = nome
@@ -12,6 +12,7 @@ class Cliente():
                 self.veicolo = veicolo
                 self.username = username
                 self.password = password
+                self.image = image
                 self.abbonamento = None
 
      def add_abbonamento(self, abbonamento):

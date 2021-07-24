@@ -34,6 +34,9 @@ class ControlloreCliente():
     def get_password_cliente(self):
         return self.model.password
 
+    def get_image_cliente(self):
+        return self.model.image
+
     def get_abbonamento_cliente(self):
         return self.model.abbonamento
 

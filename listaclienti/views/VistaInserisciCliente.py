@@ -2,7 +2,7 @@ import os
 import pickle
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog
 from PyQt5.uic import loadUi
 
 from cliente.model.Cliente import Cliente
@@ -32,6 +32,7 @@ class VistaInserisciCliente(QDialog):
 
         self.ok_button.clicked.connect(self.add_cliente)
         self.back_button.clicked.connect(self.go_back)
+        self.browse_button.clicked.connect(self.go_browse)
 
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
@@ -47,6 +48,7 @@ class VistaInserisciCliente(QDialog):
         veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()]
         username = self.username_field.text()
         password = self.password_field.text()
+        image = self.immagine_profilo_field.text()
 
         if nome == "" or cognome == "" or cf == "" or indirizzo == "" or email == "" or telefono == "" or veicolo == ""\
                 or username == "" or password == "":
@@ -54,15 +56,26 @@ class VistaInserisciCliente(QDialog):
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.controller.aggiungi_cliente(
-                Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo, username,
-                        password))
+            if image == "":
+                self.controller.aggiungi_cliente(
+                    Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo, username,
+                            password, image="Utente/placeholder-user-photo.png"))
+            else:
+                self.controller.aggiungi_cliente(
+                    Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo, username,
+                            password, image))
 
             self.callback()
             self.close()
 
     def go_back(self):
         self.close()
+
+    def go_browse(self):
+        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
+        var = fname[0]
+        print(var)
+        self.immagine_profilo_field.setText(var)
 
     def closeEvent(self, event):
         print("ON CLOSE")

@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QFileDialog
+from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
@@ -7,6 +7,7 @@ from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePre
 from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
 from cliente.controller.ControlloreCliente import ControlloreCliente
+# from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
 class VistaProfiloUtente(QDialog):
@@ -15,6 +16,7 @@ class VistaProfiloUtente(QDialog):
         loadUi("Utente/VistaProfiloUtente.ui", self)
         self.cliente = cliente
         self.controller = ControlloreCliente(self.cliente)
+        # self.controller2 = ControlloreListaClienti()
 
         self.nome_label.setText(
             "<font color='white'>" + self.controller.get_nome_cliente() + " " + self.controller.get_cognome_cliente())
@@ -24,8 +26,10 @@ class VistaProfiloUtente(QDialog):
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
         self.veicolo_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_veicolo_cliente().targa)
+        # self.photo_label.setPixmap(QPixmap("Utente/placeholder-user-photo.png"))
+        self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
-        self.update_button.clicked.connect(self.go_update_function)
+        # self.update_button.clicked.connect(self.go_update_function)
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
         self.gestione_prenotazioni_button.clicked.connect(self.go_gestisci_prenotazioni_function)
         self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
@@ -35,11 +39,14 @@ class VistaProfiloUtente(QDialog):
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
 
-    def go_update_function(self):
-        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
-        var = fname[0]
-        print(var)
-        self.photo_label.setPixmap(QPixmap(var))
+    # def go_update_function(self):
+    #     fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
+    #     var = fname[0]
+    #     print(var)
+    #     self.photo_label.setPixmap(QPixmap(var))
+    #     self.controller.get_image_cliente = var
+    #     print(self.controller.get_image_cliente)
+    #     # self.controller2.save_data()
 
     def go_gestione_veicoli_function(self):
         self.gestione_veicoli_function = GestioneVeicoli()
@@ -56,3 +63,8 @@ class VistaProfiloUtente(QDialog):
     def go_modifica_password(self):
         self.modifica_password = CambiaPassword()
         self.modifica_password.show()
+
+    # def closeEvent(self, event):
+    #     print("ON CLOSE")
+    #     self.controller2.save_data()
+    #     event.accept()
