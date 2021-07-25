@@ -8,11 +8,12 @@ from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
 class GestioneVeicoli(QDialog):
-    def __init__(self):
+    def __init__(self, cliente):
         super(GestioneVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneVeicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
+        self.cliente = cliente
 
         self.list_view = QListView()
         self.update_ui()
@@ -36,15 +37,26 @@ class GestioneVeicoli(QDialog):
         self.vista_inserisci_veicolo.show()
 
     def update_ui(self):
+        # self.listview_model = QStandardItemModel(self.list_view)
+        # for veicolo in self.controller.get_lista_dei_veicoli():
+        #     item = QStandardItem()
+        #     item.setText("Targa: " + veicolo.targa)
+        #     item.setEditable(False)
+        #     font = item.font()
+        #     font.setPointSize(18)
+        #     item.setFont(font)
+        #     self.listview_model.appendRow(item)
+        # self.list_view.setModel(self.listview_model)
+
         self.listview_model = QStandardItemModel(self.list_view)
-        for veicolo in self.controller.get_lista_dei_veicoli():
-            item = QStandardItem()
-            item.setText("Targa: " + veicolo.targa)
-            item.setEditable(False)
-            font = item.font()
-            font.setPointSize(18)
-            item.setFont(font)
-            self.listview_model.appendRow(item)
+        item = QStandardItem()
+        print(self.cliente.veicolo)
+        item.setText(self.cliente.veicolo.targa)
+        item.setEditable(False)
+        font = item.font()
+        font.setPointSize(18)
+        item.setFont(font)
+        self.listview_model.appendRow(item)
         self.list_view.setModel(self.listview_model)
 
     def closeEvent(self, event):

@@ -15,12 +15,14 @@ class VistaCliente(QDialog):
         self.elimina_cliente = elimina_cliente
         self.elimina_callback = elimina_callback
 
-        self.nome_label.setText("<font color='white'>" + self.controller.get_nome_cliente() + " " + self.controller.get_cognome_cliente())
+        self.nome_label.setText("<font color='white'>" + self.controller.get_nome_cliente() + " " +
+                                self.controller.get_cognome_cliente())
         self.codice_fiscale_label.setText("<font color='white'>Codice Fiscale: " + self.controller.get_cf_cliente())
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
-        self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_veicolo_cliente().targa)
+        self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
+                                         self.controller.get_veicolo_cliente().targa)
 
         self.abbonamento_button.clicked.connect(self.check_abbonamento)
         self.elimina_button.clicked.connect(self.elimina_cliente_click)

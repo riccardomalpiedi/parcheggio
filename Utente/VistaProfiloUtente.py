@@ -36,7 +36,7 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = GestioneVeicoli()
+        self.gestione_veicoli_function = GestioneVeicoli(self.cliente)
         self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
