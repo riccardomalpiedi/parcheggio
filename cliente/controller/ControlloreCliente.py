@@ -28,6 +28,9 @@ class ControlloreCliente():
     def get_veicolo_cliente(self):
         return self.model.veicolo
 
+    def get_veicolo2_cliente(self):
+        return self.model.veicolo2
+
     def get_username_cliente(self):
         return self.model.username
 

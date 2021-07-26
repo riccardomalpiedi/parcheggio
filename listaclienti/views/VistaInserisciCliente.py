@@ -30,6 +30,20 @@ class VistaInserisciCliente(QDialog):
                 self.comboveicoli_model.appendRow(item)
             self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
+        self.comboveicoli2_model = QStandardItemModel(self.veicolo2_comboBox)
+        if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
+            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
+                self.lista_veicoli_salvata = pickle.load(f)
+            for veicolo in self.lista_veicoli_salvata:
+                item = QStandardItem()
+                item.setText(veicolo.targa)
+                item.setEditable(False)
+                font = item.font()
+                font.setPointSize(18)
+                item.setFont(font)
+                self.comboveicoli2_model.appendRow(item)
+            self.veicolo2_comboBox.setModel(self.comboveicoli2_model)
+
         self.ok_button.clicked.connect(self.add_cliente)
         self.back_button.clicked.connect(self.go_back)
         self.browse_button.clicked.connect(self.go_browse)
@@ -46,24 +60,30 @@ class VistaInserisciCliente(QDialog):
         email = self.email_field.text()
         telefono = self.telefono_field.text()
         veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()]
+        veicolo2 = self.lista_veicoli_salvata[self.veicolo2_comboBox.currentIndex()]
         username = self.username_field.text()
         password = self.password_field.text()
         image = self.immagine_profilo_field.text()
 
         if nome == "" or cognome == "" or cf == "" or indirizzo == "" or email == "" or telefono == "" or veicolo == ""\
-                or username == "" or password == "":
+                or veicolo2 == "" or username == "" or password == "":
 
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            if image == "":
-                self.controller.aggiungi_cliente(
-                    Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo, username,
-                            password, image="Utente/placeholder-user-photo.png"))
+            if veicolo == veicolo2:
+                QMessageBox.critical(self, 'Errore', "Inserisci due targhe diverse",
+                                     QMessageBox.Ok, QMessageBox.Ok)
+                return
             else:
-                self.controller.aggiungi_cliente(
-                    Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo, username,
-                            password, image))
+                    if image == "":
+                        self.controller.aggiungi_cliente(
+                            Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
+                                    veicolo2, username, password, image="Utente/placeholder-user-photo.png"))
+                    else:
+                        self.controller.aggiungi_cliente(
+                             Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
+                                     veicolo2, username, password, image))
 
             self.callback()
             self.close()

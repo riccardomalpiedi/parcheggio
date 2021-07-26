@@ -1,6 +1,6 @@
 
 class Cliente():
-     def __init__(self, id, nome, cognome, cf, indirizzo, email, telefono, veicolo, username, password, image):
+     def __init__(self, id, nome, cognome, cf, indirizzo, email, telefono, veicolo, veicolo2, username, password, image):
                 super(Cliente, self).__init__()
                 self.id = id
                 self.nome = nome
@@ -10,6 +10,7 @@ class Cliente():
                 self.email = email
                 self.telefono = telefono
                 self.veicolo = veicolo
+                self.veicolo2 = veicolo2
                 self.username = username
                 self.password = password
                 self.image = image

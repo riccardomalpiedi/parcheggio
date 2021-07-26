@@ -5,13 +5,13 @@
     "tipo": "Posto Auto",
     "prezzo": "2"
   },
-  {
+    {
     "id" : "Posto2",
     "nome": "Posto 2",
     "tipo": "Posto Auto",
     "prezzo": "2"
   },
-  {
+    {
     "id" : "Posto3",
     "nome": "Posto 3",
     "tipo": "Posto Auto",
@@ -20,24 +20,42 @@
   {
     "id" : "Posto4",
     "nome": "Posto 4",
-    "tipo": "Posto Camion",
-    "prezzo": "4"
+    "tipo": "Posto Auto",
+    "prezzo": "2"
   },
   {
     "id" : "Posto5",
     "nome": "Posto 5",
-    "tipo": "Posto Camion",
-    "prezzo": "4"
+    "tipo": "Posto Auto",
+    "prezzo": "2"
   },
   {
     "id" : "Posto6",
     "nome": "Posto 6",
-    "tipo": "Posto Moto",
-    "prezzo": "1"
+    "tipo": "Posto Camion",
+    "prezzo": "4"
   },
   {
     "id" : "Posto7",
     "nome": "Posto 7",
+    "tipo": "Posto Camion",
+    "prezzo": "4"
+  },
+  {
+    "id" : "Posto8",
+    "nome": "Posto 8",
+    "tipo": "Posto Moto",
+    "prezzo": "1"
+  },
+  {
+    "id" : "Posto9",
+    "nome": "Posto 9",
+    "tipo": "Posto Moto",
+    "prezzo": "1"
+  },
+    {
+    "id" : "Posto10",
+    "nome": "Posto 10",
     "tipo": "Posto Moto",
     "prezzo": "1"
   }
