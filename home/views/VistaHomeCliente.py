@@ -7,9 +7,9 @@ from ingresso.views.VistaIngresso import VistaIngresso
 from uscita.views.VistaUscita import VistaUscita
 
 
-class VistaCliente(QDialog):
+class VistaHomeCliente(QDialog):
     def __init__(self):
-        super(VistaCliente, self).__init__()
+        super(VistaHomeCliente, self).__init__()
         loadUi("home/BenvenutoCliente2.ui", self)
 
         self.setFixedWidth(632)

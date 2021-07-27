@@ -1,7 +1,7 @@
 import os
 import pickle
 
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
@@ -57,25 +57,23 @@ class GestioneInserisciPrenotazione(QDialog):
         font = item.font()
         font.setPointSize(18)
         item.setFont(font)
+        # self.comboveicoli_model.appendRow(item)
+        # item2 = QStandardItem()
+        # print(self.cliente.veicolo2)
+        # item2.setText(self.cliente.veicolo2.targa)
+        # item2.setEditable(False)
+        # font2 = item2.font()
+        # font2.setPointSize(18)
+        # item2.setFont(font2)
         self.comboveicoli_model.appendRow(item)
+        # self.comboveicoli_model.appendRow(item2)
         self.veicolo_comboBox.setModel(self.comboveicoli_model)
-        # if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
-        #     with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
-        #         self.lista_veicoli_salvata = pickle.load(f)
-        #     for veicolo in self.lista_veicoli_salvata:
-        #         item = QStandardItem()
-        #         item.setText(veicolo.targa)
-        #         item.setEditable(False)
-        #         font = item.font()
-        #         font.setPointSize(18)
-        #         item.setFont(font)
-        #         self.comboveicoli_model.appendRow(item)
-        #     self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
         self.ok_button.clicked.connect(self.add_prenotazione)
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Prenotazione')
+        self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def add_prenotazione(self):
         data_inizio = self.data_inizio_lineEdit.text()
@@ -83,6 +81,7 @@ class GestioneInserisciPrenotazione(QDialog):
         cliente = self.cliente
         posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
         veicolo = self.cliente.veicolo
+        # veicolo2 = self.cliente.veicolo2
         if data_inizio == "" or not cliente or not posteggio:
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)

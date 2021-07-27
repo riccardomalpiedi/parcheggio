@@ -1,7 +1,7 @@
 import os
 import pickle
 
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
@@ -66,6 +66,7 @@ class VistaInserisciPrenotazione(QDialog):
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Prenotazione')
+        self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def add_prenotazione(self):
         data_inizio = self.data_inizio_lineEdit.text()

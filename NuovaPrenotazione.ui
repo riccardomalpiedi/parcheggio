@@ -14,7 +14,8 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(61, 61, 61);
+   <string notr="true">QDialog#Dialog{
+background-color: rgb(61, 61, 61)};
 color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QComboBox" name="cliente_comboBox">
@@ -55,7 +56,9 @@ color: rgb(0, 0, 0);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Data di inizio (dd/MM/yyyy)</string>
@@ -71,7 +74,9 @@ color: rgb(0, 0, 0);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">
     <string>Data di fine (dd/MM/yyyy)</string>
@@ -87,7 +92,9 @@ color: rgb(0, 0, 0);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">
     <string>Cliente</string>
@@ -106,6 +113,11 @@ color: rgb(0, 0, 0);</string>
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">
     <string>Posteggio</string>
@@ -211,6 +223,11 @@ color: rgb(0, 0, 0);</string>
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">
     <string>Veicolo</string>

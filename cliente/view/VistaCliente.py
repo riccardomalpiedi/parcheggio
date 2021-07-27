@@ -22,7 +22,7 @@ class VistaCliente(QDialog):
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
         self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
-                                         self.controller.get_veicolo_cliente().targa + "" +
+                                         self.controller.get_veicolo_cliente().targa + "; " +
                                          self.controller.get_veicolo2_cliente().targa)
 
         self.abbonamento_button.clicked.connect(self.check_abbonamento)

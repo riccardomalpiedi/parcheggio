@@ -75,7 +75,7 @@ color: rgb(255, 255, 255);</string>
 font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
    <property name="text">
-    <string>Hai già un account? Accedi ----&gt;</string>
+    <string>Hai un account? Accedi ----&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="uscita_button">

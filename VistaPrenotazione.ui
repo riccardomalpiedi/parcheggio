@@ -14,7 +14,8 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(61, 61, 61);</string>
+   <string notr="true">QDialog#Dialog{
+background-color: rgb(61, 61, 61);}</string>
   </property>
   <widget class="QLabel" name="posto_label">
    <property name="geometry">
@@ -26,7 +27,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(61, 61, 61);</string>
    </property>
    <property name="text">
     <string/>
@@ -40,6 +43,9 @@
      <width>331</width>
      <height>3</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(61, 61, 61);</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -55,7 +61,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -71,7 +79,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;;</string>
+    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -87,7 +97,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
+    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -121,6 +133,9 @@
      <height>3</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(61, 61, 61);</string>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
@@ -133,6 +148,9 @@
      <width>331</width>
      <height>3</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(61, 61, 61);</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>

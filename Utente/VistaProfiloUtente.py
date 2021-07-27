@@ -30,6 +30,8 @@ class VistaProfiloUtente(QDialog):
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
         self.veicolo_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_veicolo_cliente().targa)
         self.veicolo2_label.setText("<font color='white'>Targa Veicolo2: " + self.controller.get_veicolo2_cliente().targa)
+        self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_cliente().tipo)
+        self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo2_cliente().tipo)
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)

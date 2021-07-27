@@ -20,9 +20,9 @@ background-color: rgb(61, 61, 61);}</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>200</x>
      <y>130</y>
-     <width>311</width>
+     <width>271</width>
      <height>41</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@ background-color: rgb(61, 61, 61);}</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Sing in to your existing account</string>
+    <string>Inserisci le tue credenziali</string>
    </property>
   </widget>
   <widget class="QPushButton" name="back_button">
