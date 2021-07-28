@@ -1,3 +1,6 @@
+import os
+import pickle
+
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
@@ -21,15 +24,20 @@ class VistaCliente(QDialog):
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
-        self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
-                                         self.controller.get_veicolo_cliente().targa + "; " +
-                                         self.controller.get_veicolo2_cliente().targa)
+        if self.controller.get_veicolo_cliente() is not None:
+            self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
+                                             self.controller.get_veicolo_cliente().targa)
+        if self.controller.get_veicolo2_cliente() is not None:
+            self.targa_veicolo_label.setText(self.targa_veicolo_label.text() + " <font color='white'>Targa Veicolo2: " +
+                                             self.controller.get_veicolo2_cliente().targa)
+        if self.controller.get_veicolo_cliente() is None and self.controller.get_veicolo2_cliente() is None:
+            self.targa_veicolo_label.setText("<font color='white'>Nessun veicolo associato")
 
         self.abbonamento_button.clicked.connect(self.check_abbonamento)
         self.elimina_button.clicked.connect(self.elimina_cliente_click)
 
-        self.setFixedHeight(543)
-        self.setFixedWidth(357)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle(cliente.nome)
         self.setWindowIcon(QIcon("icone/user2.png"))
 
@@ -39,6 +47,15 @@ class VistaCliente(QDialog):
         self.vista_abbonamento.show()
 
     def elimina_cliente_click(self):
+        if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
+            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
+                self.lista_veicoli_salvata = pickle.load(f)
+        for veicolo_in_lista in self.lista_veicoli_salvata:
+            if veicolo_in_lista.targa == self.controller.get_veicolo_cliente().targa or \
+                                 veicolo_in_lista.targa == self.controller.get_veicolo2_cliente().targa:
+                veicolo_in_lista.set_associato(False)
+        with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
+            pickle.dump(self.lista_veicoli_salvata, handle, pickle.HIGHEST_PROTOCOL)
         self.elimina_cliente(self.controller.get_id_cliente())
         self.elimina_callback()
         self.close()

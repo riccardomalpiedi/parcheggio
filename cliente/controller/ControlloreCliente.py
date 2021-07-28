@@ -1,4 +1,3 @@
-import pickle
 
 class ControlloreCliente():
     def __init__(self, cliente):

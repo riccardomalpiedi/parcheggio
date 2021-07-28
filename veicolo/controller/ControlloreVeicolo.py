@@ -18,3 +18,8 @@ class ControlloreVeicolo():
     def set_orario_ingresso(self, orario_ingresso):
         self.model.set_orario_ingresso(orario_ingresso)
 
+    def set_associato(self, associato):
+        self.model.associato = associato
+
+    def get_associato(self):
+        return self.model.associato

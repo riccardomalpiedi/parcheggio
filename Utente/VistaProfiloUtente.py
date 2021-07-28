@@ -1,5 +1,5 @@
-from PyQt5.QtGui import QPixmap, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
@@ -7,6 +7,8 @@ from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePre
 from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
 from cliente.controller.ControlloreCliente import ControlloreCliente
+
+
 # from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
@@ -28,10 +30,17 @@ class VistaProfiloUtente(QDialog):
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
-        self.veicolo_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_veicolo_cliente().targa)
-        self.veicolo2_label.setText("<font color='white'>Targa Veicolo2: " + self.controller.get_veicolo2_cliente().targa)
-        self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_cliente().tipo)
-        self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo2_cliente().tipo)
+        if self.controller.get_veicolo_cliente() is not None:
+            self.veicolo_label.setText("<font color='white'>Targa Veicolo: " +
+                                       self.controller.get_veicolo_cliente().targa)
+            self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_cliente().tipo)
+        if self.controller.get_veicolo2_cliente() is not None:
+            self.veicolo2_label.setText(self.veicolo_label.text() + " <font color='white'>Targa Veicolo2: " +
+                                        self.controller.get_veicolo2_cliente().targa)
+            self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo2_cliente().tipo)
+        if self.controller.get_veicolo_cliente() is None and self.controller.get_veicolo2_cliente() is None:
+            self.veicolo_label.setText("<font color='white'>Nessun veicolo associato")
+
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)

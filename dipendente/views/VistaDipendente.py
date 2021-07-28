@@ -25,8 +25,8 @@ class VistaDipendente(QDialog):
 
         self.elimina_button.clicked.connect(self.elimina_dipendente_click)
 
-        self.setFixedHeight(534)
-        self.setFixedWidth(410)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle(self.controller.get_nome_dipendente())
         self.setWindowIcon(QIcon("icone/accountant2.png"))
 

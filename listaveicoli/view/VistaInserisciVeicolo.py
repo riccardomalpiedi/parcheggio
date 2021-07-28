@@ -14,8 +14,8 @@ class VistaInserisciVeicolo(QDialog):
 
         self.ok_button.clicked.connect(self.add_veicolo)
 
-        self.setFixedHeight(216)
-        self.setFixedWidth(238)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Veicolo')
 
     def add_veicolo(self):

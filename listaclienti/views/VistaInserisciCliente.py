@@ -17,10 +17,15 @@ class VistaInserisciCliente(QDialog):
         self.callback = callback
 
         self.comboveicoli_model = QStandardItemModel(self.veicolo_comboBox)
+        item = QStandardItem()
+        item.setText("")
+        item.setEditable(False)
+        self.comboveicoli_model.appendRow(item)
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli_salvata = pickle.load(f)
-            for veicolo in self.lista_veicoli_salvata:
+            self.lista_veicoli_disponibili = [c for c in self.lista_veicoli_salvata if not c.get_associato()]
+            for veicolo in self.lista_veicoli_disponibili:
                 item = QStandardItem()
                 item.setText(veicolo.targa)
                 item.setEditable(False)
@@ -31,10 +36,15 @@ class VistaInserisciCliente(QDialog):
             self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
         self.comboveicoli2_model = QStandardItemModel(self.veicolo2_comboBox)
+        item = QStandardItem()
+        item.setText("")
+        item.setEditable(False)
+        self.comboveicoli2_model.appendRow(item)
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli_salvata = pickle.load(f)
-            for veicolo in self.lista_veicoli_salvata:
+            self.lista_veicoli_disponibili = [c for c in self.lista_veicoli_salvata if not c.get_associato()]
+            for veicolo in self.lista_veicoli_disponibili:
                 item = QStandardItem()
                 item.setText(veicolo.targa)
                 item.setEditable(False)
@@ -59,32 +69,47 @@ class VistaInserisciCliente(QDialog):
         indirizzo = self.indirizzo_field.text()
         email = self.email_field.text()
         telefono = self.telefono_field.text()
-        veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()]
-        veicolo2 = self.lista_veicoli_salvata[self.veicolo2_comboBox.currentIndex()]
+        if self.veicolo_comboBox.currentIndex() == 0:
+            veicolo = None
+        else:
+            veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()-1]
+        if self.veicolo2_comboBox.currentIndex() == 0:
+            veicolo2 = None
+        else:
+            veicolo2 = self.lista_veicoli_salvata[self.veicolo2_comboBox.currentIndex()-1]
         username = self.username_field.text()
         password = self.password_field.text()
         image = self.immagine_profilo_field.text()
 
-        if nome == "" or cognome == "" or cf == "" or indirizzo == "" or email == "" or telefono == "" or veicolo == ""\
-                or veicolo2 == "" or username == "" or password == "":
+        if nome == "" or cognome == "" or cf == "" or indirizzo == "" or email == "" or telefono == "" \
+                or username == "" or password == "":
 
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            if veicolo == veicolo2:
+            if veicolo == veicolo2 and veicolo is not None:
                 QMessageBox.critical(self, 'Errore', "Inserisci due targhe diverse",
                                      QMessageBox.Ok, QMessageBox.Ok)
                 return
             else:
-                    if image == "":
-                        self.controller.aggiungi_cliente(
-                            Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
-                                    veicolo2, username, password, image="Utente/placeholder-user-photo.png"))
-                    else:
-                        self.controller.aggiungi_cliente(
-                             Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
-                                     veicolo2, username, password, image))
-
+                if image == "":
+                    self.controller.aggiungi_cliente(
+                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
+                                veicolo2, username, password, image="Utente/placeholder-user-photo.png"))
+                else:
+                    self.controller.aggiungi_cliente(
+                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
+                                veicolo2, username, password, image))
+                if veicolo is not None:
+                    for veicolo_in_lista in self.lista_veicoli_salvata:
+                        if veicolo_in_lista.targa == veicolo.targa:
+                            veicolo_in_lista.set_associato(True)
+                if veicolo2 is not None:
+                    for veicolo_in_lista in self.lista_veicoli_salvata:
+                        if veicolo_in_lista.targa == veicolo2.targa:
+                            veicolo_in_lista.set_associato(True)
+                with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
+                    pickle.dump(self.lista_veicoli_salvata, handle, pickle.HIGHEST_PROTOCOL)
             self.callback()
             self.close()
 
