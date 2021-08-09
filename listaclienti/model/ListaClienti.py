@@ -20,7 +20,6 @@ class ListaClienti():
                 return True
         return False
 
-
     def get_cliente_by_index(self, index):
         return self.lista_clienti[index]
 

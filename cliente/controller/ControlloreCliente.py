@@ -24,11 +24,17 @@ class ControlloreCliente():
     def get_telefono_cliente(self):
         return self.model.telefono
 
-    def get_veicolo_cliente(self):
-        return self.model.veicolo
+    def aggiungi_veicolo(self, veicolo):
+        self.model.aggiungi_veicolo(veicolo)
 
-    def get_veicolo2_cliente(self):
-        return self.model.veicolo2
+    def get_lista_dei_veicoli(self):
+        return self.model.get_lista_veicoli()
+
+    def get_veicolo_by_index(self, index):
+        return self.model.get_veicolo_by_index(index)
+
+    def elimina_veicolo_by_id(self, id):
+        self.model.rimuovi_veicolo_by_id(id)
 
     def get_username_cliente(self):
         return self.model.username

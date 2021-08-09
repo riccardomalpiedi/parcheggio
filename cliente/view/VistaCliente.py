@@ -24,13 +24,13 @@ class VistaCliente(QDialog):
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
-        if self.controller.get_veicolo_cliente() is not None:
+        if self.controller.get_veicolo_by_index(0) is not None:
             self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
-                                             self.controller.get_veicolo_cliente().targa)
-        if self.controller.get_veicolo2_cliente() is not None:
+                                             self.controller.get_veicolo_by_index(0).targa)
+        if self.controller.get_veicolo_by_index(1) is not None:
             self.targa_veicolo_label.setText(self.targa_veicolo_label.text() + " <font color='white'>Targa Veicolo2: " +
-                                             self.controller.get_veicolo2_cliente().targa)
-        if self.controller.get_veicolo_cliente() is None and self.controller.get_veicolo2_cliente() is None:
+                                             self.controller.get_veicolo_by_index(1).targa)
+        if self.controller.get_lista_dei_veicoli() is None:
             self.targa_veicolo_label.setText("<font color='white'>Nessun veicolo associato")
 
         self.abbonamento_button.clicked.connect(self.check_abbonamento)
@@ -51,8 +51,8 @@ class VistaCliente(QDialog):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli_salvata = pickle.load(f)
         for veicolo_in_lista in self.lista_veicoli_salvata:
-            if veicolo_in_lista.targa == self.controller.get_veicolo_cliente().targa or \
-                                 veicolo_in_lista.targa == self.controller.get_veicolo2_cliente().targa:
+            if veicolo_in_lista.targa == self.controller.get_veicolo_by_index(0).targa or \
+                                 veicolo_in_lista.targa == self.controller.get_veicolo_by_index(1).targa:
                 veicolo_in_lista.set_associato(False)
         with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
             pickle.dump(self.lista_veicoli_salvata, handle, pickle.HIGHEST_PROTOCOL)

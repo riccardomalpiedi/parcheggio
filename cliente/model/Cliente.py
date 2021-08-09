@@ -9,12 +9,27 @@ class Cliente():
         self.indirizzo = indirizzo
         self.email = email
         self.telefono = telefono
-        self.veicolo = veicolo
-        self.veicolo2 = veicolo2
+        self.lista_veicoli = [veicolo, veicolo2]
         self.username = username
         self.password = password
         self.image = image
         self.abbonamento = None
+
+    def aggiungi_veicolo(self, veicolo):
+        self.lista_veicoli.append(veicolo)
+
+    def rimuovi_veicolo_by_id(self, id):
+        for veicolo in self.lista_veicoli:
+            if veicolo.id == id:
+                self.lista_veicoli.remove(veicolo)
+                return True
+        return False
+
+    def get_veicolo_by_index(self, index):
+        return self.lista_veicoli[index]
+
+    def get_lista_veicoli(self):
+        return self.lista_veicoli
 
     def add_abbonamento(self, abbonamento):
         self.abbonamento = abbonamento

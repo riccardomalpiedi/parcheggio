@@ -175,7 +175,7 @@ font-size:11pt</string>
        <string notr="true">color: rgb(255, 255, 255); font-size:18pt</string>
       </property>
       <property name="text">
-       <string>targa</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -185,7 +185,7 @@ font-size:11pt</string>
        <string notr="true">color: rgb(255, 255, 255); font-size:18pt</string>
       </property>
       <property name="text">
-       <string>targa2</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -298,7 +298,7 @@ font-size:11pt</string>
        <string notr="true">color: rgb(255, 255, 255); font-size:18pt</string>
       </property>
       <property name="text">
-       <string>tipo</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -308,7 +308,7 @@ font-size:11pt</string>
        <string notr="true">color: rgb(255, 255, 255); font-size:18pt</string>
       </property>
       <property name="text">
-       <string>tipo</string>
+       <string/>
       </property>
      </widget>
     </item>
