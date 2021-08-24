@@ -1,5 +1,7 @@
 import os
 import pickle
+import random
+import shutil
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog
@@ -120,7 +122,11 @@ class VistaInserisciCliente(QDialog):
         fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
         var = fname[0]
         print(var)
-        self.immagine_profilo_field.setText(var)
+        rand = random.randint(1, 45697)
+        var2 = "Utente/ImmaginiProfilo/" + str(rand) + ".png"
+        shutil.copyfile(var, var2)
+        print(var2)
+        self.immagine_profilo_field.setText(var2)
 
     def closeEvent(self, event):
         print("ON CLOSE")

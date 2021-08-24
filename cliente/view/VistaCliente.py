@@ -28,8 +28,11 @@ class VistaCliente(QDialog):
             self.targa_veicolo_label.setText("<font color='white'>Targa Veicolo: " +
                                              self.controller.get_veicolo_by_index(0).targa)
         if self.controller.get_veicolo_by_index(1) is not None:
-            self.targa_veicolo_label.setText(self.targa_veicolo_label.text() + " <font color='white'>Targa Veicolo2: " +
-                                             self.controller.get_veicolo_by_index(1).targa)
+            # self.targa_veicolo2_label.setText(self.targa_veicolo_label.text() + " <font color='white'>Targa Veicolo2: " +
+            #                                 self.controller.get_veicolo_by_index(1).targa)
+            self.targa_veicolo2_label.setText(" <font color='white'>Targa Veicolo2: " +
+                                            self.controller.get_veicolo_by_index(1).targa)
+
         if self.controller.get_lista_dei_veicoli() is None:
             self.targa_veicolo_label.setText("<font color='white'>Nessun veicolo associato")
 

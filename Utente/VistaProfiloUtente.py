@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
@@ -61,13 +61,17 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        self.modifica_profilo_function = ModificaProfilo()
+        QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
+                             QMessageBox.Ok, QMessageBox.Ok)
+        # self.modifica_profilo_function = ModificaProfilo()
         # self.modifica_profilo_function = ModificaProfilo(self.cliente, self.controller1, self.update_ui)
-        self.modifica_profilo_function.show()
+        # self.modifica_profilo_function.show()
 
     def go_modifica_password(self):
-        self.modifica_password = CambiaPassword()
-        self.modifica_password.show()
+        QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
+                             QMessageBox.Ok, QMessageBox.Ok)
+        # self.modifica_password = CambiaPassword()
+        # self.modifica_password.show()
 
     # def update_ui(self):
     #     self.listview_model = QStandardItemModel(self.list_view)
