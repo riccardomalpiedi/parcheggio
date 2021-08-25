@@ -4,10 +4,10 @@ from PyQt5.uic import loadUi
 from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 
 
-class VistaVeicolo(QDialog):
+class VistaVeicoloDipendente(QDialog):
     def __init__(self, veicolo, elimina_veicolo, elimina_callback, parent=None):
-        super(VistaVeicolo, self).__init__(parent)
-        loadUi("veicolo/view/vistaveicoloAmministratore.ui", self)
+        super(VistaVeicoloDipendente, self).__init__(parent)
+        loadUi("vistaveicoloDipendente.ui", self)
 
         self.controller = ControlloreVeicolo(veicolo)
         self.elimina_veicolo = elimina_veicolo
@@ -15,7 +15,7 @@ class VistaVeicolo(QDialog):
 
         self.targa_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_targa_veicolo())
         self.tipo_label.setText("<font color='white'>Tipo: " + self.controller.get_tipo_veicolo())
-        # self.conferma_pagamento_button.clicked.connect(self.pagamento_veicolo_click)
+        self.conferma_pagamento_button.clicked.connect(self.pagamento_veicolo_click)
         self.elimina_button.clicked.connect(self.elimina_veicolo_click)
 
         self.setFixedHeight(self.height())
@@ -27,5 +27,5 @@ class VistaVeicolo(QDialog):
         self.elimina_callback()
         self.close()
 
-    # def pagamento_veicolo_click(self):
-    #    self.set_pagato(self, True)
+    def pagamento_veicolo_click(self):
+        self.set_pagato(self, True)
