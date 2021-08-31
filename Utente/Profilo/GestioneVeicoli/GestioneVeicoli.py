@@ -38,22 +38,17 @@ class GestioneVeicoli(QDialog):
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
-        item = QStandardItem()
-        item2 = QStandardItem()
-        print(self.cliente.veicolo)
-        print(self.cliente.veicolo2)
-        item.setText(self.cliente.veicolo.targa)
-        item2.setText(self.cliente.veicolo2.targa)
-        item.setEditable(False)
-        item2.setEditable(False)
-        font = item.font()
-        font.setPointSize(18)
-        font2 = item.font()
-        font2.setPointSize(18)
-        item.setFont(font)
-        item2.setFont(font2)
-        self.listview_model.appendRow(item)
-        self.listview_model.appendRow(item2)
+        for veicolo in self.cliente.lista_veicoli:
+            if veicolo is not None:
+                item = QStandardItem()
+                print(veicolo)
+                item.setText(veicolo.targa)
+                item.setEditable(False)
+                font = item.font()
+                font.setPointSize(18)
+                item.setFont(font)
+                self.listview_model.appendRow(item)
+
         self.list_view.setModel(self.listview_model)
 
     def closeEvent(self, event):
