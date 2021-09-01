@@ -1,8 +1,8 @@
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import QDialog, QMessageBox, QListView
 from PyQt5.uic import loadUi
 
-from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
+# from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
 from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
@@ -10,18 +10,21 @@ from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
 # from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
+from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
 class VistaProfiloUtente(QDialog):
     def __init__(self, cliente):
         super(VistaProfiloUtente, self).__init__()
         loadUi("Utente/VistaProfiloUtente.ui", self)
+
         self.cliente = cliente
         self.controller = ControlloreCliente(self.cliente)
+        self.controller2 = ControlloreListaClienti()
 
         # self.controller1 = ControlloreListaClienti()
-        # self.list_view = QListView()
-        # self.update_ui()
+        self.list_view = QListView()
+        self.update_ui()
 
         self.nome_label.setText(
             "<font color='white'>" + self.controller.get_nome_cliente() + " " + self.controller.get_cognome_cliente())
@@ -61,11 +64,11 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
-                             QMessageBox.Ok, QMessageBox.Ok)
+        # QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
+        #                     QMessageBox.Ok, QMessageBox.Ok)
         # self.modifica_profilo_function = ModificaProfilo()
-        # self.modifica_profilo_function = ModificaProfilo(self.cliente, self.controller1, self.update_ui)
-        # self.modifica_profilo_function.show()
+        self.modifica_profilo_function = ModificaProfilo(self.cliente)
+        self.modifica_profilo_function.show()
 
     def go_modifica_password(self):
         QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
@@ -73,14 +76,14 @@ class VistaProfiloUtente(QDialog):
         # self.modifica_password = CambiaPassword()
         # self.modifica_password.show()
 
-    # def update_ui(self):
-    #     self.listview_model = QStandardItemModel(self.list_view)
-    #     for cliente in self.controller1.get_lista_dei_clienti():
-    #         item = QStandardItem()
-    #         item.setText(cliente.nome + " " + cliente.cognome)
-    #         item.setEditable(False)
-    #         font = item.font()
-    #         font.setPointSize(18)
-    #         item.setFont(font)
-    #         self.listview_model.appendRow(item)
-    #     self.list_view.setModel(self.listview_model)
+    def update_ui(self):
+        self.listview_model = QStandardItemModel(self.list_view)
+        for cliente in self.controller2.get_lista_dei_clienti():
+            item = QStandardItem()
+            item.setText(cliente.nome + " " + cliente.cognome)
+            item.setEditable(False)
+            font = item.font()
+            font.setPointSize(18)
+            item.setFont(font)
+            self.listview_model.appendRow(item)
+        self.list_view.setModel(self.listview_model)
