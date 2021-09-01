@@ -20,7 +20,6 @@ class VistaListaVeicoliDip(QDialog):
         self.veicoli_layout.addWidget(self.list_view)
 
         self.open_button.clicked.connect(self.show_selected_info)
-        # self.new_button.clicked.connect(self.show_new_veicolo)
         self.back_button.clicked.connect(self.go_back)
 
         self.setWindowTitle("Lista Veicoli")
@@ -33,10 +32,7 @@ class VistaListaVeicoliDip(QDialog):
         self.vista_veicolo = VistaVeicoloDipendente(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
         self.vista_veicolo.show()
 
-    def show_new_veicolo(self):
-        # self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.update_ui)
-        # self.vista_inserisci_veicolo.show()
-        pass
+
 
     def go_back(self):
         self.close()
