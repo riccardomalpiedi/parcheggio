@@ -21,16 +21,16 @@ background-color: rgb(61, 61, 61);}</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
-     <width>291</width>
+     <y>10</y>
+     <width>281</width>
      <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255); font-size:36pt</string>
+    <string notr="true">color: rgb(255, 255, 255); font-size:30pt</string>
    </property>
    <property name="text">
-    <string>Registrazione</string>
+    <string>Modifica Profilo</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">

@@ -14,7 +14,6 @@ from listaclienti.controller.ControlloreListaClienti import ControlloreListaClie
 class ModificaProfilo(QDialog):
     def __init__(self, cliente):
         super(ModificaProfilo, self).__init__()
-        # grid_layout = QGridLayout()
         loadUi("Utente/Profilo/ModificaProfilo/ModificaProfilo2.ui", self)
 
         self.cliente = cliente
@@ -58,7 +57,6 @@ class ModificaProfilo(QDialog):
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                   QMessageBox.Ok, QMessageBox.Ok)
         else:
-            # self.elimina_cliente_click()
             self.controller2.aggiungi_cliente(
                 Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
                         veicolo2, username, password, image))

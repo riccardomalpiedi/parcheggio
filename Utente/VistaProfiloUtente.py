@@ -2,14 +2,11 @@ from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import QDialog, QMessageBox, QListView
 from PyQt5.uic import loadUi
 
-# from Utente.Profilo.CambiaPassword.CambiaPassword import CambiaPassword
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
 from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
-
-# from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
