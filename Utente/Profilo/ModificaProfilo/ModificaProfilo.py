@@ -1,9 +1,4 @@
-from PyQt5.QtWidgets import QGridLayout, QWidget, QDialog, QMessageBox
-# from PyQt5.uic import loadUi
-
-# # from cliente.controller.ControlloreCliente import ControlloreCliente
-# from cliente.model.Cliente import Cliente
-# # from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from cliente.controller.ControlloreCliente import ControlloreCliente
@@ -12,25 +7,28 @@ from listaclienti.controller.ControlloreListaClienti import ControlloreListaClie
 
 
 class ModificaProfilo(QDialog):
-    def __init__(self, cliente):
+    def __init__(self, cliente, elimina_cliente, elimina_callback):
         super(ModificaProfilo, self).__init__()
         loadUi("Utente/Profilo/ModificaProfilo/ModificaProfilo2.ui", self)
 
         self.cliente = cliente
         self.controller = ControlloreCliente(self.cliente)
         self.controller2 = ControlloreListaClienti()
+        self.elimina_cliente = elimina_cliente
+        self.elimina_callback = elimina_callback
+        # self.callback = callback
 
         self.nome_label.setText(self.controller.get_nome_cliente())
         self.cognome_label.setText(self.controller.get_cognome_cliente())
         self.cf_label.setText(self.controller.get_cf_cliente())
-        if self.controller.get_veicolo_by_index(0) is not None:
-            self.veicolo_label.setText("<font color='white'>Targa Veicolo: " +
-                                       self.controller.get_veicolo_by_index(0).targa)
-            self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(0).tipo)
-        if self.controller.get_veicolo_by_index(1) is not None:
-            self.veicolo2_label.setText(self.veicolo2_label.text() + " <font color='white'>Targa Veicolo2: " +
-                                        self.controller.get_veicolo_by_index(1).targa)
-            self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
+        # if self.controller.get_veicolo_by_index(0) is not None:
+        #    self.veicolo_label.setText(self.controller.get_veicolo_by_index(0).targa)
+            # self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(0).tipo)
+        # if self.controller.get_veicolo_by_index(1) is not None:
+        #    self.veicolo2_label.setText(self.veicolo2_label.text() + self.controller.get_veicolo_by_index(1).targa)
+            # self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
+        self.veicolo_label.setText(self.controller.get_veicolo_by_index(0).targa)
+        self.veicolo2_label.setText(self.controller.get_veicolo_by_index(1).targa)
         self.username_label.setText(self.controller.get_username_cliente())
         self.password_label.setText(self.controller.get_password_cliente())
         self.immagine_profilo_label.setText(self.controller.get_image_cliente())
@@ -57,6 +55,7 @@ class ModificaProfilo(QDialog):
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                   QMessageBox.Ok, QMessageBox.Ok)
         else:
+            # self.elimina_cliente_click()
             self.controller2.aggiungi_cliente(
                 Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
                         veicolo2, username, password, image))

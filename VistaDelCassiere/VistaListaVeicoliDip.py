@@ -3,8 +3,6 @@ from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
-# from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
-# from veicolo.view.VistaVeicolo import VistaVeicolo
 from veicolo.view.VistaVeicoloDipendente import VistaVeicoloDipendente
 
 

@@ -12,7 +12,7 @@ from cliente.controller.ControlloreCliente import ControlloreCliente
 class VistaCliente(QDialog):
     def __init__(self, cliente, elimina_cliente, elimina_callback, parent=None):
         super(VistaCliente, self).__init__(parent)
-        loadUi("vistacliente.ui", self)
+        loadUi("cliente/view/vistacliente.ui", self)
 
         self.controller = ControlloreCliente(cliente)
         self.elimina_cliente = elimina_cliente

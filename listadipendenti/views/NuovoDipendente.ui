@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>736</width>
-    <height>679</height>
+    <width>669</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,17 +20,17 @@ background-color: rgb(61, 61, 61);}</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>40</x>
      <y>20</y>
-     <width>341</width>
+     <width>591</width>
      <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255); font-size:36pt</string>
+    <string notr="true">color: rgb(255, 255, 255); font-size:30pt</string>
    </property>
    <property name="text">
-    <string>Modifica Profilo</string>
+    <string>Registrazione Nuovo DIpendente</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -67,8 +67,8 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>188</y>
+     <x>380</x>
+     <y>134</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -84,8 +84,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLineEdit" name="cognome_field">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>208</y>
+     <x>380</x>
+     <y>154</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -115,9 +115,9 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>278</y>
-     <width>81</width>
+     <x>380</x>
+     <y>224</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -126,7 +126,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Indirizzo</string>
+    <string>Data di nascita (gg/MM/yyyy)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="codice_fiscale_field">
@@ -142,11 +142,11 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">color: rgb(0, 0, 0); font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="indirizzo_field">
+  <widget class="QLineEdit" name="data_nascita_field">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>298</y>
+     <x>380</x>
+     <y>244</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -159,27 +159,10 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>364</y>
+     <x>380</x>
+     <y>310</y>
      <width>81</width>
      <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Telefono</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>314</y>
-     <width>111</width>
-     <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -190,7 +173,24 @@ color: rgb(255, 255, 255);</string>
     <string>Email</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="email_field">
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>314</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Luogo di nascita</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="luogo_nascita_field">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -204,11 +204,11 @@ color: rgb(255, 255, 255);</string>
 font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="telefono_field">
+  <widget class="QLineEdit" name="email_field">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>384</y>
+     <x>380</x>
+     <y>330</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -232,14 +232,14 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Targa</string>
+    <string>Telefono</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ok_button">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>600</y>
+     <x>220</x>
+     <y>500</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -256,34 +256,13 @@ font-size:14pt;</string>
     <string>Ok</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="back_button">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>600</y>
-     <width>221</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius:20px; 
- background-color: rgb(202, 202, 202);
-font-size:14pt;</string>
-   </property>
-   <property name="text">
-    <string>Indietro</string>
-   </property>
-  </widget>
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>330</x>
      <y>140</y>
-     <width>20</width>
-     <height>421</height>
+     <width>16</width>
+     <height>321</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -298,7 +277,7 @@ font-size:14pt;</string>
     <rect>
      <x>20</x>
      <y>110</y>
-     <width>701</width>
+     <width>631</width>
      <height>16</height>
     </rect>
    </property>
@@ -312,9 +291,9 @@ font-size:14pt;</string>
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>560</y>
-     <width>701</width>
+     <x>20</x>
+     <y>470</y>
+     <width>631</width>
      <height>16</height>
     </rect>
    </property>
@@ -325,12 +304,12 @@ font-size:14pt;</string>
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>486</y>
-     <width>81</width>
+     <x>380</x>
+     <y>400</y>
+     <width>111</width>
      <height>20</height>
     </rect>
    </property>
@@ -339,67 +318,10 @@ font-size:14pt;</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Username</string>
+    <string>Licenza</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="username_field">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>506</y>
-     <width>261</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>ForbiddenCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
-font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>450</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Password</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="password_field">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>470</y>
-     <width>261</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>ForbiddenCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
-font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="targa_field">
+  <widget class="QLineEdit" name="telefono_field">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -408,15 +330,23 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
      <height>31</height>
     </rect>
    </property>
-   <property name="cursor">
-    <cursorShape>ForbiddenCursor</cursorShape>
-   </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
 font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="readOnly">
-    <bool>true</bool>
+  </widget>
+  <widget class="QLineEdit" name="licenza_field">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>420</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
   </widget>
  </widget>

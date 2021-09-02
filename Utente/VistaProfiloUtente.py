@@ -19,7 +19,6 @@ class VistaProfiloUtente(QDialog):
         self.controller = ControlloreCliente(self.cliente)
         self.controller2 = ControlloreListaClienti()
 
-        # self.controller1 = ControlloreListaClienti()
         self.list_view = QListView()
         self.update_ui()
 
@@ -64,7 +63,8 @@ class VistaProfiloUtente(QDialog):
         # QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
         #                     QMessageBox.Ok, QMessageBox.Ok)
         # self.modifica_profilo_function = ModificaProfilo()
-        self.modifica_profilo_function = ModificaProfilo(self.cliente)
+        self.modifica_profilo_function = ModificaProfilo(self.cliente, self.controller2.elimina_cliente_by_id,
+                                                    self.update_ui)
         self.modifica_profilo_function.show()
 
     def go_modifica_password(self):

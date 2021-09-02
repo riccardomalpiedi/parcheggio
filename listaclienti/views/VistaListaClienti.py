@@ -20,8 +20,8 @@ class VistaListaClienti(QDialog):
         self.new_button.clicked.connect(self.show_new_client)
 
         self.setWindowTitle("Lista Clienti")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/user2.png"))
 
     def update_ui(self):

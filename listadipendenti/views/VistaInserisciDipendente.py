@@ -7,26 +7,26 @@ from dipendente.model.Dipendente import Dipendente
 class VistaInserisciDipendente(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciDipendente, self).__init__()
-        loadUi("NuovoDipendente.ui", self)
+        loadUi("listadipendenti/views/NuovoDipendente.ui", self)
 
         self.controller = controller
         self.callback = callback
 
         self.ok_button.clicked.connect(self.add_dipendente)
 
-        self.setFixedHeight(689)
-        self.setFixedWidth(238)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Dipendente')
 
     def add_dipendente(self):
-        nome = self.nome_lineEdit.text()
-        cognome = self.cognome_lineEdit.text()
-        cf = self.codice_fiscale_lineEdit.text()
-        data_nascita = self.data_nascita_lineEdit.text()
-        luogo_nascita = self.luogo_nascita_lineEdit.text()
-        email = self.email_lineEdit.text()
-        telefono = self.telefono_lineEdit.text()
-        licenza = self.licenza_lineEdit.text()
+        nome = self.nome_field.text()
+        cognome = self.cognome_field.text()
+        cf = self.codice_fiscale_field.text()
+        data_nascita = self.data_nascita_field.text()
+        luogo_nascita = self.luogo_nascita_field.text()
+        email = self.email_field.text()
+        telefono = self.telefono_field.text()
+        licenza = self.licenza_field.text()
 
         if nome == "" or cognome == "" or cf == "" or data_nascita == "" or luogo_nascita == "" or email == "" or telefono == "" or licenza == "":
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
