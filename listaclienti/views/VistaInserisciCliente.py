@@ -43,9 +43,6 @@ class VistaInserisciCliente(QDialog):
         item.setEditable(False)
         self.comboveicoli2_model.appendRow(item)
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
-            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
-                self.lista_veicoli_salvata = pickle.load(f)
-            self.lista_veicoli_disponibili = [c for c in self.lista_veicoli_salvata if not c.get_associato()]
             for veicolo in self.lista_veicoli_disponibili:
                 item = QStandardItem()
                 item.setText(veicolo.targa)
@@ -74,11 +71,11 @@ class VistaInserisciCliente(QDialog):
         if self.veicolo_comboBox.currentIndex() == 0:
             veicolo = None
         else:
-            veicolo = self.lista_veicoli_salvata[self.veicolo_comboBox.currentIndex()-1]
+            veicolo = self.lista_veicoli_disponibili[self.veicolo_comboBox.currentIndex()-1]
         if self.veicolo2_comboBox.currentIndex() == 0:
             veicolo2 = None
         else:
-            veicolo2 = self.lista_veicoli_salvata[self.veicolo2_comboBox.currentIndex()-1]
+            veicolo2 = self.lista_veicoli_disponibili[self.veicolo2_comboBox.currentIndex()-1]
         username = self.username_field.text()
         password = self.password_field.text()
         image = self.immagine_profilo_field.text()

@@ -23,8 +23,8 @@ class GestioneVeicoli(QDialog):
         self.new_button.clicked.connect(self.show_new_veicolo)
 
         self.setWindowTitle("Lista Veicoli")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
@@ -33,7 +33,7 @@ class GestioneVeicoli(QDialog):
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
-        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui)
+        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.cliente)
         self.vista_inserisci_veicolo.show()
 
     def update_ui(self):

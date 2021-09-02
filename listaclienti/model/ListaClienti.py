@@ -23,6 +23,12 @@ class ListaClienti():
     def get_cliente_by_index(self, index):
         return self.lista_clienti[index]
 
+    def get_cliente_by_id(self, id):
+        for cliente in self.lista_clienti:
+            if cliente.id == id:
+                return cliente
+        return None
+
     def get_lista_clienti(self):
         return self.lista_clienti
 

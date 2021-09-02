@@ -1,31 +1,50 @@
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
-from veicolo.model.Veicolo import Veicolo
+from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
 class GestioneInserisciVeicoli(QDialog):
-    def __init__(self, controller, callback):
+    def __init__(self, controller, callback, cliente):
         super(GestioneInserisciVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneNuovoVeicolo.ui", self)
 
         self.controller = controller
+        self.controller2 = ControlloreListaClienti()
         self.callback = callback
+        self.cliente = cliente
 
-        self.ok_button.clicked.connect(self.add_veicolo)
+        self.inserisci_button.clicked.connect(self.add_veicolo)
 
-        self.setFixedHeight(216)
-        self.setFixedWidth(238)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Veicolo')
 
     def add_veicolo(self):
         targa = self.targa_lineEdit.text()
-        tipo = self.tipo_veicolo_lineEdit.text()
 
-        if targa == "" or tipo == "":
+        if targa == "":
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.controller.aggiungi_veicolo(Veicolo(targa.lower(), targa, tipo))
+            flag = False
+            for veicolo in self.controller.get_lista_dei_veicoli():
+                if targa == veicolo.targa:
+                    if self.controller.get_veicolo_by_targa(targa).get_associato():
+                        QMessageBox.critical(self, 'Errore', "Il veicolo selezionato è già associato a un cliente",
+                                             QMessageBox.Ok, QMessageBox.Ok)
+                        flag = True
+                    elif self.controller2.get_cliente_by_id(self.cliente.id).lista_veicoli[0] is not None:
+                        self.controller2.get_cliente_by_id(self.cliente.id).lista_veicoli[0] = veicolo
+                        self.controller.get_veicolo_by_targa(targa).set_associato(True)
+                        flag = True
+                    elif self.controller2.get_cliente_by_id(self.cliente.id).lista_veicoli[1] is not None:
+                        self.controller2.get_cliente_by_id(self.cliente.id).lista_veicoli[1] = veicolo
+                        self.controller.get_veicolo_by_targa(targa).set_associato(True)
+                        flag = True
+            if not flag:
+                QMessageBox.critical(self, 'Errore', "Il veicolo selezionato non è registrato",
+                                     QMessageBox.Ok, QMessageBox.Ok)
+            self.controller2.save_data()
             self.callback()
             self.close()
