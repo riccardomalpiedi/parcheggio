@@ -95,7 +95,7 @@ font-size:11pt</string>
    <property name="geometry">
     <rect>
      <x>690</x>
-     <y>230</y>
+     <y>270</y>
      <width>251</width>
      <height>41</height>
     </rect>
@@ -110,27 +110,6 @@ font-size:11pt</string>
    </property>
    <property name="text">
     <string>Modifica Informazioni Profilo</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cambia_password_button">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>290</y>
-     <width>251</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius:20px; 
- background-color: rgb(202, 202, 202);
-font-size:11pt</string>
-   </property>
-   <property name="text">
-    <string>Cambia Password</string>
    </property>
   </widget>
   <widget class="Line" name="line_2">

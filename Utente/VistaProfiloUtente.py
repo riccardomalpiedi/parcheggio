@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QDialog, QMessageBox, QListView
+from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
@@ -45,7 +45,6 @@ class VistaProfiloUtente(QDialog):
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
         self.gestione_prenotazioni_button.clicked.connect(self.go_gestisci_prenotazioni_function)
         self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
-        self.cambia_password_button.clicked.connect(self.go_modifica_password)
 
         self.setWindowTitle("Profilo Utente")
         self.setFixedWidth(self.width())
@@ -60,18 +59,10 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        # QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
-        #                     QMessageBox.Ok, QMessageBox.Ok)
-        # self.modifica_profilo_function = ModificaProfilo()
-        self.modifica_profilo_function = ModificaProfilo(self.cliente, self.controller2.elimina_cliente_by_id,
-                                                    self.update_ui)
+        selected = self.list_view.selectedIndexes()[0].row()
+        cliente_selezionato = self.controller2.get_cliente_by_index(selected)
+        self.modifica_profilo_function = ModificaProfilo(cliente_selezionato, self.cliente, self.controller2.elimina_cliente_by_id)
         self.modifica_profilo_function.show()
-
-    def go_modifica_password(self):
-        QMessageBox.critical(self, 'Errore', "Funzione al momento non disponibile. Ci scusiamo per il disagio. :(",
-                             QMessageBox.Ok, QMessageBox.Ok)
-        # self.modifica_password = CambiaPassword()
-        # self.modifica_password.show()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

@@ -33,6 +33,7 @@ class VistaInserisciDipendente(QDialog):
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
             self.controller.aggiungi_dipendente(
-                Dipendente((nome + cognome).lower(), nome, cognome, cf, data_nascita, luogo_nascita, email, telefono, licenza))
+                Dipendente((nome + cognome).lower(), nome, cognome, cf, data_nascita, luogo_nascita, email, telefono,
+                           licenza))
             self.callback()
             self.close()

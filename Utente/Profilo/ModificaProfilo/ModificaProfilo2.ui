@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>736</width>
+    <width>686</width>
     <height>679</height>
    </rect>
   </property>
@@ -197,7 +197,7 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="ok_button">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>350</x>
      <y>600</y>
      <width>221</width>
      <height>51</height>
@@ -218,7 +218,7 @@ font-size:14pt;</string>
   <widget class="QPushButton" name="back_button">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>100</x>
      <y>600</y>
      <width>221</width>
      <height>51</height>
@@ -273,7 +273,7 @@ font-size:14pt;</string>
     <rect>
      <x>10</x>
      <y>560</y>
-     <width>701</width>
+     <width>661</width>
      <height>16</height>
     </rect>
    </property>
@@ -351,27 +351,6 @@ color: rgb(255, 255, 255);</string>
     <string>Cambia Immagine Profilo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="browse_button">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>80</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius:20px; 
- background-color: rgb(202, 202, 202);
-font-size:14pt;</string>
-   </property>
-   <property name="text">
-    <string>Browse</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
@@ -389,75 +368,41 @@ color: rgb(255, 255, 255);</string>
     <string>Targa 2</string>
    </property>
   </widget>
-  <widget class="QLabel" name="nome_label">
+  <widget class="QLineEdit" name="veicolo_field">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>154</y>
+     <y>420</y>
      <width>261</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="text">
-    <string/>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="cognome_label">
+  <widget class="QLineEdit" name="veicolo2_field">
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>156</y>
+     <y>420</y>
      <width>261</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="immagine_profilo_label">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>40</y>
-     <width>261</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="cf_label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>244</y>
-     <width>261</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="username_label">
+  <widget class="QLineEdit" name="username_field">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -467,14 +412,14 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="text">
-    <string/>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="password_label">
+  <widget class="QLineEdit" name="password_field">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -484,45 +429,76 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="veicolo_label">
+  <widget class="QLineEdit" name="cf_field">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>420</y>
+     <y>240</y>
      <width>261</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="text">
-    <string/>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="veicolo2_label">
+  <widget class="QLineEdit" name="cognome_field">
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>420</y>
+     <y>154</y>
      <width>261</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
-   <property name="text">
-    <string/>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nome_field">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="image_field">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>40</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
