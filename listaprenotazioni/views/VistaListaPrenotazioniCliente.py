@@ -3,13 +3,14 @@ from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
 from listaprenotazioni.controller.ControlloreListaPrenotazioni import ControlloreListaPrenotazioni
+from listaprenotazioni.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
 from prenotazione.views.VistaPrenotazione import VistaPrenotazione
 
 
 class VistaListaPrenotazioni(QDialog):
     def __init__(self):
         super(VistaListaPrenotazioni, self).__init__()
-        loadUi("listaprenotazioni/views/ListaPrenotazioniAmministratore.ui", self)
+        loadUi("listaprenotazioni.ui", self)
 
         self.controller = ControlloreListaPrenotazioni()
 
@@ -18,7 +19,7 @@ class VistaListaPrenotazioni(QDialog):
         self.prenotazioni_layout.addWidget(self.list_view)
 
         self.open_button.clicked.connect(self.show_selected_info)
-        # self.new_button.clicked.connect(self.show_new_prenotazione)
+        self.new_button.clicked.connect(self.show_new_prenotazione)
 
         self.setWindowTitle("Lista Prenotazioni")
         self.setFixedHeight(361)
@@ -33,9 +34,8 @@ class VistaListaPrenotazioni(QDialog):
         self.vista_prenotazione.show()
 
     def show_new_prenotazione(self):
-        # self.vista_inserisci_cliente = VistaInserisciPrenotazione(self.controller, self.update_ui)
-        # self.vista_inserisci_cliente.show()
-        pass
+        self.vista_inserisci_cliente = VistaInserisciPrenotazione(self.controller, self.update_ui)
+        self.vista_inserisci_cliente.show()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

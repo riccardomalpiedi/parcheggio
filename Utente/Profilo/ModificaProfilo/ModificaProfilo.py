@@ -24,13 +24,10 @@ class ModificaProfilo(QDialog):
         self.indirizzo_field.setText(self.controller.get_indirizzo_cliente())
         self.email_field.setText(self.controller.get_email_cliente())
         self.telefono_field.setText(self.controller.get_telefono_cliente())
-        # if self.controller.get_veicolo_by_index(0) is not None:
-        #    self.veicolo_label.setText(self.controller.get_veicolo_by_index(0).targa)
-            # self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(0).tipo)
-        # if self.controller.get_veicolo_by_index(1) is not None:
-        #    self.veicolo2_label.setText(self.veicolo2_label.text() + self.controller.get_veicolo_by_index(1).targa)
-            # self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
-        self.veicolo_field.setText(self.controller.get_veicolo_by_index(0).targa)
+        if self.controller.get_veicolo_by_index(0) is not None:
+            self.veicolo_field.setText(self.controller.get_veicolo_by_index(0).targa)
+        else:
+            self.veicolo_field.setText(" ")
         if self.controller.get_veicolo_by_index(1) is not None:
             self.veicolo2_field.setText(self.controller.get_veicolo_by_index(1).targa)
         else:
