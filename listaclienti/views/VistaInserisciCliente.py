@@ -93,17 +93,19 @@ class VistaInserisciCliente(QDialog):
             else:
                 if image == "":
                     self.controller.aggiungi_cliente(
-                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
-                                veicolo2, username, password, image="Utente/placeholder-user-photo.png"))
+                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, username,
+                                password, image="Utente/placeholder-user-photo.png"))
                 else:
                     self.controller.aggiungi_cliente(
-                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
-                                veicolo2, username, password, image))
+                        Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono,
+                                username, password, image))
                 if veicolo is not None:
+                    self.controller.get_cliente_by_id((nome + cognome).lower()).aggiungi_veicolo(veicolo)
                     for veicolo_in_lista in self.lista_veicoli_salvata:
                         if veicolo_in_lista.targa == veicolo.targa:
                             veicolo_in_lista.set_associato(True)
                 if veicolo2 is not None:
+                    self.controller.get_cliente_by_id((nome + cognome).lower()).aggiungi_veicolo(veicolo2)
                     for veicolo_in_lista in self.lista_veicoli_salvata:
                         if veicolo_in_lista.targa == veicolo2.targa:
                             veicolo_in_lista.set_associato(True)

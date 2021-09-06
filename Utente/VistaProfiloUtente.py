@@ -29,16 +29,18 @@ class VistaProfiloUtente(QDialog):
         self.indirizzo_label.setText("<font color='white'>Indirizzo: " + self.controller.get_indirizzo_cliente())
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
-        if self.controller.get_veicolo_by_index(0) is not None:
+
+        if self.controller.get_lista_dei_veicoli() is None or len(self.controller.get_lista_dei_veicoli()) == 0:
+            self.veicolo_label.setText("<font color='white'>Nessun veicolo associato")
+        else:
             self.veicolo_label.setText("<font color='white'>Targa Veicolo: " +
                                        self.controller.get_veicolo_by_index(0).targa)
             self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(0).tipo)
-        if self.controller.get_veicolo_by_index(1) is not None:
-            self.veicolo2_label.setText(self.veicolo2_label.text() + " <font color='white'>Targa Veicolo2: " +
-                                        self.controller.get_veicolo_by_index(1).targa)
-            self.tipo_veicolo2_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
-        if self.controller.get_veicolo_by_index(0) is None and self.controller.get_veicolo_by_index(1) is None:
-            self.veicolo_label.setText("<font color='white'>Nessun veicolo associato")
+            if len(self.controller.get_lista_dei_veicoli()) > 1:
+                self.veicolo2_label.setText(self.veicolo2_label.text() + " <font color='white'>Targa Veicolo2: " +
+                                            self.controller.get_veicolo_by_index(1).targa)
+                self.tipo_veicolo2_label.setText(
+                    "<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
 
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 

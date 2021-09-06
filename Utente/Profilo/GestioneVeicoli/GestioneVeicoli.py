@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QListView, QDialog
+from PyQt5.QtWidgets import QListView, QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.GestioneVeicoli.GestioneInserisciVeicolo import GestioneInserisciVeicoli
@@ -28,11 +28,15 @@ class GestioneVeicoli(QDialog):
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
-        veicolo_selezionato = self.controller.get_veicolo_by_index(selected)
+        veicolo_selezionato = self.cliente.lista_veicoli[selected]
         self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
+        if len(self.cliente.lista_veicoli) > 1:
+            QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",
+                                 QMessageBox.Ok, QMessageBox.Ok)
+            return
         self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.cliente)
         self.vista_inserisci_veicolo.show()
 
