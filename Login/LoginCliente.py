@@ -14,8 +14,8 @@ class LoginCliente(QDialog):
         loadUi("Login/LoginCliente.ui", self)
         self.controller = ControlloreListaClienti()
 
-        self.setFixedHeight(484)
-        self.setFixedWidth(635)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowTitle("Login")
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
         self.login_button.clicked.connect(self.login_funcion)
