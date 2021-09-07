@@ -61,10 +61,11 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        selected = self.list_view.selectedIndexes()[0].row()
-        cliente_selezionato = self.controller2.get_cliente_by_index(selected)
-        self.modifica_profilo_function = ModificaProfilo(cliente_selezionato, self.cliente, self.controller2.elimina_cliente_by_id)
+        # selected = self.list_view.selectedIndexes()[0].row()
+        # cliente_selezionato = self.controller2.get_cliente_by_index(selected)
+        self.modifica_profilo_function = ModificaProfilo(self.cliente)
         self.modifica_profilo_function.show()
+        # self.close()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

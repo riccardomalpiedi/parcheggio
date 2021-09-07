@@ -1,3 +1,5 @@
+import pickle
+
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
@@ -7,15 +9,15 @@ from listaclienti.controller.ControlloreListaClienti import ControlloreListaClie
 
 
 class ModificaProfilo(QDialog):
-    def __init__(self, cliente, elimina_cliente, elimina_callback):
+    def __init__(self, cliente):
         super(ModificaProfilo, self).__init__()
         loadUi("Utente/Profilo/ModificaProfilo/ModificaProfilo2.ui", self)
 
         self.cliente = cliente
         self.controller = ControlloreCliente(self.cliente)
         self.controller2 = ControlloreListaClienti()
-        self.elimina_cliente = elimina_cliente
-        self.elimina_callback = elimina_callback
+        # self.elimina_cliente = elimina_cliente
+        # self.elimina_callback = elimina_callback
         # self.callback = callback
 
         self.nome_field.setText(self.controller.get_nome_cliente())
@@ -58,11 +60,25 @@ class ModificaProfilo(QDialog):
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                   QMessageBox.Ok, QMessageBox.Ok)
         else:
-            self.elimina_cliente_click()
+            # self.elimina_cliente_click()
             self.controller2.aggiungi_cliente(
-                Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, veicolo,
-                        veicolo2, username, password, image))
-            self.callback()
+                Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, username, password,
+                        image))
+
+            if veicolo is not None:
+                self.controller2.get_cliente_by_id((nome + cognome).lower()).aggiungi_veicolo(veicolo)
+                for veicolo_in_lista in self.lista_veicoli_salvata:
+                    if veicolo_in_lista.targa == veicolo.targa:
+                        veicolo_in_lista.set_associato(True)
+            if veicolo2 is not None:
+                self.controller2.get_cliente_by_id((nome + cognome).lower()).aggiungi_veicolo(veicolo2)
+                for veicolo_in_lista in self.lista_veicoli_salvata:
+                    if veicolo_in_lista.targa == veicolo2.targa:
+                        veicolo_in_lista.set_associato(True)
+            with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
+                pickle.dump(self.lista_veicoli_salvata, handle, pickle.HIGHEST_PROTOCOL)
+
+            # self.callback()
             self.close()
 
     def elimina_cliente_click(self):
