@@ -65,7 +65,7 @@ class VistaProfiloUtente(QDialog):
         # cliente_selezionato = self.controller2.get_cliente_by_index(selected)
         self.modifica_profilo_function = ModificaProfilo(self.cliente)
         self.modifica_profilo_function.show()
-        # self.close()
+        self.close()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
