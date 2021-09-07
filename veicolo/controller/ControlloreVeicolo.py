@@ -15,6 +15,9 @@ class ControlloreVeicolo():
     def get_pagato_veicolo(self):
         return self.model.pagato
 
+    def set_pagato(self, pagato):
+        self.model.set_pagato(pagato)
+
     def set_orario_ingresso(self, orario_ingresso):
         self.model.set_orario_ingresso(orario_ingresso)
 

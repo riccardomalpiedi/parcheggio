@@ -28,4 +28,4 @@ class VistaVeicoloDipendente(QDialog):
         self.close()
 
     def pagamento_veicolo_click(self):
-        self.set_pagato(self, True)
+        self.controller.set_pagato(True)
