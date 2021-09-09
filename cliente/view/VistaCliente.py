@@ -50,10 +50,11 @@ class VistaCliente(QDialog):
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli_salvata = pickle.load(f)
-        for veicolo_in_lista in self.lista_veicoli_salvata:
-            if veicolo_in_lista.targa == self.controller.get_veicolo_by_index(0).targa or \
-                    veicolo_in_lista.targa == self.controller.get_veicolo_by_index(1).targa:
-                veicolo_in_lista.set_associato(False)
+        if self.controller.get_lista_dei_veicoli() is not None and len(self.controller.get_lista_dei_veicoli()) != 0:
+            for veicolo_in_lista in self.lista_veicoli_salvata:
+                for veicolo_del_cliente in self.controller.get_lista_dei_veicoli():
+                    if veicolo_in_lista.targa == veicolo_del_cliente.targa:
+                        veicolo_in_lista.set_associato(False)
         with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
             pickle.dump(self.lista_veicoli_salvata, handle, pickle.HIGHEST_PROTOCOL)
         self.elimina_cliente(self.controller.get_id_cliente())
