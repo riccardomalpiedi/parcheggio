@@ -4,21 +4,32 @@ from PyQt5.uic import loadUi
 
 from Login.LoginCliente import LoginCliente
 from ingresso.views.VistaIngresso import VistaIngresso
+from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
+from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
 from uscita.views.VistaUscita import VistaUscita
 
 
 class VistaHomeCliente(QDialog):
     def __init__(self):
         super(VistaHomeCliente, self).__init__()
-        loadUi("home/BenvenutoCliente2.ui", self)
+        loadUi("home/BenvenutoCliente.ui", self)
 
-        self.setFixedWidth(632)
-        self.setFixedHeight(451)
-        self.setWindowTitle("Cliente")
-        self.setWindowIcon(QIcon("icone/user2.png"))
+        self.controller = ControlloreListaClienti()
+
         self.ingresso_button.clicked.connect(self.go_vista_ingresso)
         self.uscita_button.clicked.connect(self.go_vista_uscita)
         self.accedi_button.clicked.connect(self.go_accedi)
+        self.registrati_button.clicked.connect(self.go_registrazione)
+
+        self.setFixedWidth(self.width())
+        self.setFixedHeight(self.height())
+        self.setWindowTitle("Cliente")
+        self.setWindowIcon(QIcon("icone/user2.png"))
+
+    def go_registrazione(self):
+        self.registrazione = VistaInserisciCliente(self.controller, self.update_ui)
+        self.registrazione.show()
+        self.close()
 
     def go_accedi(self):
         self.accedi = LoginCliente()
@@ -32,3 +43,6 @@ class VistaHomeCliente(QDialog):
     def go_vista_uscita(self):
         self.uscita = VistaUscita()
         self.uscita.show()
+
+    def update_ui(self):
+        pass

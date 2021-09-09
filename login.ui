@@ -48,7 +48,7 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius:20px; 
-background-color: rgb(255, 255, 255);
+background-color: rgb(202, 202, 202);;
 font-size:14pt;</string>
    </property>
    <property name="text">
@@ -128,7 +128,7 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius:20px; 
-background-color: rgb(255, 255, 255);
+background-color: rgb(202, 202, 202);
 font-size:14pt;</string>
    </property>
    <property name="text">

@@ -5,22 +5,21 @@ from PyQt5 import QtWidgets
 
 from Utente.VistaProfiloUtente import VistaProfiloUtente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
-from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
 
 
 class LoginCliente(QDialog):
     def __init__(self):
         super(LoginCliente, self).__init__()
-        loadUi("Login/LoginCliente.ui", self)
+        loadUi("Login/LoginCliente2.ui", self)
         self.controller = ControlloreListaClienti()
+
+        self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.login_button.clicked.connect(self.login_funcion)
+        self.back_button.clicked.connect(self.back_function)
 
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle("Login")
-        self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.login_button.clicked.connect(self.login_funcion)
-        self.registrati_button.clicked.connect(self.go_vista_inserisci_cliente)
-        self.back_button.clicked.connect(self.back_function)
 
     def login_funcion(self):
         user = self.username_field.text()
@@ -44,13 +43,6 @@ class LoginCliente(QDialog):
         self.vista_profilo_utente = VistaProfiloUtente(cliente)
         self.vista_profilo_utente.show()
 
-    def go_vista_inserisci_cliente(self):
-        self.vista_inserisci_cliente = VistaInserisciCliente(self.controller, self.update_ui)
-        self.vista_inserisci_cliente.show()
-        self.close()
-
     def back_function(self):
         self.close()
 
-    def update_ui(self):
-        pass

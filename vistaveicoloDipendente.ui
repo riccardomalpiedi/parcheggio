@@ -74,7 +74,7 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(202, 202, 202);</string>
    </property>
    <property name="text">
     <string>Conferma Pagamento</string>
@@ -93,7 +93,7 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(202, 202, 202);</string>
    </property>
    <property name="text">
     <string>Elimina</string>
