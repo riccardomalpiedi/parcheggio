@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
+from datetime import datetime
+
 
 from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 
@@ -28,4 +30,4 @@ class VistaVeicoloDipendente(QDialog):
         self.close()
 
     def pagamento_veicolo_click(self):
-        self.controller.set_pagato(True)
+        self.controller.set_orario_pagato(datetime.now())
