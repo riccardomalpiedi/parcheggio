@@ -10,12 +10,14 @@ class LoginScreen(QDialog):
     def __init__(self):
         super(LoginScreen, self).__init__()
         loadUi("login.ui", self)
-        self.setFixedHeight(self.height())
-        self.setFixedWidth(self.width())
-        self.setWindowTitle("Login")
+
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
         self.login_button.clicked.connect(self.login_funcion)
         self.back_button.clicked.connect(self.back_function)
+
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
+        self.setWindowTitle("Login")
 
     def login_funcion(self):
         user = self.email_field.text()

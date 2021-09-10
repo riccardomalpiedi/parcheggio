@@ -41,7 +41,7 @@ background-color: rgb(61, 61, 61);}</string>
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
+    <string notr="true">background-color: rgb(202, 202, 202);
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
    <property name="text">

@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel
+from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
@@ -49,6 +49,7 @@ class VistaProfiloUtente(QDialog):
         self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
 
         self.setWindowTitle("Profilo Utente")
+        self.setWindowIcon(QIcon("icone/user2.png"))
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
 
@@ -61,8 +62,6 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        # selected = self.list_view.selectedIndexes()[0].row()
-        # cliente_selezionato = self.controller2.get_cliente_by_index(selected)
         self.modifica_profilo_function = ModificaProfilo(self.cliente)
         self.modifica_profilo_function.show()
         self.close()

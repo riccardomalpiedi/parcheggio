@@ -20,9 +20,9 @@
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>185</y>
+     <y>210</y>
      <width>231</width>
-     <height>41</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -82,7 +82,7 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>390</y>
+     <y>380</y>
      <width>241</width>
      <height>51</height>
     </rect>
@@ -146,6 +146,27 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Cosa si vuole Registrare?</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="registrati_button">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>150</y>
+     <width>231</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:20px; 
+ background-color: rgb(202, 202, 202);
+font-size:12pt;</string>
+   </property>
+   <property name="text">
+    <string>Registrati</string>
    </property>
   </widget>
  </widget>
