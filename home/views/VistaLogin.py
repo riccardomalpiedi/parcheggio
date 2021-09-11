@@ -12,14 +12,14 @@ class LoginScreen(QDialog):
         loadUi("login.ui", self)
 
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.login_button.clicked.connect(self.login_funcion)
+        self.login_button.clicked.connect(self.login_function)
         self.back_button.clicked.connect(self.back_function)
 
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle("Login")
 
-    def login_funcion(self):
+    def login_function(self):
         user = self.email_field.text()
         password = self.password_field.text()
 

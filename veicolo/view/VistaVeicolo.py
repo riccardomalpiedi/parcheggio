@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
-from datetime import datetime
+# from datetime import datetime
 
 from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 

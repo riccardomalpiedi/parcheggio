@@ -12,7 +12,7 @@ class ControlloreVeicolo():
     def get_tipo_veicolo(self):
         return self.model.tipo
 
-    def get_Orario_pagato_veicolo(self):
+    def get_orario_pagato_veicolo(self):
         return self.model.orario_pagato
 
     def set_pagato(self, orario_pagato):
