@@ -63,6 +63,7 @@ class VistaInserisciPrenotazione(QDialog):
             self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
         self.ok_button.clicked.connect(self.add_prenotazione)
+
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Prenotazione')

@@ -22,8 +22,8 @@ class VistaListaVeicoli(QDialog):
         self.new_button.clicked.connect(self.show_new_veicolo)
 
         self.setWindowTitle("Lista Veicoli")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()

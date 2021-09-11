@@ -20,20 +20,6 @@ class GestioneInserisciPrenotazione(QDialog):
         self.data_inizio_lineEdit.text()
         self.data_fine_lineEdit.text()
 
-        # self.comboclienti_model = QStandardItemModel(self.cliente_comboBox)
-        # if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
-        #     with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
-        #         self.lista_clienti_salvata = pickle.load(f)
-        #     for cliente in self.lista_clienti_salvata:
-        #         item = QStandardItem()
-        #         item.setText(cliente.nome + " " + cliente.cognome)
-        #         item.setEditable(False)
-        #         font = item.font()
-        #         font.setPointSize(18)
-        #         item.setFont(font)
-        #         self.comboclienti_model.appendRow(item)
-        #     self.cliente_comboBox.setModel(self.comboclienti_model)
-
         self.comboposteggi_model = QStandardItemModel(self.posteggio_comboBox)
         if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
@@ -58,15 +44,6 @@ class GestioneInserisciPrenotazione(QDialog):
             font.setPointSize(18)
             item.setFont(font)
             self.comboveicoli_model.appendRow(item)
-        # self.comboveicoli_model.appendRow(item)
-        # item2 = QStandardItem()
-        # print(self.cliente.veicolo2)
-        # item2.setText(self.cliente.veicolo2.targa)
-        # item2.setEditable(False)
-        # font2 = item2.font()
-        # font2.setPointSize(18)
-        # item2.setFont(font2)
-        # self.comboveicoli_model.appendRow(item2)
         self.veicolo_comboBox.setModel(self.comboveicoli_model)
 
         self.ok_button.clicked.connect(self.add_prenotazione)
@@ -81,7 +58,6 @@ class GestioneInserisciPrenotazione(QDialog):
         cliente = self.cliente
         posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
         veicolo = self.cliente.veicolo
-        # veicolo2 = self.cliente.veicolo2
         if data_inizio == "" or not cliente or not posteggio:
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)

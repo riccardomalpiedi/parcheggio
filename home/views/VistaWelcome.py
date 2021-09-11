@@ -11,7 +11,9 @@ class WelcomeScreen(QDialog):
     def __init__(self):
         super(WelcomeScreen, self).__init__()
         loadUi("easyparking.ui", self)
+
         self.setWindowIcon(QIcon("icone/parking2.png"))
+
         self.login_button.clicked.connect(self.go_login_screen)
         self.cliente_button.clicked.connect(self.go_vista_cliente)
         self.help_button.clicked.connect(self.go_vista_help_button)

@@ -22,8 +22,8 @@ class VistaListaDipendenti(QDialog):
         self.new_button.clicked.connect(self.show_new_dipendente)
 
         self.setWindowTitle("Lista Dipendenti")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/accountant2.png"))
 
     def update_ui(self):

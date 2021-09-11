@@ -16,7 +16,7 @@ class VistaVeicolo(QDialog):
 
         self.targa_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_targa_veicolo())
         self.tipo_label.setText("<font color='white'>Tipo: " + self.controller.get_tipo_veicolo())
-        self.conferma_pagamento_button.clicked.connect(self.pagamento_veicolo_click)
+        # self.conferma_pagamento_button.clicked.connect(self.pagamento_veicolo_click)
         self.elimina_button.clicked.connect(self.elimina_veicolo_click)
 
         self.setFixedHeight(self.height())
@@ -29,4 +29,5 @@ class VistaVeicolo(QDialog):
         self.close()
 
     def pagamento_veicolo_click(self):
-        self.set_orario_pagato(self, datetime.now())
+        # self.set_orario_pagato(self, datetime.now())
+        pass

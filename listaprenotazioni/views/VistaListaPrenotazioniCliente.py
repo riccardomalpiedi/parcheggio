@@ -22,8 +22,8 @@ class VistaListaPrenotazioni(QDialog):
         self.new_button.clicked.connect(self.show_new_prenotazione)
 
         self.setWindowTitle("Lista Prenotazioni")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def show_selected_info(self):
