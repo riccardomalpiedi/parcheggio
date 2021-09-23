@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
+from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
 class GestioneInserisciVeicoli(QDialog):
@@ -15,10 +16,18 @@ class GestioneInserisciVeicoli(QDialog):
         self.cliente = cliente
 
         self.inserisci_button.clicked.connect(self.add_veicolo)
+        self.registra_button.clicked.connect(self.show_new_veicolo)
 
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle('Nuovo Veicolo')
+
+    def show_new_veicolo(self):
+        self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.callback)
+        self.vista_inserisci_veicolo.show()
+
+    def callback2(self):
+        pass
 
     def add_veicolo(self):
         targa = self.targa_lineEdit.text()
@@ -40,6 +49,9 @@ class GestioneInserisciVeicoli(QDialog):
             if not flag:
                 QMessageBox.critical(self, 'Errore', "Il veicolo selezionato non è registrato",
                                      QMessageBox.Ok, QMessageBox.Ok)
-            self.controller2.save_data()
             self.callback()
             self.close()
+
+    def closeEvent(self, event):
+        self.controller.save_data()
+        self.controller2.save_data()

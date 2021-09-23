@@ -41,23 +41,30 @@ color: rgb(255, 255, 255);}</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="registra_button">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">background-color: rgb(214, 214, 214);
+color: black;</string>
       </property>
       <property name="text">
        <string>Clicca qui!</string>
+      </property>
+      <property name="default">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -94,8 +101,12 @@ color: rgb(0, 0, 0);</string>
         <pointsize>15</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">background-color: rgb(214, 214, 214);
+color: black;</string>
       </property>
       <property name="text">
        <string>Aggiungi veicolo</string>

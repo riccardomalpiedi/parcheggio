@@ -8,12 +8,14 @@ from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
 class GestioneVeicoli(QDialog):
-    def __init__(self, cliente):
+    def __init__(self, cliente, callback, controller):
         super(GestioneVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneVeicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
+        self.controller2 = controller
         self.cliente = cliente
+        self.callback = callback
 
         self.list_view = QListView()
         self.update_ui()
@@ -29,7 +31,7 @@ class GestioneVeicoli(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.cliente.lista_veicoli[selected]
-        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
+        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
@@ -39,6 +41,12 @@ class GestioneVeicoli(QDialog):
             return
         self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.cliente)
         self.vista_inserisci_veicolo.show()
+
+    def elimina_veicolo(self, id):
+        self.controller2.get_cliente_by_id(self.cliente.id).rimuovi_veicolo_by_id(id)
+        self.controller.elimina_veicolo_by_id(id)
+        self.controller2.save_data()
+        self.update_ui()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
@@ -54,6 +62,7 @@ class GestioneVeicoli(QDialog):
                 self.listview_model.appendRow(item)
 
         self.list_view.setModel(self.listview_model)
+        self.callback()
 
     def closeEvent(self, event):
         self.controller.save_data()
