@@ -1,17 +1,16 @@
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
-from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
 class GestioneInserisciVeicoli(QDialog):
-    def __init__(self, controller, callback, cliente):
+    def __init__(self, controller, controller2, callback, cliente):
         super(GestioneInserisciVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneNuovoVeicolo.ui", self)
 
         self.controller = controller
-        self.controller2 = ControlloreListaClienti()
+        self.controller2 = controller2
         self.callback = callback
         self.cliente = cliente
 
@@ -25,9 +24,6 @@ class GestioneInserisciVeicoli(QDialog):
     def show_new_veicolo(self):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.callback)
         self.vista_inserisci_veicolo.show()
-
-    def callback2(self):
-        pass
 
     def add_veicolo(self):
         targa = self.targa_lineEdit.text()

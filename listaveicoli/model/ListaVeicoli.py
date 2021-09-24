@@ -30,6 +30,12 @@ class ListaVeicoli():
                 return veicolo
         return None
 
+    def get_veicolo_by_id(self, id):
+        for veicolo in self.lista_veicoli:
+            if veicolo.id == id:
+                return veicolo
+        return None
+
     def get_lista_veicoli(self):
         return self.lista_veicoli
 

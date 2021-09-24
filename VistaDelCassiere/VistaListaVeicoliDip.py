@@ -2,6 +2,7 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
+from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 from veicolo.view.VistaVeicoloDipendente import VistaVeicoloDipendente
 
@@ -12,6 +13,7 @@ class VistaListaVeicoliDip(QDialog):
         loadUi("VistaDelCassiere/ListaVeicoliDip.ui", self)
 
         self.controller = ControlloreListaVeicoli()
+        self.controller2 = ControlloreListaClienti()
 
         self.list_view = QListView()
         self.update_ui()

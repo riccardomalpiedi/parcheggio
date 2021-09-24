@@ -39,14 +39,14 @@ class GestioneVeicoli(QDialog):
             QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.cliente)
+        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.controller2,
+                                                                self.update_ui, self.cliente)
         self.vista_inserisci_veicolo.show()
 
     def elimina_veicolo(self, id):
         self.controller2.get_cliente_by_id(self.cliente.id).rimuovi_veicolo_by_id(id)
         self.controller.elimina_veicolo_by_id(id)
         self.controller2.save_data()
-        self.update_ui()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
@@ -66,3 +66,4 @@ class GestioneVeicoli(QDialog):
 
     def closeEvent(self, event):
         self.controller.save_data()
+        self.controller2.save_data()
