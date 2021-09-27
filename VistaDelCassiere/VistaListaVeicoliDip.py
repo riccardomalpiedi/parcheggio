@@ -29,8 +29,7 @@ class VistaListaVeicoliDip(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.controller.get_veicolo_by_index(selected)
-        self.vista_veicolo = VistaVeicoloDipendente(veicolo_selezionato, self.controller.elimina_veicolo_by_id,
-                                                    self.update_ui)
+        self.vista_veicolo = VistaVeicoloDipendente(veicolo_selezionato)
         self.vista_veicolo.show()
 
     def go_back(self):
