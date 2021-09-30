@@ -6,10 +6,14 @@ class ListaVeicoli():
     def __init__(self):
         super(ListaVeicoli, self).__init__()
         self.lista_veicoli = []
+        self.lista_clienti = []
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             print("esiste")
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli = pickle.load(f)
+        if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
+            with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
+                self.lista_clienti = pickle.load(f)
 
     def aggiungi_veicoli(self, veicolo):
         self.lista_veicoli.append(veicolo)
@@ -42,3 +46,5 @@ class ListaVeicoli():
     def save_data(self):
         with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
             pickle.dump(self.lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
+        with open('listaclienti/data/lista_clienti_salvata.pickle', 'wb') as handle:
+            pickle.dump(self.lista_clienti, handle, pickle.HIGHEST_PROTOCOL)

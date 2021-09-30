@@ -13,7 +13,14 @@ class VistaIngresso(QWidget):
         super(VistaIngresso, self).__init__()
         loadUi("Ingresso.ui", self)
         self.controller = ControlloreListaVeicoli()
+        self.update_ui()
 
+        self.pushButton.clicked.connect(self.go_vista_inserisci_veicolo)
+        self.entra_button.clicked.connect(self.inserisci_ingresso_veicolo)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
+
+    def update_ui(self):
         self.comboveicoli_model = QStandardItemModel(self.comboBox)
         for veicolo in self.controller.get_lista_dei_veicoli():
             item = QStandardItem()
@@ -25,14 +32,8 @@ class VistaIngresso(QWidget):
             self.comboveicoli_model.appendRow(item)
         self.comboBox.setModel(self.comboveicoli_model)
 
-        self.pushButton.clicked.connect(self.go_vista_inserisci_veicolo)
-        self.entra_button.clicked.connect(self.inserisci_ingresso_veicolo)
-        self.setFixedHeight(self.height())
-        self.setFixedWidth(self.width())
-
     def go_vista_inserisci_veicolo(self):
-        self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.vista_lista_veicoli.controller,
-                                                             self.vista_lista_veicoli.update_ui)
+        self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.update_ui)
         self.vista_inserisci_veicolo.show()
 
     def inserisci_ingresso_veicolo(self):

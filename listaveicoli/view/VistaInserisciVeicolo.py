@@ -27,5 +27,6 @@ class VistaInserisciVeicolo(QDialog):
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
             self.controller.aggiungi_veicolo(Veicolo(targa.lower(), targa, tipo))
-            self.callback()
+            if self.callback is not None:
+                self.callback()
             self.close()
