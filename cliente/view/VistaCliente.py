@@ -5,7 +5,6 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from abbonamento.view.VistaAbbonamento import VistaAbbonamento
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
@@ -33,7 +32,7 @@ class VistaCliente(QDialog):
                 self.targa_veicolo2_label.setText(" <font color='white'>Targa Veicolo2: " +
                                                   self.controller.get_veicolo_by_index(1).targa)
 
-        self.abbonamento_button.clicked.connect(self.check_abbonamento)
+        # self.abbonamento_button.clicked.connect(self.check_abbonamento)
         self.elimina_button.clicked.connect(self.elimina_cliente_click)
 
         self.setFixedHeight(self.height())
@@ -42,9 +41,10 @@ class VistaCliente(QDialog):
         self.setWindowIcon(QIcon("icone/user2.png"))
 
     def check_abbonamento(self):
-        self.vista_abbonamento = VistaAbbonamento(self.controller.get_abbonamento_cliente(),
-                                                  self.controller.aggiungi_nuovo_abbonamento_cliente)
-        self.vista_abbonamento.show()
+        # self.vista_abbonamento = VistaAbbonamento(self.controller.get_abbonamento_cliente(),
+                                                  # self.controller.aggiungi_nuovo_abbonamento_cliente)
+        # self.vista_abbonamento.show()
+        pass
 
     def elimina_cliente_click(self):
         self.elimina_cliente(self.controller.get_id_cliente())

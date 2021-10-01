@@ -13,7 +13,6 @@ class Cliente():
         self.username = username
         self.password = password
         self.image = image
-        self.abbonamento = None
 
     def aggiungi_veicolo(self, veicolo):
         self.lista_veicoli.append(veicolo)
@@ -30,13 +29,3 @@ class Cliente():
 
     def get_lista_veicoli(self):
         return self.lista_veicoli
-
-    def add_abbonamento(self, abbonamento):
-        self.abbonamento = abbonamento
-
-    def get_abbonamento(self):
-        if self.abbonamento.is_scaduto():
-            self.abbonamento = None
-            return None
-        else:
-            return self.abbonamento
