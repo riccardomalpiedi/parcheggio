@@ -8,14 +8,14 @@ from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
 class GestioneVeicoli(QDialog):
-    def __init__(self, cliente, callback, controller):
+    def __init__(self, callback, update_lista_veicoli, lista_veicoli):
         super(GestioneVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneVeicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
-        self.controller2 = controller
-        self.cliente = cliente
         self.callback = callback
+        self.update_lista_veicoli = update_lista_veicoli
+        self.lista_veicoli = lista_veicoli
 
         self.list_view = QListView()
         self.update_ui()
@@ -31,26 +31,21 @@ class GestioneVeicoli(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.cliente.lista_veicoli[selected]
-        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_ui)
+        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
-        if len(self.cliente.lista_veicoli) > 1:
+        if self.lista_veicoli is not None and len(self.lista_veicoli) > 1:
             QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.controller2,
-                                                                self.update_ui, self.cliente)
+        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui,
+                                                                self.update_lista_veicoli, self.lista_veicoli)
         self.vista_inserisci_veicolo.show()
-
-    def elimina_veicolo(self, id):
-        self.controller2.get_cliente_by_id(self.cliente.id).rimuovi_veicolo_by_id(id)
-        self.controller.elimina_veicolo_by_id(id)
-        self.controller2.save_data()
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)
-        for veicolo in self.cliente.lista_veicoli:
+        for veicolo in self.lista_veicoli:
             if veicolo is not None:
                 item = QStandardItem()
                 print(veicolo)
@@ -66,4 +61,3 @@ class GestioneVeicoli(QDialog):
 
     def closeEvent(self, event):
         self.controller.save_data()
-        self.controller2.save_data()

@@ -11,7 +11,6 @@ class ListaClienti():
             with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
                 self.lista_clienti = pickle.load(f)
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
-            print("esiste")
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli = pickle.load(f)
 

@@ -45,6 +45,9 @@ class ControlloreCliente():
     def get_image_cliente(self):
         return self.model.image
 
+    def set_lista_veicoli(self, lista_veicoli):
+        self.model.lista_veicoli = lista_veicoli
+
     def get_abbonamento_cliente(self):
         return self.model.abbonamento
 

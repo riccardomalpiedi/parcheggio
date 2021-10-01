@@ -27,22 +27,26 @@ class LoginCliente(QDialog):
 
         if user == "" and password == "" or len(user) == 0 or len(password) == 0:
             QMessageBox.critical(self, "Errore", "Inserisci tutte le informazioni richieste",
-                                   QMessageBox.Ok, QMessageBox.Ok)
+                                 QMessageBox.Ok, QMessageBox.Ok)
             return
         else:
             for cliente in self.controller.get_lista_dei_clienti():
                 if user == cliente.username:
                     if password == cliente.password:
-                        print("Loggato con successo")
                         self.go_vista_profilo_utente(cliente)
-                        self.close()
                         return
         QMessageBox.critical(self, 'Errore', "credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
 
     def go_vista_profilo_utente(self, cliente):
-        self.vista_profilo_utente = VistaProfiloUtente(cliente)
+        self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list)
         self.vista_profilo_utente.show()
+
+    def update_list(self, cliente):
+        self.controller.elimina_cliente_by_id(cliente.id)
+        self.controller.aggiungi_cliente()
+        self.controller.save_data()
 
     def back_function(self):
         self.close()
+
 

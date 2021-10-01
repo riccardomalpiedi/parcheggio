@@ -8,7 +8,6 @@ class ListaVeicoli():
         self.lista_veicoli = []
         self.lista_clienti = []
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
-            print("esiste")
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli = pickle.load(f)
         if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
@@ -22,6 +21,8 @@ class ListaVeicoli():
         for veicolo in self.lista_veicoli:
             if veicolo.id == id:
                 self.lista_veicoli.remove(veicolo)
+                for cliente in self.lista_clienti:
+                    cliente.rimuovi_veicolo_by_id(id)
                 return True
         return False
 

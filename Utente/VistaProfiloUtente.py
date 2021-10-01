@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPixmap, QStandardItem, QStandardItemModel, QIcon
+from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
@@ -7,17 +7,15 @@ from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
 from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
-from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
-
 
 class VistaProfiloUtente(QDialog):
-    def __init__(self, cliente):
+    def __init__(self, cliente, update_list):
         super(VistaProfiloUtente, self).__init__()
         loadUi("Utente/VistaProfiloUtente.ui", self)
 
         self.cliente = cliente
+        self.update_list = update_list
         self.controller = ControlloreCliente(self.cliente)
-        self.controller2 = ControlloreListaClienti()
 
         self.list_view = QListView()
         self.update_ui()
@@ -32,7 +30,8 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = GestioneVeicoli(self.cliente, self.update_ui, self.controller2)
+        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.update_lista_veicoli,
+                                                         self.controller.get_lista_dei_veicoli())
         self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
@@ -45,16 +44,6 @@ class VistaProfiloUtente(QDialog):
         self.close()
 
     def update_ui(self):
-        self.listview_model = QStandardItemModel(self.list_view)
-        for cliente in self.controller2.get_lista_dei_clienti():
-            item = QStandardItem()
-            item.setText(cliente.nome + " " + cliente.cognome)
-            item.setEditable(False)
-            font = item.font()
-            font.setPointSize(18)
-            item.setFont(font)
-            self.listview_model.appendRow(item)
-        self.list_view.setModel(self.listview_model)
         self.nome_label.setText(
             "<font color='white'>" + self.controller.get_nome_cliente() + " " + self.controller.get_cognome_cliente())
         self.username_label.setText("<font color='white'>Username: " + self.controller.get_username_cliente())
@@ -76,3 +65,6 @@ class VistaProfiloUtente(QDialog):
                     "<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
 
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
+
+    def update_lista_veicoli(self):
+        self.update_list(self.cliente)
