@@ -15,6 +15,7 @@ class VistaListaClienti(QDialog):
         self.controller = ControlloreListaClienti()
         self.list_view = QListView()
         self.update_ui()
+
         self.clienti_layout.addWidget(self.list_view)
         self.open_button.clicked.connect(self.show_selected_info)
         self.new_button.clicked.connect(self.show_new_client)
