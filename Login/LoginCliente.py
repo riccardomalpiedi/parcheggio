@@ -43,7 +43,7 @@ class LoginCliente(QDialog):
 
     def update_list(self, cliente):
         self.controller.elimina_cliente_by_id(cliente.id)
-        self.controller.aggiungi_cliente()
+        self.controller.aggiungi_cliente(cliente)
         self.controller.save_data()
 
     def back_function(self):
