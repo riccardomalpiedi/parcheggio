@@ -29,8 +29,6 @@ class VistaCliente(QDialog):
                 self.targa_veicolo2_label.setText(" <font color='white'>Targa Veicolo2: " +
                                                   self.controller.get_veicolo_by_index(1).targa)
 
-        self.elimina_button.clicked.connect(self.elimina_cliente_click)
-
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle(cliente.nome)

@@ -35,7 +35,7 @@ class LoginCliente(QDialog):
                     if password == cliente.password:
                         self.go_vista_profilo_utente(cliente)
                         return
-        QMessageBox.critical(self, 'Errore', "credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
+        QMessageBox.critical(self, 'Errore', "Credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
 
     def go_vista_profilo_utente(self, cliente):
         self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list)
@@ -48,5 +48,3 @@ class LoginCliente(QDialog):
 
     def back_function(self):
         self.close()
-
-

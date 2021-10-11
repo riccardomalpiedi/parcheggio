@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QDialog, QListView
+from PyQt5.QtWidgets import QDialog, QListView, QMessageBox
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
@@ -23,6 +23,7 @@ class VistaProfiloUtente(QDialog):
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
         self.gestione_prenotazioni_button.clicked.connect(self.go_gestisci_prenotazioni_function)
         self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
+        self.elimina_profilo_button.clicked.connect(self.go_elimina_profilo_function)
 
         self.setWindowTitle("Profilo Utente")
         self.setWindowIcon(QIcon("icone/user2.png"))
@@ -42,6 +43,10 @@ class VistaProfiloUtente(QDialog):
         self.modifica_profilo_function = ModificaProfilo(self.cliente)
         self.modifica_profilo_function.show()
         self.close()
+
+    def go_elimina_profilo_function(self):
+        QMessageBox.critical(self, "Errore", "Funzione non ancora disponibile!",
+                             QMessageBox.Ok, QMessageBox.Ok)
 
     def update_ui(self):
         self.nome_label.setText(
