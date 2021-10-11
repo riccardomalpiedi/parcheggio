@@ -4,7 +4,6 @@ from PyQt5.uic import loadUi
 
 from cliente.view.VistaCliente import VistaCliente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
-from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
 
 
 class VistaListaClienti(QDialog):
@@ -18,7 +17,6 @@ class VistaListaClienti(QDialog):
 
         self.clienti_layout.addWidget(self.list_view)
         self.open_button.clicked.connect(self.show_selected_info)
-        self.new_button.clicked.connect(self.show_new_client)
 
         self.setWindowTitle("Lista Clienti")
         self.setFixedHeight(self.height())
@@ -40,12 +38,8 @@ class VistaListaClienti(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         cliente_selezionato = self.controller.get_cliente_by_index(selected)
-        self.vista_cliente = VistaCliente(cliente_selezionato, self.controller.elimina_cliente_by_id, self.update_ui)
+        self.vista_cliente = VistaCliente(cliente_selezionato)
         self.vista_cliente.show()
-
-    def show_new_client(self):
-        self.vista_inserisci_cliente = VistaInserisciCliente(self.controller, self.update_ui)
-        self.vista_inserisci_cliente.show()
 
     def closeEvent(self, event):
         self.controller.save_data()
