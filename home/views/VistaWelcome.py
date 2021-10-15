@@ -4,7 +4,7 @@ from PyQt5.uic import loadUi
 
 from home.views.VistaHomeCliente import VistaHomeCliente
 from home.views.VistaHelpButton import VistaHelpButton
-from home.views.VistaLogin import LoginScreen
+from home.views.VistaLogin import VistaLogin
 
 
 class WelcomeScreen(QDialog):
@@ -27,5 +27,5 @@ class WelcomeScreen(QDialog):
         self.vista_help_button.show()
 
     def go_login_screen(self):
-        self.login_screen = LoginScreen()
+        self.login_screen = VistaLogin()
         self.login_screen.show()

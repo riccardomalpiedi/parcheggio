@@ -6,9 +6,9 @@ from home.views.VistaAmministratore import VistaAmministratore
 from home.views.VistaCassiere import VistaCassiere
 
 
-class LoginScreen(QDialog):
+class VistaLogin(QDialog):
     def __init__(self):
-        super(LoginScreen, self).__init__()
+        super(VistaLogin, self).__init__()
         loadUi("login.ui", self)
 
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
