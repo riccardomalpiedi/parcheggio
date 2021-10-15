@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>606</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@ background-color: rgb(61, 61, 61);}</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>240</y>
+     <x>170</x>
+     <y>220</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -37,8 +37,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="back_button">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>470</y>
+     <x>190</x>
+     <y>450</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -58,8 +58,8 @@ font-size:14pt;</string>
   <widget class="QLineEdit" name="email_field">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>260</y>
+     <x>170</x>
+     <y>240</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -71,8 +71,8 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>310</y>
+     <x>170</x>
+     <y>290</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -87,8 +87,8 @@ font-size:14pt;</string>
   <widget class="QLineEdit" name="password_field">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>330</y>
+     <x>170</x>
+     <y>310</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -100,7 +100,7 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>150</x>
      <y>160</y>
      <width>311</width>
      <height>41</height>
@@ -117,8 +117,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="login_button">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>400</y>
+     <x>190</x>
+     <y>380</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -141,8 +141,8 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>50</y>
+     <x>230</x>
+     <y>40</y>
      <width>121</width>
      <height>81</height>
     </rect>

@@ -6,13 +6,11 @@ from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
 class VistaCliente(QDialog):
-    def __init__(self, cliente, elimina_cliente, elimina_callback, parent=None):
+    def __init__(self, cliente, parent=None):
         super(VistaCliente, self).__init__(parent)
         loadUi("cliente/view/vistacliente.ui", self)
 
         self.controller = ControlloreCliente(cliente)
-        self.elimina_cliente = elimina_cliente
-        self.elimina_callback = elimina_callback
 
         self.nome_label.setText("<font color='white'>" + self.controller.get_nome_cliente() + " " +
                                 self.controller.get_cognome_cliente())
@@ -29,14 +27,7 @@ class VistaCliente(QDialog):
                 self.targa_veicolo2_label.setText(" <font color='white'>Targa Veicolo2: " +
                                                   self.controller.get_veicolo_by_index(1).targa)
 
-        self.elimina_button.clicked.connect(self.elimina_cliente_click)
-
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
         self.setWindowTitle(cliente.nome)
         self.setWindowIcon(QIcon("icone/user2.png"))
-
-    def elimina_cliente_click(self):
-        self.elimina_cliente(self.controller.get_id_cliente())
-        self.elimina_callback()
-        self.close()

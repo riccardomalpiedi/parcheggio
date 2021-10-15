@@ -48,5 +48,3 @@ class LoginCliente(QDialog):
 
     def back_function(self):
         self.close()
-
-

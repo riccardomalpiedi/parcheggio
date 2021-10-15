@@ -46,7 +46,7 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
      <height>341</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="clienti_layout"/>
+   <layout class="QHBoxLayout" name="veicoli_layout"/>
   </widget>
  </widget>
  <resources/>
