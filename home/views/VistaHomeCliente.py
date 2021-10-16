@@ -2,7 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from home.views.LoginCliente import LoginCliente
+from home.views.VistaLoginCliente import LoginCliente
 from ingresso.views.VistaIngresso import VistaIngresso
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente

@@ -5,13 +5,12 @@ from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
 class GestioneInserisciVeicoli(QDialog):
-    def __init__(self, controller, callback, update_lista_veicoli, lista_veicoli):
+    def __init__(self, controller, callback, lista_veicoli):
         super(GestioneInserisciVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneNuovoVeicolo.ui", self)
 
         self.controller = controller
         self.callback = callback
-        self.update_lista_veicoli = update_lista_veicoli
         self.lista_veicoli = lista_veicoli
 
         self.inserisci_button.clicked.connect(self.add_veicolo)
@@ -41,7 +40,6 @@ class GestioneInserisciVeicoli(QDialog):
                                              QMessageBox.Ok, QMessageBox.Ok)
                     else:
                         self.lista_veicoli.append(veicolo)
-                        self.update_lista_veicoli()
             if not trovato:
                 QMessageBox.critical(self, 'Errore', "Il veicolo selezionato non è registrato",
                                      QMessageBox.Ok, QMessageBox.Ok)

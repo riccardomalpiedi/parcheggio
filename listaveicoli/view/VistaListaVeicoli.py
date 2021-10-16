@@ -2,7 +2,6 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
-from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 from veicolo.view.VistaVeicoloAmministratore import VistaVeicoloAmministratore
 
@@ -13,7 +12,6 @@ class VistaListaVeicoli(QDialog):
         loadUi("listaveicoliAmministratore.ui", self)
 
         self.controller = ControlloreListaVeicoli()
-        self.controller2 = ControlloreListaClienti()
 
         self.list_view = QListView()
         self.update_ui()
@@ -30,13 +28,6 @@ class VistaListaVeicoli(QDialog):
         veicolo_selezionato = self.controller.get_veicolo_by_index(selected)
         self.vista_veicolo = VistaVeicoloAmministratore(veicolo_selezionato)
         self.vista_veicolo.show()
-
-    def elimina_veicolo(self, id):
-        if self.controller.get_veicolo_by_id(id).get_associato():
-            for cliente in self.controller2.get_lista_dei_clienti():
-                cliente.rimuovi_veicolo_by_id(id)
-            self.controller2.save_data()
-        self.controller.elimina_veicolo_by_id(id)
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

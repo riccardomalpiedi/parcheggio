@@ -31,8 +31,7 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.update_lista_veicoli,
-                                                         self.controller.get_lista_dei_veicoli())
+        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.controller.get_lista_dei_veicoli())
         self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
@@ -71,5 +70,5 @@ class VistaProfiloUtente(QDialog):
 
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
-    def update_lista_veicoli(self):
+    def closeEvent(self, event):
         self.update_list(self.cliente)

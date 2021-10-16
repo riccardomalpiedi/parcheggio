@@ -8,13 +8,12 @@ from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
 class GestioneVeicoli(QDialog):
-    def __init__(self, callback, update_lista_veicoli, lista_veicoli):
+    def __init__(self, callback, lista_veicoli):
         super(GestioneVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneVeicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
         self.callback = callback
-        self.update_lista_veicoli = update_lista_veicoli
         self.lista_veicoli = lista_veicoli
 
         self.list_view = QListView()
@@ -30,7 +29,7 @@ class GestioneVeicoli(QDialog):
 
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
-        veicolo_selezionato = self.cliente.lista_veicoli[selected]
+        veicolo_selezionato = self.lista_veicoli[selected]
         self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
         self.vista_veicolo.show()
 
@@ -39,11 +38,11 @@ class GestioneVeicoli(QDialog):
             QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui,
-                                                                self.update_lista_veicoli, self.lista_veicoli)
+        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.lista_veicoli)
         self.vista_inserisci_veicolo.show()
 
     def update_ui(self):
+        self.callback()
         self.listview_model = QStandardItemModel(self.list_view)
         for veicolo in self.lista_veicoli:
             if veicolo is not None:
