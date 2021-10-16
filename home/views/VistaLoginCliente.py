@@ -43,9 +43,7 @@ class LoginCliente(QDialog):
         self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list)
         self.vista_profilo_utente.show()
 
-    def update_list(self, cliente):
-        self.controller.elimina_cliente_by_id(cliente.id)
-        self.controller.aggiungi_cliente(cliente)
+    def update_list(self):
         self.controller.save_data()
 
     def back_function(self):

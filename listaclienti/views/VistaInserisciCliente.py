@@ -64,9 +64,9 @@ class VistaInserisciCliente(QDialog):
         email = self.email_field.text()
         telefono = self.telefono_field.text()
         lista_veicoli = []
-        if self.veicolo_comboBox.currentIndex() != 0:
+        if self.veicolo_comboBox.currentIndex() > 0:
             lista_veicoli.append(self.lista_veicoli_disponibili[self.veicolo_comboBox.currentIndex()-1])
-        if self.veicolo2_comboBox.currentIndex() != 0:
+        if self.veicolo2_comboBox.currentIndex() > 0:
             lista_veicoli.append(self.lista_veicoli_disponibili[self.veicolo2_comboBox.currentIndex()-1])
         username = self.username_field.text()
         password = self.password_field.text()

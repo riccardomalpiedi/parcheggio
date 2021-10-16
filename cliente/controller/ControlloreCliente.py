@@ -9,20 +9,38 @@ class ControlloreCliente():
     def get_nome_cliente(self):
         return self.model.nome
 
+    def set_nome_cliente(self, nome):
+        self.model.nome = nome
+
     def get_cognome_cliente(self):
         return self.model.cognome
+
+    def set_cognome_cliente(self, cognome):
+        self.model.cognome = cognome
 
     def get_cf_cliente(self):
         return self.model.cf
 
+    def set_cf_cliente(self, cf):
+        self.model.cf = cf
+
     def get_indirizzo_cliente(self):
         return self.model.indirizzo
+
+    def set_indirizzo_cliente(self, indirizzo):
+        self.model.indirizzo = indirizzo
 
     def get_email_cliente(self):
         return self.model.email
 
+    def set_email_cliente(self, email):
+        self.model.email = email
+
     def get_telefono_cliente(self):
         return self.model.telefono
+
+    def set_telefono_cliente(self, telefono):
+        self.model.telefono = telefono
 
     def aggiungi_veicolo(self, veicolo):
         self.model.aggiungi_veicolo(veicolo)

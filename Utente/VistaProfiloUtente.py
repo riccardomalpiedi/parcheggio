@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QDialog, QListView, QMessageBox
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
@@ -13,11 +13,8 @@ class VistaProfiloUtente(QDialog):
         super(VistaProfiloUtente, self).__init__()
         loadUi("Utente/VistaProfiloUtente.ui", self)
 
-        self.cliente = cliente
+        self.controller = ControlloreCliente(cliente)
         self.update_list = update_list
-        self.controller = ControlloreCliente(self.cliente)
-
-        self.list_view = QListView()
         self.update_ui()
 
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
@@ -31,7 +28,7 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.controller.get_lista_dei_veicoli())
+        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.controller.get_lista_dei_veicoli)
         self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
@@ -39,9 +36,8 @@ class VistaProfiloUtente(QDialog):
         self.gestisci_prenotazioni_function.show()
 
     def go_modifica_profilo_function(self):
-        self.modifica_profilo_function = ModificaProfilo(self.cliente)
+        self.modifica_profilo_function = ModificaProfilo(self.controller, self.update_ui)
         self.modifica_profilo_function.show()
-        self.close()
 
     def go_elimina_profilo_function(self):
         QMessageBox.critical(self, "Errore", "Funzione non ancora disponibile!",
@@ -63,7 +59,7 @@ class VistaProfiloUtente(QDialog):
                                        self.controller.get_veicolo_by_index(0).targa)
             self.tipo_veicolo_label.setText("<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(0).tipo)
             if len(self.controller.get_lista_dei_veicoli()) > 1:
-                self.veicolo2_label.setText(self.veicolo2_label.text() + " <font color='white'>Targa Veicolo2: " +
+                self.veicolo2_label.setText("<font color='white'>Targa Veicolo2: " +
                                             self.controller.get_veicolo_by_index(1).targa)
                 self.tipo_veicolo2_label.setText(
                     "<font color='white'>Tipo: " + self.controller.get_veicolo_by_index(1).tipo)
@@ -71,4 +67,4 @@ class VistaProfiloUtente(QDialog):
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
     def closeEvent(self, event):
-        self.update_list(self.cliente)
+        self.update_list()

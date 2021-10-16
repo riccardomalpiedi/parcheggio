@@ -5,13 +5,13 @@ from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
 class GestioneInserisciVeicoli(QDialog):
-    def __init__(self, controller, callback, lista_veicoli):
+    def __init__(self, controller, callback, get_lista_veicoli):
         super(GestioneInserisciVeicoli, self).__init__()
         loadUi("Utente/Profilo/GestioneVeicoli/GestioneNuovoVeicolo.ui", self)
 
         self.controller = controller
         self.callback = callback
-        self.lista_veicoli = lista_veicoli
+        self.get_lista_veicoli = get_lista_veicoli
 
         self.inserisci_button.clicked.connect(self.add_veicolo)
         self.registra_button.clicked.connect(self.show_new_veicolo)
@@ -39,7 +39,8 @@ class GestioneInserisciVeicoli(QDialog):
                         QMessageBox.critical(self, 'Errore', "Il veicolo selezionato è già associato a un cliente",
                                              QMessageBox.Ok, QMessageBox.Ok)
                     else:
-                        self.lista_veicoli.append(veicolo)
+                        self.get_lista_veicoli().append(veicolo)
+                        self.controller.get_veicolo_by_id(veicolo.id).associato = True
             if not trovato:
                 QMessageBox.critical(self, 'Errore', "Il veicolo selezionato non è registrato",
                                      QMessageBox.Ok, QMessageBox.Ok)

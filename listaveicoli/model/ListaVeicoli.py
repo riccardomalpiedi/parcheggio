@@ -14,7 +14,7 @@ class ListaVeicoli():
             with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
                 self.lista_clienti = pickle.load(f)
 
-    def aggiungi_veicoli(self, veicolo):
+    def aggiungi_veicolo(self, veicolo):
         self.lista_veicoli.append(veicolo)
 
     def rimuovi_veicolo_by_id(self, id):

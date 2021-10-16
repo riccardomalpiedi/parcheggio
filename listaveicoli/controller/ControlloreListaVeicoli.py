@@ -7,9 +7,8 @@ class ControlloreListaVeicoli():
         super(ControlloreListaVeicoli, self).__init__()
         self.model = ListaVeicoli()
 
-
     def aggiungi_veicolo(self, veicolo):
-        self.model.aggiungi_veicoli(veicolo)
+        self.model.aggiungi_veicolo(veicolo)
 
     def get_lista_dei_veicoli(self):
         return self.model.get_lista_veicoli()
