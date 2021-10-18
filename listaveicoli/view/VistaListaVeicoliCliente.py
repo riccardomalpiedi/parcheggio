@@ -2,19 +2,21 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QListView, QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
-from Utente.Profilo.GestioneVeicoli.GestioneInserisciVeicolo import GestioneInserisciVeicoli
+from listaveicoli.view.VistaAssociaVeicolo import VistaAssociaVeicolo
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 from veicolo.view.VistaVeicolo import VistaVeicolo
 
 
-class GestioneVeicoli(QDialog):
-    def __init__(self, callback, get_lista_veicoli):
-        super(GestioneVeicoli, self).__init__()
-        loadUi("Utente/Profilo/GestioneVeicoli/GestioneVeicoli.ui", self)
+class VistaListaVeicoliCliente(QDialog):
+    def __init__(self, callback, get_lista_veicoli, set_lista_veicoli):
+        super(VistaListaVeicoliCliente, self).__init__()
+        loadUi("listaveicoli/view/GestioneVeicoli.ui", self)
 
         self.controller = ControlloreListaVeicoli()
         self.callback = callback
+        # Questi metodi servono alla classe per visualizzare e aggiornare la lista dei veicoli associati al cliente
         self.get_lista_veicoli = get_lista_veicoli
+        self.set_lista_veicoli = set_lista_veicoli
 
         self.list_view = QListView()
         self.update_ui()
@@ -30,7 +32,7 @@ class GestioneVeicoli(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.get_lista_veicoli()[selected]
-        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.controller.elimina_veicolo_by_id, self.update_ui)
+        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
@@ -38,8 +40,17 @@ class GestioneVeicoli(QDialog):
             QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.vista_inserisci_veicolo = GestioneInserisciVeicoli(self.controller, self.update_ui, self.get_lista_veicoli)
+        self.vista_inserisci_veicolo = VistaAssociaVeicolo(self.controller, self.update_ui, self.get_lista_veicoli,
+                                                           self.set_lista_veicoli)
         self.vista_inserisci_veicolo.show()
+
+    def elimina_veicolo(self, id):
+        self.controller.elimina_veicolo_by_id(id)
+        lista_veicoli = self.get_lista_veicoli()
+        for veicolo in lista_veicoli:
+            if veicolo.id == id:
+                lista_veicoli.remove(veicolo)
+        self.set_lista_veicoli(lista_veicoli)
 
     def update_ui(self):
         self.listview_model = QStandardItemModel(self.list_view)

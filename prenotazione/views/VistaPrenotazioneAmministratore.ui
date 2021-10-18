@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>357</width>
-    <height>363</height>
+    <height>317</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,43 +51,7 @@ background-color: rgb(61, 61, 61);</string>
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="cliente_label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>150</y>
-     <width>331</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(61, 61, 61);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="data_fine_label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>250</y>
-     <width>331</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(61, 61, 61);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="data_inizio_label">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -105,11 +69,29 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="data_inizio_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QPushButton" name="ok_button">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>320</y>
+     <y>270</y>
      <width>331</width>
      <height>31</height>
     </rect>

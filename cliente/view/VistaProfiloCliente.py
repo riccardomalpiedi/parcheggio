@@ -3,15 +3,15 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
-from Utente.Profilo.GestioneVeicoli.GestioneVeicoli import GestioneVeicoli
-from Utente.Profilo.ModificaProfilo.ModificaProfilo import ModificaProfilo
+from listaveicoli.view.VistaListaVeicoliCliente import VistaListaVeicoliCliente
+from cliente.view.ModificaProfiloCliente import ModificaProfilo
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
 class VistaProfiloUtente(QDialog):
     def __init__(self, cliente, update_list):
         super(VistaProfiloUtente, self).__init__()
-        loadUi("Utente/VistaProfiloUtente.ui", self)
+        loadUi("cliente/view/VistaProfiloUtente.ui", self)
 
         self.controller = ControlloreCliente(cliente)
         self.update_list = update_list
@@ -28,7 +28,8 @@ class VistaProfiloUtente(QDialog):
         self.setFixedHeight(self.height())
 
     def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = GestioneVeicoli(self.update_ui, self.controller.get_lista_dei_veicoli)
+        self.gestione_veicoli_function = VistaListaVeicoliCliente(self.update_ui, self.controller.get_lista_dei_veicoli,
+                                                                  self.controller.set_lista_dei_veicoli)
         self.gestione_veicoli_function.show()
 
     def go_gestisci_prenotazioni_function(self):
@@ -52,6 +53,10 @@ class VistaProfiloUtente(QDialog):
         self.email_label.setText("<font color='white'>Email: " + self.controller.get_email_cliente())
         self.telefono_label.setText("<font color='white'>Telefono: " + self.controller.get_telefono_cliente())
 
+        self.veicolo_label.setText("")
+        self.tipo_veicolo_label.setText("")
+        self.veicolo2_label.setText("")
+        self.tipo_veicolo2_label.setText("")
         if self.controller.get_lista_dei_veicoli() is None or len(self.controller.get_lista_dei_veicoli()) == 0:
             self.veicolo_label.setText("<font color='white'>Nessun veicolo associato")
         else:

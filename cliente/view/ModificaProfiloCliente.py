@@ -5,7 +5,7 @@ from PyQt5.uic import loadUi
 class ModificaProfilo(QDialog):
     def __init__(self, controller, callback):
         super(ModificaProfilo, self).__init__()
-        loadUi("Utente/Profilo/ModificaProfilo/ModificaProfilo2.ui", self)
+        loadUi("cliente/view/ModificaProfilo2.ui", self)
 
         self.controller = controller
         self.callback = callback

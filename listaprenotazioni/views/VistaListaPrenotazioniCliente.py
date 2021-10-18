@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
 from listaprenotazioni.controller.ControlloreListaPrenotazioni import ControlloreListaPrenotazioni
-from listaprenotazioni.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
+from prenotazione.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
 from prenotazione.views.VistaPrenotazione import VistaPrenotazione
 
 

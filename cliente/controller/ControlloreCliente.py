@@ -42,11 +42,14 @@ class ControlloreCliente():
     def set_telefono_cliente(self, telefono):
         self.model.telefono = telefono
 
-    def aggiungi_veicolo(self, veicolo):
-        self.model.aggiungi_veicolo(veicolo)
-
     def get_lista_dei_veicoli(self):
         return self.model.get_lista_veicoli()
+
+    def set_lista_dei_veicoli(self, lista_veicoli):
+        self.model.lista_veicoli = lista_veicoli
+
+    def aggiungi_veicolo(self, veicolo):
+        self.model.aggiungi_veicolo(veicolo)
 
     def get_veicolo_by_index(self, index):
         return self.model.get_veicolo_by_index(index)

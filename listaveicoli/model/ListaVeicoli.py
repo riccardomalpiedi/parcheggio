@@ -10,9 +10,6 @@ class ListaVeicoli():
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli = pickle.load(f)
-        if os.path.isfile('listaclienti/data/lista_clienti_salvata.pickle'):
-            with open('listaclienti/data/lista_clienti_salvata.pickle', 'rb') as f:
-                self.lista_clienti = pickle.load(f)
 
     def aggiungi_veicolo(self, veicolo):
         self.lista_veicoli.append(veicolo)
@@ -21,8 +18,6 @@ class ListaVeicoli():
         for veicolo in self.lista_veicoli:
             if veicolo.id == id:
                 self.lista_veicoli.remove(veicolo)
-                for cliente in self.lista_clienti:
-                    cliente.rimuovi_veicolo_by_id(id)
                 return True
         return False
 
@@ -47,5 +42,3 @@ class ListaVeicoli():
     def save_data(self):
         with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
             pickle.dump(self.lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
-        with open('listaclienti/data/lista_clienti_salvata.pickle', 'wb') as handle:
-            pickle.dump(self.lista_clienti, handle, pickle.HIGHEST_PROTOCOL)

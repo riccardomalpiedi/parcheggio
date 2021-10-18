@@ -29,3 +29,12 @@ class ControlloreVeicolo():
 
     def get_associato(self):
         return self.model.associato
+
+    def add_prenotazione(self, prenotazione):
+        self.model.add_prenotazione(prenotazione)
+
+    def get_prenotazione(self):
+        return self.model.get_prenotazione
+
+    def elimina_prenotazione(self):
+        self.model.elimina_prenotazione

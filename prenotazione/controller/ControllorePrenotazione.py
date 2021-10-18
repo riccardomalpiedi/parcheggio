@@ -6,12 +6,6 @@ class ControllorePrenotazione():
     def get_id_prenotazione(self):
         return self.model.id
 
-    def get_cliente_prenotazione(self):
-        return self.model.cliente
-
-    def get_veicolo_prenotazione(self):
-        return self.model.cliente
-
     def get_posteggio_prenotazione(self):
         return self.model.posteggio
 

@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox, QDialog
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
-from Utente.VistaProfiloUtente import VistaProfiloUtente
+from cliente.view.VistaProfiloCliente import VistaProfiloUtente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 

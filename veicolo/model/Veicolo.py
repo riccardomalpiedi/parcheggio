@@ -7,6 +7,7 @@ class Veicolo():
         self.orario_ingresso = None
         self.orario_pagato = None
         self.associato = False
+        self.prenotazione = None
 
     def set_orario_pagato(self, orario_pagato):
         self.orario_pagato = orario_pagato
@@ -19,3 +20,16 @@ class Veicolo():
 
     def get_associato(self):
         return self.associato
+
+    def add_prenotazione(self, prenotazione):
+        self.prenotazione = prenotazione
+
+    def get_prenotazione(self):
+        if self.prenotazione.is_scaduta():
+            self.prenotazione = None
+            return None
+        else:
+            return self.prenotazione
+
+    def elimina_prenotazione(self):
+        self.prenotazione = None
