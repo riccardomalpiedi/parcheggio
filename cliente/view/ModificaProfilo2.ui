@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>686</width>
-    <height>656</height>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,9 @@ background-color: rgb(61, 61, 61);}</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
+     <y>20</y>
      <width>341</width>
-     <height>81</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -33,11 +33,11 @@ background-color: rgb(61, 61, 61);}</string>
     <string>Modifica Profilo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ok_button">
+  <widget class="QPushButton" name="save_button">
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>560</y>
+     <y>500</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -51,14 +51,14 @@ background-color: rgb(61, 61, 61);}</string>
 font-size:14pt;</string>
    </property>
    <property name="text">
-    <string>Ok</string>
+    <string>Salva</string>
    </property>
   </widget>
   <widget class="QPushButton" name="back_button">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>560</y>
+     <y>500</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -111,7 +111,7 @@ font-size:14pt;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>520</y>
+     <y>460</y>
      <width>661</width>
      <height>16</height>
     </rect>
@@ -142,10 +142,10 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>410</x>
      <y>20</y>
      <width>241</width>
-     <height>71</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -160,7 +160,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>40</y>
+     <y>60</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -173,11 +173,11 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>134</y>
+     <y>144</y>
      <width>291</width>
      <height>61</height>
     </rect>
@@ -204,11 +204,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>250</y>
+     <y>260</y>
      <width>291</width>
      <height>61</height>
     </rect>
@@ -235,11 +235,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>370</y>
+     <y>380</y>
      <width>291</width>
      <height>61</height>
     </rect>
@@ -266,11 +266,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>370</y>
+     <y>380</y>
      <width>271</width>
      <height>61</height>
     </rect>
@@ -297,11 +297,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>134</y>
+     <y>144</y>
      <width>271</width>
      <height>61</height>
     </rect>
@@ -328,11 +328,11 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>250</y>
+     <y>260</y>
      <width>271</width>
      <height>61</height>
     </rect>
@@ -358,6 +358,27 @@ font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="browse_button">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>100</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:20px; 
+ background-color: rgb(202, 202, 202);
+font-size:12pt;</string>
+   </property>
+   <property name="text">
+    <string>Browse</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
+from home.controller.ControlloreLogin import ControlloreLogin
 from home.views.VistaAmministratore import VistaAmministratore
 from home.views.VistaCassiere import VistaCassiere
 
@@ -10,6 +11,8 @@ class VistaLogin(QDialog):
     def __init__(self):
         super(VistaLogin, self).__init__()
         loadUi("login.ui", self)
+
+        self.controller = ControlloreLogin()
 
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
         self.login_button.clicked.connect(self.login_function)
@@ -23,11 +26,13 @@ class VistaLogin(QDialog):
         user = self.email_field.text()
         password = self.password_field.text()
 
-        if user == "aaaa" and password == "bbbb":
+        id = self.controller.login_function(user, password)
+
+        if id == "Amministratore":
             self.go_vista_amministratore()
             self.close()
         else:
-            if user == "cccc" and password == "dddd":
+            if id == "Cassiere":
                 self.go_vista_cassiere()
                 self.close()
             else:

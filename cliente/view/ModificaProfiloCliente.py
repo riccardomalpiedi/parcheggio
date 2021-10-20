@@ -1,4 +1,8 @@
-from PyQt5.QtWidgets import QDialog, QMessageBox
+import os
+import random
+import shutil
+
+from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog
 from PyQt5.uic import loadUi
 
 
@@ -18,7 +22,8 @@ class ModificaProfilo(QDialog):
         self.telefono_field.setText(self.controller.get_telefono_cliente())
         self.image_label.setText(self.controller.get_image_cliente())
 
-        self.ok_button.clicked.connect(self.go_modifica_cliente)
+        self.save_button.clicked.connect(self.go_modifica_cliente)
+        self.browse_button.clicked.connect(self.go_cambia_immagine)
         self.back_button.clicked.connect(self.go_back)
 
         self.setFixedWidth(self.width())
@@ -43,8 +48,26 @@ class ModificaProfilo(QDialog):
             self.controller.set_indirizzo_cliente(indirizzo)
             self.controller.set_email_cliente(email)
             self.controller.set_telefono_cliente(telefono)
+            self.controller.set_image_cliente(image)
             self.callback()
             self.close()
+
+    def go_cambia_immagine(self):
+        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
+        var = fname[0]
+        print(var)
+        rand = random.randint(851, 1000)
+        var2 = "Utente/ImmaginiProfilo/" + str(rand) + ".png"
+        print(var2)
+        if os.path.isfile(var2):
+            rand1 = random.randint(1001, 1500)
+            var2 = "Utente/ImmaginiProfilo/" + str(rand1) + ".png"
+            shutil.copyfile(var, var2)
+            print(var2)
+        else:
+            shutil.copyfile(var, var2)
+            print(var2)
+        self.image_label.setText(var2)
 
     def go_back(self):
         self.close()

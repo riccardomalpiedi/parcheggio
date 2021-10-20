@@ -1,3 +1,4 @@
+import os
 import random
 import shutil
 
@@ -98,10 +99,17 @@ class VistaInserisciCliente(QDialog):
         fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
         var = fname[0]
         print(var)
-        rand = random.randint(1, 45697)
+        rand = random.randint(1, 450)
         var2 = "Utente/ImmaginiProfilo/" + str(rand) + ".png"
-        shutil.copyfile(var, var2)
         print(var2)
+        if os.path.isfile(var2):
+            rand1 = random.randint(451, 850)
+            var2 = "Utente/ImmaginiProfilo/" + str(rand1) + ".png"
+            shutil.copyfile(var, var2)
+            print(var2)
+        else:
+            shutil.copyfile(var, var2)
+            print(var2)
         self.immagine_profilo_field.setText(var2)
 
     def closeEvent(self, event):
