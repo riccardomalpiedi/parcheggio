@@ -24,6 +24,11 @@ class Login:
                 return credenziali.id
         return None
 
+    def set_password(self, id, password):
+        for credenziali in self.lista_credenziali:
+            if id == credenziali.id:
+                credenziali.password = password
+
     def save_data(self):
         with open('home/data/lista_credenziali_salvate.pickle', 'wb') as handle:
             pickle.dump(self.lista_credenziali, handle, pickle.HIGHEST_PROTOCOL)
@@ -36,4 +41,3 @@ class Credenziali:
         self.id = id
         self.username = username
         self.password = password
-

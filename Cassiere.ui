@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>370</height>
+    <width>497</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
   <widget class="QPushButton" name="lista_veicoli_button">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>260</y>
+     <x>100</x>
+     <y>150</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -43,17 +43,36 @@
   <widget class="QLabel" name="nome_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>160</x>
      <y>30</y>
-     <width>481</width>
+     <width>231</width>
      <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color:rgb(236, 236, 236); font-size:28pt;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>Bentronato</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="modifica_password_button">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>250</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(3, 3, 3); background-color: rgb(202, 202, 202);</string>
+   </property>
+   <property name="text">
+    <string>Modifica Password</string>
    </property>
   </widget>
  </widget>

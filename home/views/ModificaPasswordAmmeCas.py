@@ -2,13 +2,16 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
+from home.controller.ControlloreLogin import ControlloreLogin
 
-class ModificaPasswordCliente(QDialog):
-    def __init__(self, controller):
-        super(ModificaPasswordCliente, self).__init__()
+
+class ModificaPasswordAmmeCas(QDialog):
+    def __init__(self, id):
+        super(ModificaPasswordAmmeCas, self).__init__()
         loadUi("cliente/view/ModificaPassword.ui", self)
 
-        self.controller = controller
+        self.controller = ControlloreLogin()
+        self.id = id
 
         self.password_lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.confirm_password_lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -28,8 +31,9 @@ class ModificaPasswordCliente(QDialog):
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
             if nuova_password == conferma_password:
-                self.controller.set_password_cliente(nuova_password)
+                self.controller.set_password(self.id, nuova_password)
                 print(nuova_password)
+                self.controller.save_data()
                 self.close()
             else:
                 QMessageBox.critical(self, 'Errore', "Le due password non coincidono, ricontrolla!",

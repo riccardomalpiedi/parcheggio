@@ -73,7 +73,9 @@ class ControlloreCliente():
         self.model.image = image
 
     def get_abbonamento_cliente(self):
-        return self.model.abbonamento
+        # return self.model.abbonamento
+        pass
 
     def aggiungi_nuovo_abbonamento_cliente(self, abbonamento):
-        self.model.add_abbonamento(abbonamento)
+        # self.model.add_abbonamento(abbonamento)
+        pass
