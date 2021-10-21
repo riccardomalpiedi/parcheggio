@@ -2,7 +2,6 @@ from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
-# from Utente.Profilo.GestionePrenotazioni.GestionePrenotazioni import GestionePrenotazioni
 from cliente.view.ModificaPasswordCliente import ModificaPasswordCliente
 from listaveicoli.view.VistaListaVeicoliCliente import VistaListaVeicoliCliente
 from cliente.view.ModificaProfiloCliente import ModificaProfilo
@@ -10,16 +9,16 @@ from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
 class VistaProfiloUtente(QDialog):
-    def __init__(self, cliente, update_list):
+    def __init__(self, cliente, update_list, elimina_cliente):
         super(VistaProfiloUtente, self).__init__()
         loadUi("cliente/view/VistaProfiloUtente.ui", self)
 
         self.controller = ControlloreCliente(cliente)
         self.update_list = update_list
         self.update_ui()
+        self.elimina_cliente = elimina_cliente
 
         self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
-        # self.gestione_prenotazioni_button.clicked.connect(self.go_gestisci_prenotazioni_function)
         self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
         self.modifica_password_button.clicked.connect(self.go_modifica_password)
         self.elimina_profilo_button.clicked.connect(self.go_elimina_profilo_function)
@@ -34,11 +33,6 @@ class VistaProfiloUtente(QDialog):
                                                                   self.controller.set_lista_dei_veicoli)
         self.gestione_veicoli_function.show()
 
-    def go_gestisci_prenotazioni_function(self):
-        # self.gestisci_prenotazioni_function = GestionePrenotazioni(self.cliente)
-        # self.gestisci_prenotazioni_function.show()
-        pass
-
     def go_modifica_profilo_function(self):
         self.modifica_profilo_function = ModificaProfilo(self.controller, self.update_ui)
         self.modifica_profilo_function.show()
@@ -48,8 +42,11 @@ class VistaProfiloUtente(QDialog):
         self.modifica_password.show()
 
     def go_elimina_profilo_function(self):
-        QMessageBox.critical(self, "Errore", "Funzione non ancora disponibile!",
-                             QMessageBox.Ok, QMessageBox.Ok)
+        reply = QMessageBox.question(self, "Attenzione", "Sei sicuro? Tutti i tuoi dai andranno persi.", QMessageBox.Ok,
+                                     QMessageBox.Cancel)
+        if reply == QMessageBox.Ok:
+            self.elimina_cliente(self.controller.get_id_cliente())
+            self.close()
 
     def update_ui(self):
         self.nome_label.setText(

@@ -11,6 +11,7 @@ class LoginCliente(QDialog):
     def __init__(self):
         super(LoginCliente, self).__init__()
         loadUi("home/LoginCliente2.ui", self)
+
         self.controller = ControlloreListaClienti()
 
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -40,7 +41,7 @@ class LoginCliente(QDialog):
         QMessageBox.critical(self, 'Errore', "Credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
 
     def go_vista_profilo_utente(self, cliente):
-        self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list)
+        self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list, self.controller.elimina_cliente_by_id)
         self.vista_profilo_utente.show()
         self.close()
 

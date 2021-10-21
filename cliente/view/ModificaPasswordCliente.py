@@ -23,17 +23,23 @@ class ModificaPasswordCliente(QDialog):
         nuova_password = self.password_lineEdit.text()
         conferma_password = self.confirm_password_lineEdit.text()
 
+        old_password = self.controller.get_password_cliente()
+
         if nuova_password == "" or conferma_password == "":
             QMessageBox.critical(self, 'Errore', "Per favore, inserisci tutte le informazioni richieste",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            if nuova_password == conferma_password:
-                self.controller.set_password_cliente(nuova_password)
-                print(nuova_password)
-                self.close()
-            else:
-                QMessageBox.critical(self, 'Errore', "Le due password non coincidono, ricontrolla!",
+            if nuova_password == old_password:
+                QMessageBox.critical(self, 'Errore', "Passwrod uguale a quella gia inserita in passato!",
                                      QMessageBox.Ok, QMessageBox.Ok)
+            else:
+                if nuova_password == conferma_password:
+                    self.controller.set_password_cliente(nuova_password)
+                    print(nuova_password)
+                    self.close()
+                else:
+                    QMessageBox.critical(self, 'Errore', "Le due password non coincidono, ricontrolla!",
+                                        QMessageBox.Ok, QMessageBox.Ok)
 
     def annulla_function(self):
         self.close()

@@ -71,11 +71,3 @@ class ControlloreCliente():
 
     def set_image_cliente(self, image):
         self.model.image = image
-
-    def get_abbonamento_cliente(self):
-        # return self.model.abbonamento
-        pass
-
-    def aggiungi_nuovo_abbonamento_cliente(self, abbonamento):
-        # self.model.add_abbonamento(abbonamento)
-        pass
