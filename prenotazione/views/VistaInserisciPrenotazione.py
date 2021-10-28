@@ -65,6 +65,7 @@ class VistaInserisciPrenotazione(QDialog):
                 posteggio.disponibile = False
                 with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as f:
                     pickle.dump(self.lista_posteggi_salvata, f, pickle.HIGHEST_PROTOCOL)
+                self.close()
 
     def is_number(self, num):
         try:

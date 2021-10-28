@@ -35,7 +35,7 @@ class VistaVeicolo(QDialog):
                                  QMessageBox.Ok, QMessageBox.Ok)
 
     def nuova_prenotazione_click(self):
-        if self.controller.get_prenotazione() is None:
+        if self.controller.get_prenotazione() is not None:
             QMessageBox.critical(self, 'Errore', "Il veicolo selezionato ha già una prenotazione",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:

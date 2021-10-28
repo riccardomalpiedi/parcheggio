@@ -34,7 +34,7 @@ class ControlloreVeicolo():
         self.model.add_prenotazione(prenotazione)
 
     def get_prenotazione(self):
-        return self.model.get_prenotazione
+        return self.model.get_prenotazione()
 
     def elimina_prenotazione(self):
         self.model.elimina_prenotazione()
