@@ -59,7 +59,10 @@ class VistaInserisciPrenotazione(QDialog):
                 selected_days = timedelta(days=int(self.giorni_lineEdit.text()))
                 data_fine = (datetime.combine(selected_date, time()) + selected_days)
                 posteggio = self.lista_posteggi_disponibili[self.posteggio_comboBox.currentIndex()]
-                print(posteggio.nome)
+                if posteggio.tipo != self.controller.get_tipo_veicolo() or not posteggio.disponibile:
+                    QMessageBox.critical(self, 'Errore', "Il posteggio selezionato non è disponibile",
+                                         QMessageBox.Ok, QMessageBox.Ok)
+                    return 
                 self.controller.add_prenotazione(Prenotazione(self.controller.get_id_veicolo() + "-" + posteggio.id,
                                                               posteggio, data_inizio, data_fine))
                 posteggio.disponibile = False

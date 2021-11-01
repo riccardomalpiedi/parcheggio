@@ -2,62 +2,72 @@
   {
     "id" : "Posto1",
     "nome": "Posto 1",
-    "tipo": "Posto Auto",
-    "prezzo": "2"
+    "tipo": "Auto",
+    "tariffa_oraria": "2",
+    "tariffa_giornaliera_prenotazioni": "10"
   },
     {
     "id" : "Posto2",
     "nome": "Posto 2",
-    "tipo": "Posto Auto",
-    "prezzo": "2"
+    "tipo": "Auto",
+    "tariffa_oraria": "2",
+    "tariffa_giornaliera_prenotazioni": "10"
   },
     {
     "id" : "Posto3",
     "nome": "Posto 3",
-    "tipo": "Posto Auto",
-    "prezzo": "2"
+    "tipo": "Auto",
+    "tariffa_oraria": "2",
+    "tariffa_giornaliera_prenotazioni": "10"
   },
   {
     "id" : "Posto4",
     "nome": "Posto 4",
-    "tipo": "Posto Auto",
-    "prezzo": "2"
+    "tipo": "Auto",
+    "tariffa_oraria": "2",
+    "tariffa_giornaliera_prenotazioni": "10"
   },
   {
     "id" : "Posto5",
     "nome": "Posto 5",
-    "tipo": "Posto Auto",
-    "prezzo": "2"
+    "tipo": "Auto",
+    "tariffa_oraria": "2",
+    "tariffa_giornaliera_prenotazioni": "10"
   },
   {
     "id" : "Posto6",
     "nome": "Posto 6",
-    "tipo": "Posto Camion",
-    "prezzo": "4"
+    "tipo": "Camion",
+    "tariffa_oraria": "4",
+    "tariffa_giornaliera_prenotazioni": "15"
   },
   {
     "id" : "Posto7",
     "nome": "Posto 7",
-    "tipo": "Posto Camion",
-    "prezzo": "4"
+    "tipo": "Camion",
+    "tariffa_oraria": "4",
+    "tariffa_giornaliera_prenotazioni": "15"
   },
   {
     "id" : "Posto8",
     "nome": "Posto 8",
-    "tipo": "Posto Moto",
-    "prezzo": "1"
+    "tipo": "Moto",
+    "tariffa_oraria": "1",
+    "tariffa_giornaliera_prenotazioni": "5"
   },
   {
     "id" : "Posto9",
     "nome": "Posto 9",
-    "tipo": "Posto Moto",
-    "prezzo": "1"
+    "tipo": "Moto",
+    "tariffa_oraria": "1",
+    "tariffa_giornaliera_prenotazioni": "5"
   },
     {
     "id" : "Posto10",
     "nome": "Posto 10",
-    "tipo": "Posto Moto",
-    "prezzo": "1"
+    "tipo": "Moto",
+    "tariffa_oraria": "1",
+    "tariffa_giornaliera_prenotazioni": "5"
   }
 
 ]

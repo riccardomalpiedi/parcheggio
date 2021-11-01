@@ -2,18 +2,16 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QDialog, QListView
 from PyQt5.uic import loadUi
 
-from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
-from veicolo.view.VistaVeicoloDipendente import VistaVeicoloDipendente
+from veicolo.view.VistaVeicoloCassiere import VistaVeicoloCassiere
 
 
-class VistaListaVeicoliDip(QDialog):
+class VistaListaVeicoliCassiere(QDialog):
     def __init__(self):
-        super(VistaListaVeicoliDip, self).__init__()
-        loadUi("VistaDelCassiere/ListaVeicoliDip.ui", self)
+        super(VistaListaVeicoliCassiere, self).__init__()
+        loadUi("listaveicoli/view/ListaVeicoliCassiere.ui", self)
 
         self.controller = ControlloreListaVeicoli()
-        self.controller2 = ControlloreListaClienti()
 
         self.list_view = QListView()
         self.update_ui()
@@ -29,7 +27,7 @@ class VistaListaVeicoliDip(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.controller.get_veicolo_by_index(selected)
-        self.vista_veicolo = VistaVeicoloDipendente(veicolo_selezionato)
+        self.vista_veicolo = VistaVeicoloCassiere(veicolo_selezionato)
         self.vista_veicolo.show()
 
     def go_back(self):

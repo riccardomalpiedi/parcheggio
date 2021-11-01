@@ -18,7 +18,8 @@ class ListaPosteggi():
                 lista_posteggi_iniziali = json.load(f)
             for posteggio_iniziale in lista_posteggi_iniziali:
                 self.aggiungi_posteggio(Posteggio(posteggio_iniziale["id"], posteggio_iniziale["nome"],
-                                                posteggio_iniziale["tipo"], posteggio_iniziale["prezzo"]))
+                                                  posteggio_iniziale["tipo"], posteggio_iniziale["tariffa_oraria"],
+                                                  posteggio_iniziale["tariffa_giornaliera_prenotazioni"]))
 
     def aggiungi_posteggio(self, posteggio):
         self.lista_posteggi.append(posteggio)

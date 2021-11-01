@@ -18,6 +18,9 @@ class ControlloreVeicolo():
     def get_orario_ingresso(self):
         return self.model.orario_ingresso
 
+    def get_entrato_con_prenotazione(self):
+        return self.model.entrato_con_prenotazione
+
     def set_orario_pagato(self, orario_pagato):
         self.model.set_orario_pagato(orario_pagato)
 
@@ -38,3 +41,6 @@ class ControlloreVeicolo():
 
     def elimina_prenotazione(self):
         self.model.elimina_prenotazione()
+
+    def get_posteggio_occupato(self):
+        return self.model.posteggio_occupato

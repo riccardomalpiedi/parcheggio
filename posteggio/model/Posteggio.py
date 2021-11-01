@@ -1,11 +1,12 @@
 class Posteggio():
 
-    def __init__(self, id, nome, tipo, prezzo):
+    def __init__(self, id, nome, tipo, tariffa_oraria, tariffa_giornaliera_prenotazioni):
         super(Posteggio, self).__init__()
         self.id = id
         self.nome = nome
         self.tipo = tipo
-        self.prezzo = prezzo
+        self.tariffa_oraria = tariffa_oraria
+        self.tariffa_giornaliera_prenotazioni = tariffa_giornaliera_prenotazioni
         self.disponibile = True
 
     def is_disponibile(self):

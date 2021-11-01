@@ -1,3 +1,5 @@
+import os
+import pickle
 from datetime import datetime, timedelta
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
@@ -31,18 +33,36 @@ class VistaUscita(QWidget):
     def inserisci_uscita_veicolo(self):
         targa = self.comboBox.currentText()
         veicolo = self.controller.get_veicolo_by_targa(targa)
+        if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
+            with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
+                lista_posteggi_salvata = pickle.load(f)
         if veicolo.orario_ingresso is None:
             QMessageBox.critical(self, 'Errore', "Il veicolo non si trova nel parcheggio",
                                  QMessageBox.Ok, QMessageBox.Ok)
-        elif veicolo.orario_pagato is None or datetime.now() - veicolo.orario_pagato > timedelta(minutes=15):
-            QMessageBox.critical(self, 'Errore', "Prima di uscire deve effettuare il pagamento alla cassa",
-                                 QMessageBox.Ok, QMessageBox.Ok)
         else:
-            veicolo.set_orario_ingresso(None)
-            veicolo.set_orario_pagato(None)
-            self.controller.save_data()
-            QMessageBox.information(self, "Operazione riuscita", "Può uscire dal parcheggio")
-            self.close()
+            if veicolo.entrato_con_prenotazione and veicolo.get_prenotazione().pagata and \
+                                     not veicolo.get_prenotazione().is_scaduta():
+                veicolo.entrato_con_prenotazione = False
+                self.uscita_function(veicolo, lista_posteggi_salvata)
+                return
+            if veicolo.orario_pagato is None or datetime.now() - veicolo.orario_pagato > timedelta(minutes=15):
+                QMessageBox.critical(self, 'Errore', "Prima di uscire deve effettuare il pagamento alla cassa",
+                                     QMessageBox.Ok, QMessageBox.Ok)
+            else:
+                for posteggio in lista_posteggi_salvata:
+                    if veicolo.posteggio_occupato.id == posteggio.id:
+                        posteggio.disponibile = True
+                        veicolo.posteggio_occupato = None
+                        self.uscita_function(veicolo, lista_posteggi_salvata)
+                        return
+
+    def uscita_function(self, veicolo, lista_posteggi_salvata):
+        veicolo.set_orario_ingresso(None)
+        veicolo.set_orario_pagato(None)
+        with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as f:
+            pickle.dump(lista_posteggi_salvata, f, pickle.HIGHEST_PROTOCOL)
+        QMessageBox.information(self, "Operazione riuscita", "Può uscire dal parcheggio")
+        self.close()
 
     def closeEvent(self, event):
         print("ON CLOSE")

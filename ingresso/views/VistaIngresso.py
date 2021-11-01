@@ -1,3 +1,5 @@
+import os
+import pickle
 from datetime import datetime
 
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
@@ -39,14 +41,40 @@ class VistaIngresso(QWidget):
     def inserisci_ingresso_veicolo(self):
         targa = self.comboBox.currentText()
         veicolo = self.controller.get_veicolo_by_targa(targa)
+        if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
+            with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
+                lista_posteggi_salvata = pickle.load(f)
         if veicolo.orario_ingresso is not None:
             QMessageBox.critical(self, 'Errore', "Il veicolo si trova già nel parcheggio",
                                  QMessageBox.Ok, QMessageBox.Ok)
         else:
-            veicolo.set_orario_ingresso(datetime.now())
-            self.controller.save_data()
-            QMessageBox.information(self, "Operazione riuscita", "Benvenuto nel nostro parcheggio")
-            self.close()
+            if veicolo.prenotazione is not None:
+                veicolo.check_prenotazione_scaduta()
+            if veicolo.prenotazione is not None and veicolo.prenotazione.data_inizio < datetime.now():
+                reply = QMessageBox.question(self, "Attenzione", "Il veicolo ha una prenotazione per il " +
+                                             veicolo.prenotazione.posteggio.nome +
+                                             ": confermare l'ingresso?", QMessageBox.Ok, QMessageBox.Cancel)
+                if reply == QMessageBox.Ok:
+                    veicolo.entrato_con_prenotazione = True
+                    veicolo.posteggio_occupato = veicolo.prenotazione.posteggio
+                    self.ingresso_function(veicolo, lista_posteggi_salvata)
+            # Ingresso di un veicolo senza prenotazione
+            else:
+                for posteggio in lista_posteggi_salvata:
+                    if veicolo.tipo == posteggio.tipo and posteggio.is_disponibile():
+                        posteggio.disponibile = False
+                        veicolo.posteggio_occupato = posteggio
+                        self.ingresso_function(veicolo, lista_posteggi_salvata)
+                        return
+                QMessageBox.critical(self, 'Errore', "Ci dispiace, non ci sono posti disponibili",
+                                     QMessageBox.Ok, QMessageBox.Ok)
+
+    def ingresso_function(self, veicolo, lista_posteggi_salvata):
+        veicolo.set_orario_ingresso(datetime.now())
+        with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as f:
+            pickle.dump(lista_posteggi_salvata, f, pickle.HIGHEST_PROTOCOL)
+        QMessageBox.information(self, "Operazione riuscita", "Benvenuto nel nostro parcheggio")
+        self.close()
 
     def closeEvent(self, event):
         print("ON CLOSE")
