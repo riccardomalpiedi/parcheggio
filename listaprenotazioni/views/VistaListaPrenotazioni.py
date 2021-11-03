@@ -25,6 +25,8 @@ class VistaListaPrenotazioni(QDialog):
         self.setWindowIcon(QIcon("icone/booking2.png"))
 
     def show_selected_info(self):
+        if self.list_view.selectedIndexes() is None or not self.list_view.selectedIndexes():
+            return
         selected = self.list_view.selectedIndexes()[0].row()
         prenotazione_selezionato = self.controller.get_prenotazione_by_index(selected)
         self.vista_prenotazione = VistaPrenotazione(prenotazione_selezionato,

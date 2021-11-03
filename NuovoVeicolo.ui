@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>238</width>
+    <width>245</width>
     <height>216</height>
    </rect>
   </property>
@@ -110,14 +110,17 @@ color: rgb(0, 0, 0);</string>
      <x>10</x>
      <y>130</y>
      <width>221</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
-   <property name="editable">
-    <bool>true</bool>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
-   <property name="frame">
-    <bool>false</bool>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
    </property>
   </widget>
  </widget>

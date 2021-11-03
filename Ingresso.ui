@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(61, 61, 61);</string>
+   <string notr="true">QWidget#Ingresso{background-color: rgb(61, 61, 61);}</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -64,7 +64,8 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">color: white;
+background-color: rgb(61, 61, 61);</string>
       </property>
       <property name="text">
        <string>Clicca qui!</string>
@@ -120,7 +121,8 @@ color: rgb(0, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">color: white;
+background-color: rgb(61, 61, 61);</string>
       </property>
       <property name="text">
        <string>Entra</string>

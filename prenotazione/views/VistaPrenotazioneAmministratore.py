@@ -13,8 +13,10 @@ class VistaPrenotazioneAmministratore(QDialog):
         self.controller = ControllorePrenotazione(prenotazione)
 
         self.posto_label.setText("<font color='white'>" + self.controller.get_posteggio_prenotazione().nome)
-        self.data_inizio_label.setText("<font color='white'>Inizio: " + self.controller.get_data_inizio_prenotazione())
-        self.data_fine_label.setText("<font color='white'>Fine: " + self.controller.get_data_fine_prenotazione())
+        self.data_inizio_label.setText("<font color='white'>Inizio: " + self.controller.get_data_inizio_prenotazione().
+                                       strftime("%d:%m:%Y"))
+        self.data_fine_label.setText("<font color='white'>Fine: " + self.controller.get_data_fine_prenotazione().
+                                     strftime("%d:%m:%Y"))
 
         self.ok_button.clicked.connect(self.ok)
 

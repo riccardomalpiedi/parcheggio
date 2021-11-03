@@ -36,6 +36,8 @@ class VistaListaClienti(QDialog):
         self.list_view.setModel(self.listview_model)
 
     def show_selected_info(self):
+        if self.list_view.selectedIndexes() is None or not self.list_view.selectedIndexes():
+            return
         selected = self.list_view.selectedIndexes()[0].row()
         cliente_selezionato = self.controller.get_cliente_by_index(selected)
         self.vista_cliente = VistaCliente(cliente_selezionato)

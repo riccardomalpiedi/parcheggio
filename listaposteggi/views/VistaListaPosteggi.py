@@ -39,6 +39,8 @@ class VistaListaPosteggi(QDialog):
         event.accept()
 
     def show_selected_info(self):
+        if self.list_view.selectedIndexes() is None or not self.list_view.selectedIndexes():
+            return
         selected = self.list_view.selectedIndexes()[0].row()
         posteggio_selezionato = self.controller.get_posteggio_by_index(selected)
         self.vista_posteggio = VistaPosteggio(posteggio_selezionato)
