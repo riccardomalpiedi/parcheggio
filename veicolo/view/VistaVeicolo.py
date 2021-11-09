@@ -7,13 +7,15 @@ from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 
 
 class VistaVeicolo(QDialog):
-    def __init__(self, veicolo, elimina_veicolo, elimina_callback, parent=None):
+    def __init__(self, veicolo, elimina_veicolo, prenotazione_callback, callback, parent=None):
         super(VistaVeicolo, self).__init__(parent)
         loadUi("veicolo/view/vistaveicolo.ui", self)
 
         self.controller = ControlloreVeicolo(veicolo)
         self.elimina_veicolo = elimina_veicolo
-        self.elimina_callback = elimina_callback
+        self.prenotazione_callback = prenotazione_callback
+        self.callback = callback
+        self.controller.check_prenotazione_scaduta()
 
         self.targa_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_targa_veicolo())
         self.tipo_label.setText("<font color='white'>Tipo: " + self.controller.get_tipo_veicolo())
@@ -44,5 +46,9 @@ class VistaVeicolo(QDialog):
 
     def elimina_veicolo_click(self):
         self.elimina_veicolo(self.controller.get_id_veicolo())
-        self.elimina_callback()
+        self.callback()
         self.close()
+
+    def closeEvent(self, event):
+        self.prenotazione_callback(self.controller.get_id_veicolo(), self.controller.get_prenotazione())
+        print('ON CLOSE')

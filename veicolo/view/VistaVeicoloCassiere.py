@@ -13,6 +13,7 @@ class VistaVeicoloCassiere(QDialog):
         loadUi("vistaveicoloDipendente.ui", self)
 
         self.controller = ControlloreVeicolo(veicolo)
+        self.controller.check_prenotazione_scaduta()
 
         self.targa_label.setText("<font color='white'>Targa Veicolo: " + self.controller.get_targa_veicolo())
         self.tipo_label.setText("<font color='white'>Tipo: " + self.controller.get_tipo_veicolo())

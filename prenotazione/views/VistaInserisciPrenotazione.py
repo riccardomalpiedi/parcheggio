@@ -21,6 +21,12 @@ class VistaInserisciPrenotazione(QDialog):
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:
                 self.lista_posteggi_salvata = pickle.load(f)
             self.lista_posteggi_disponibili = [s for s in self.lista_posteggi_salvata if s.is_disponibile()]
+            self.lista_posteggi_disponibili = [s for s in self.lista_posteggi_disponibili
+                                               if s.tipo == controller.get_tipo_veicolo()]
+            if not self.lista_posteggi_disponibili:
+                QMessageBox.critical(self, 'Errore', "Siamo spiacenti, non ci sono posti disponibili per il veicolo "
+                                                     "selezionato", QMessageBox.Ok, QMessageBox.Ok)
+                return
             for posteggio in self.lista_posteggi_disponibili:
                 item = QStandardItem()
                 item.setText(posteggio.nome)
@@ -43,7 +49,7 @@ class VistaInserisciPrenotazione(QDialog):
             self.label.setText(date_in_string)
             self.label.setFont(font)
         else:
-            self.label.setText("<font color='white'>" + "no" + str(selected_date.toPyDate()))
+            self.label.setText("<font color='white'>" + "(data non disponibile)" + str(selected_date.toPyDate()))
             self.label.setFont(font)
 
     def add_prenotazione_click(self):
@@ -62,7 +68,7 @@ class VistaInserisciPrenotazione(QDialog):
                 if posteggio.tipo != self.controller.get_tipo_veicolo() or not posteggio.disponibile:
                     QMessageBox.critical(self, 'Errore', "Il posteggio selezionato non è disponibile",
                                          QMessageBox.Ok, QMessageBox.Ok)
-                    return 
+                    return
                 self.controller.add_prenotazione(Prenotazione(self.controller.get_id_veicolo() + "-" + posteggio.id,
                                                               posteggio, data_inizio, data_fine))
                 posteggio.disponibile = False

@@ -32,7 +32,8 @@ class VistaListaVeicoliCliente(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.get_lista_veicoli()[selected]
-        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_ui)
+        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_prenotazione,
+                                          self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):
@@ -65,6 +66,9 @@ class VistaListaVeicoliCliente(QDialog):
                 self.listview_model.appendRow(item)
         self.list_view.setModel(self.listview_model)
         self.callback()
+
+    def update_prenotazione(self, id, prenotazione):
+        self.controller.get_veicolo_by_id(id).prenotazione = prenotazione
 
     def closeEvent(self, event):
         self.controller.save_data()

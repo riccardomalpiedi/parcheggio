@@ -27,9 +27,8 @@ class Veicolo():
         self.prenotazione = prenotazione
 
     def check_prenotazione_scaduta(self):
-        if self.prenotazione.is_scaduta():
+        if self.prenotazione is not None and self.prenotazione.is_scaduta() and not self.entrato_con_prenotazione:
             self.prenotazione = None
-            return True
 
     def get_prenotazione(self):
         return self.prenotazione

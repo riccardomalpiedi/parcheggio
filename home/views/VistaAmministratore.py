@@ -6,7 +6,6 @@ from home.views.ModificaPasswordAmmeCas import ModificaPasswordAmmeCas
 from listaclienti.views.VistaListaClienti import VistaListaClienti
 from listadipendenti.views.VistaListaDipendenti import VistaListaDipendenti
 from listaposteggi.views.VistaListaPosteggi import VistaListaPosteggi
-# from listaprenotazioni.views.VistaListaPrenotazioni import VistaListaPrenotazioni
 from listaveicoli.view.VistaListaVeicoli import VistaListaVeicoli
 
 
@@ -14,8 +13,6 @@ class VistaAmministratore(QDialog):
     def __init__(self):
         super(VistaAmministratore, self).__init__()
         loadUi("Amministratore2.ui", self)
-
-        # self.id = "Amministratore"
 
         self.setWindowTitle("Amministratore")
         self.setFixedHeight(self.height())
@@ -26,7 +23,6 @@ class VistaAmministratore(QDialog):
         self.vista_lista_posteggi_button.clicked.connect(self.go_lista_vista_posteggi)
         self.vista_lista_veicoli_button.clicked.connect(self.go_lista_vista_veicoli)
         self.vista_lista_dipendenti_button.clicked.connect(self.go_lista_vista_dipendenti)
-        # self.vista_lista_prenotazioni_button.clicked.connect(self.go_lista_vista_prenotazioni)
         self.modifica_password_button.clicked.connect(self.go_modifica_password)
         self.back_button.clicked.connect(self.go_back_button)
 
@@ -45,11 +41,6 @@ class VistaAmministratore(QDialog):
     def go_lista_vista_dipendenti(self):
         self.lista_vista_dipendenti = VistaListaDipendenti()
         self.lista_vista_dipendenti.show()
-
-    def go_lista_vista_prenotazioni(self):
-        # self.lista_vista_prenotazioni = VistaListaPrenotazioni()
-        # self.lista_vista_prenotazioni.show()
-        pass
 
     def go_modifica_password(self):
         self.modifica_password = ModificaPasswordAmmeCas("Amministratore")

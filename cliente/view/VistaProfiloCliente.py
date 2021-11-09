@@ -1,3 +1,6 @@
+import os
+import pickle
+
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
@@ -42,10 +45,25 @@ class VistaProfiloUtente(QDialog):
         self.modifica_password.show()
 
     def go_elimina_profilo_function(self):
-        reply = QMessageBox.question(self, "Attenzione", "Sei sicuro? Tutti i tuoi dai andranno persi.", QMessageBox.Ok,
-                                     QMessageBox.Cancel)
+        if self.controller.get_lista_dei_veicoli() is not None:
+            for veicolo in self.controller.get_lista_dei_veicoli():
+                if veicolo.orario_ingresso is not None:
+                    QMessageBox.critical(self, "Attenzione", "Impossibile eliminare il profilo: uno dei suoi veicoli "
+                                         "si trova ancora all'interno del parcheggio.",
+                                         QMessageBox.Ok, QMessageBox.Ok)
+                    return
+        reply = QMessageBox.question(self, "Attenzione", "Sei sicuro? Tutti i tuoi dati andranno persi.",
+                                     QMessageBox.Ok, QMessageBox.Cancel)
         if reply == QMessageBox.Ok:
             self.elimina_cliente(self.controller.get_id_cliente())
+            if self.controller.get_lista_dei_veicoli() is not None and self.controller.get_lista_dei_veicoli():
+                if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
+                    with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
+                        lista_veicoli = pickle.load(f)
+                for veicolo in self.controller.get_lista_dei_veicoli():
+                    lista_veicoli.rimuovi_veicolo_by_id(veicolo.id)
+                with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
+                    pickle.dump(self.lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
             self.close()
 
     def update_ui(self):
