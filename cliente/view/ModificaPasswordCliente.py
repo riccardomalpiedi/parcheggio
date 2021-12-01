@@ -12,14 +12,14 @@ class ModificaPasswordCliente(QDialog):
 
         self.password_lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.confirm_password_lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.save_button.clicked.connect(self.go_modifica_password)
+        self.save_button.clicked.connect(self.modifica_password)
         self.annulla_button.clicked.connect(self.annulla_function)
 
         self.setWindowTitle("Modifica Password")
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
 
-    def go_modifica_password(self):
+    def modifica_password(self):
         nuova_password = self.password_lineEdit.text()
         conferma_password = self.confirm_password_lineEdit.text()
 
@@ -35,11 +35,10 @@ class ModificaPasswordCliente(QDialog):
             else:
                 if nuova_password == conferma_password:
                     self.controller.set_password_cliente(nuova_password)
-                    print(nuova_password)
                     self.close()
                 else:
                     QMessageBox.critical(self, 'Errore', "Le due password non coincidono, ricontrolla!",
-                                        QMessageBox.Ok, QMessageBox.Ok)
+                                         QMessageBox.Ok, QMessageBox.Ok)
 
     def annulla_function(self):
         self.close()

@@ -22,14 +22,14 @@ class ModificaProfilo(QDialog):
         self.telefono_field.setText(self.controller.get_telefono_cliente())
         self.image_label.setText(self.controller.get_image_cliente())
 
-        self.save_button.clicked.connect(self.go_modifica_cliente)
+        self.save_button.clicked.connect(self.modifica_profilo)
         self.browse_button.clicked.connect(self.go_cambia_immagine)
         self.back_button.clicked.connect(self.go_back)
 
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
 
-    def go_modifica_cliente(self):
+    def modifica_profilo(self):
         nome = self.nome_field.text()
         cognome = self.cognome_field.text()
         cf = self.cf_field.text()
