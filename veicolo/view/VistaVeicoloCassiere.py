@@ -43,7 +43,7 @@ class VistaVeicoloCassiere(QDialog):
                 self.close()
                 return
             reply = QMessageBox.question(self, "Attenzione", "L'importo è pari a " + str(importo) +
-                                         ": confermare il pagamento?", QMessageBox.Ok, QMessageBox.Cancel)
+                                         " euro: confermare il pagamento?", QMessageBox.Ok, QMessageBox.Cancel)
             if reply == QMessageBox.Ok:
                 self.controller.set_orario_pagato(datetime.now())
                 self.controller.get_prenotazione().pagata = True
@@ -59,7 +59,7 @@ class VistaVeicoloCassiere(QDialog):
                 importo = (((datetime.now() - self.controller.get_orario_ingresso()).seconds//3600 + 1) *
                            self.controller.get_posteggio_occupato().tariffa_oraria)
                 reply = QMessageBox.question(self, "Attenzione", "L'importo è pari a " + str(importo) +
-                                             ": confermare il pagamento?", QMessageBox.Ok, QMessageBox.Cancel)
+                                             " euro: confermare il pagamento?", QMessageBox.Ok, QMessageBox.Cancel)
                 if reply == QMessageBox.Ok:
                     self.controller.set_orario_pagato(datetime.now())
                     self.close()

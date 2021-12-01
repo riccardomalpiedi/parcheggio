@@ -14,7 +14,8 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(61, 61, 61);</string>
+   <string notr="true">background-color: rgb(61, 61, 61);
+color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QLabel" name="targa_label">
    <property name="geometry">
@@ -81,7 +82,8 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(202, 202, 202);</string>
+    <string notr="true">background-color: rgb(202, 202, 202);
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Conferma Pagamento</string>

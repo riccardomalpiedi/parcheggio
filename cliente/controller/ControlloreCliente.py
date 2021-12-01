@@ -1,5 +1,5 @@
 
-class ControlloreCliente():
+class ControlloreCliente:
     def __init__(self, cliente):
         self.model = cliente
 
