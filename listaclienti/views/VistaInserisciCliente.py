@@ -44,7 +44,7 @@ class VistaInserisciCliente(QDialog):
             if image == "":
                 self.controller.aggiungi_cliente(
                     Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, None,
-                                username, password, image="Utente/placeholder-user-photo.png"))
+                                username, password, image="cliente/placeholder-user-photo.png"))
             else:
                 self.controller.aggiungi_cliente(
                     Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, None,
@@ -60,11 +60,11 @@ class VistaInserisciCliente(QDialog):
         var = fname[0]                           # prende il percorso del file selezionato
         print(var)
         rand = random.randint(1, 450)            # rinomina il file con un numero random
-        var2 = "Utente/ImmaginiProfilo/" + str(rand) + ".png"
+        var2 = "cliente/ImmaginiProfilo/" + str(rand) + ".png"
         print(var2)
         if os.path.isfile(var2):                 # controlla se il file è gia presente
             rand1 = random.randint(451, 850)
-            var2 = "Utente/ImmaginiProfilo/" + str(rand1) + ".png"
+            var2 = "cliente/ImmaginiProfilo/" + str(rand1) + ".png"
             shutil.copyfile(var, var2)           # copia il file con il nome modificato nell'apposita cartella
             print(var2)
         else:

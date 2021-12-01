@@ -53,15 +53,15 @@ class ModificaProfilo(QDialog):
             self.close()
 
     def go_cambia_immagine(self):
-        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:', 'Images (*.png *.xmp *.jpg)')
+        fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/', 'Images (*.png *.xmp *.jpg)')
         var = fname[0]
         print(var)
         rand = random.randint(851, 1000)
-        var2 = "Utente/ImmaginiProfilo/" + str(rand) + ".png"
+        var2 = "cliente/ImmaginiProfilo/" + str(rand) + ".png"
         print(var2)
         if os.path.isfile(var2):
             rand1 = random.randint(1001, 1500)
-            var2 = "Utente/ImmaginiProfilo/" + str(rand1) + ".png"
+            var2 = "cliente/ImmaginiProfilo/" + str(rand1) + ".png"
             shutil.copyfile(var, var2)
             print(var2)
         else:
