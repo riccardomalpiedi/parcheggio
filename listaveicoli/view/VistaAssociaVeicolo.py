@@ -7,7 +7,7 @@ from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 class VistaAssociaVeicolo(QDialog):
     def __init__(self, controller, callback, get_lista_veicoli, set_lista_veicoli):
         super(VistaAssociaVeicolo, self).__init__()
-        loadUi("listaveicoli/view/GestioneNuovoVeicolo.ui", self)
+        loadUi("listaveicoli/view/VistaAssociaVeicolo.ui", self)
 
         self.controller = controller
         self.callback = callback
@@ -19,7 +19,7 @@ class VistaAssociaVeicolo(QDialog):
 
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
-        self.setWindowTitle('Nuovo Veicolo')
+        self.setWindowTitle('Associa Veicolo')
 
     def show_new_veicolo(self):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.callback)

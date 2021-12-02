@@ -3,14 +3,14 @@ from PyQt5.QtWidgets import QMessageBox, QDialog
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
-from cliente.view.VistaProfiloCliente import VistaProfiloUtente
+from cliente.view.VistaProfiloCliente import VistaProfiloCliente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
-class LoginCliente(QDialog):
+class VistaLoginCliente(QDialog):
     def __init__(self):
-        super(LoginCliente, self).__init__()
-        loadUi("home/LoginCliente2.ui", self)
+        super(VistaLoginCliente, self).__init__()
+        loadUi("home/views/VistaLoginCliente.ui", self)
 
         self.controller = ControlloreListaClienti()
 
@@ -34,15 +34,15 @@ class LoginCliente(QDialog):
             for cliente in self.controller.get_lista_dei_clienti():
                 if user == cliente.username:
                     if password == cliente.password:
-                        self.go_vista_profilo_utente(cliente)
+                        self.go_vista_profilo_cliente(cliente)
                         self.username_field.setText('')
                         self.password_field.setText('')
                         return
         QMessageBox.critical(self, 'Errore', "Credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
 
-    def go_vista_profilo_utente(self, cliente):
-        self.vista_profilo_utente = VistaProfiloUtente(cliente, self.update_list, self.controller.elimina_cliente_by_id)
-        self.vista_profilo_utente.show()
+    def go_vista_profilo_cliente(self, cliente):
+        self.vista_profilo_cliente = VistaProfiloCliente(cliente, self.update_list, self.controller.elimina_cliente_by_id)
+        self.vista_profilo_cliente.show()
         self.close()
 
     def update_list(self):

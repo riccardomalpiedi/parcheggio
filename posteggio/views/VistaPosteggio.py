@@ -9,7 +9,7 @@ class VistaPosteggio(QWidget):
     def __init__(self, posteggio, parent=None):
         super(VistaPosteggio, self).__init__(parent)
         self.controller = ControllorePosteggio(posteggio)
-        loadUi("posteggio.ui", self)
+        loadUi("posteggio/views/VistaPosteggio.ui", self)
 
         self.label_tipo.setText("<font color='white'>Tipo: " + self.controller.get_tipo_posteggio())
         self.label_titolo.setText("<font color='white'>" + self.controller.get_nome_posteggio())

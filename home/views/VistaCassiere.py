@@ -11,7 +11,7 @@ from listaveicoli.view.VistaListaVeicoliCassiere import VistaListaVeicoliCassier
 class VistaCassiere(QDialog):
     def __init__(self, parent=None):
         super(VistaCassiere, self).__init__(parent)
-        loadUi("Cassiere.ui", self)
+        loadUi("home/views/VistaCassiere.ui", self)
 
         self.lista_veicoli_button.clicked.connect(self.go_vista_lista_veicoli)
         self.modifica_password_button.clicked.connect(self.go_modifica_password)

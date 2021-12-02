@@ -9,7 +9,7 @@ from veicolo.view.VistaVeicoloCassiere import VistaVeicoloCassiere
 class VistaListaVeicoliCassiere(QDialog):
     def __init__(self):
         super(VistaListaVeicoliCassiere, self).__init__()
-        loadUi("listaveicoli/view/ListaVeicoliCassiere.ui", self)
+        loadUi("listaveicoli/view/VistaListaVeicoliCassiere.ui", self)
 
         self.controller = ControlloreListaVeicoli()
 

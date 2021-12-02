@@ -10,7 +10,7 @@ from home.views.VistaCassiere import VistaCassiere
 class VistaLogin(QDialog):
     def __init__(self):
         super(VistaLogin, self).__init__()
-        loadUi("login.ui", self)
+        loadUi("home/views/VistaLogin.ui", self)
 
         self.controller = ControlloreLogin()
 

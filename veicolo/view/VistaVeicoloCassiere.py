@@ -10,7 +10,7 @@ from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 class VistaVeicoloCassiere(QDialog):
     def __init__(self, veicolo, parent=None):
         super(VistaVeicoloCassiere, self).__init__(parent)
-        loadUi("vistaveicoloDipendente.ui", self)
+        loadUi("veicolo/view/VistaVeicoloCassiere.ui", self)
 
         self.controller = ControlloreVeicolo(veicolo)
         self.controller.check_prenotazione_scaduta()

@@ -8,7 +8,7 @@ from veicolo.model.Veicolo import Veicolo
 class VistaInserisciVeicolo(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciVeicolo, self).__init__()
-        loadUi("NuovoVeicolo.ui", self)
+        loadUi("listaveicoli/view/VistaInserisciVeicolo.ui", self)
 
         self.controller = controller
         self.callback = callback

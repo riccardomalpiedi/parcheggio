@@ -5,7 +5,7 @@ from PyQt5.uic import loadUi
 class VistaHelpButton(QDialog):
     def __init__(self):
         super(VistaHelpButton, self).__init__()
-        loadUi("help.ui", self)
+        loadUi("home/views/VistaHelpButton.ui", self)
 
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())

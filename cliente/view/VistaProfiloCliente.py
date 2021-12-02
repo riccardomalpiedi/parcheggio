@@ -7,14 +7,14 @@ from PyQt5.uic import loadUi
 
 from cliente.view.ModificaPasswordCliente import ModificaPasswordCliente
 from listaveicoli.view.VistaListaVeicoliCliente import VistaListaVeicoliCliente
-from cliente.view.ModificaProfiloCliente import ModificaProfilo
+from cliente.view.ModificaProfiloCliente import ModificaProfiloCliente
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
-class VistaProfiloUtente(QDialog):
+class VistaProfiloCliente(QDialog):
     def __init__(self, cliente, update_list, elimina_cliente):
-        super(VistaProfiloUtente, self).__init__()
-        loadUi("cliente/view/VistaProfiloUtente.ui", self)
+        super(VistaProfiloCliente, self).__init__()
+        loadUi("cliente/view/VistaProfiloCliente.ui", self)
 
         self.controller = ControlloreCliente(cliente)
         self.update_list = update_list
@@ -37,7 +37,7 @@ class VistaProfiloUtente(QDialog):
         self.gestione_veicoli_function.show()
 
     def go_modifica_profilo_function(self):
-        self.modifica_profilo_function = ModificaProfilo(self.controller, self.update_ui)
+        self.modifica_profilo_function = ModificaProfiloCliente(self.controller, self.update_ui)
         self.modifica_profilo_function.show()
 
     def go_modifica_password(self):

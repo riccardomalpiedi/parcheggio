@@ -10,7 +10,7 @@ from listadipendenti.views.VistaInserisciDipendente import VistaInserisciDipende
 class VistaListaDipendenti(QDialog):
     def __init__(self):
         super(VistaListaDipendenti, self).__init__()
-        loadUi("listadipendenti.ui", self)
+        loadUi("listadipendenti/views/VistaListaDipendenti.ui", self)
 
         self.controller = ControlloreListaDipendenti()
 

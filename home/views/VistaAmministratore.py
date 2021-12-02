@@ -6,13 +6,13 @@ from home.views.ModificaPasswordAmmeCas import ModificaPasswordAmmeCas
 from listaclienti.views.VistaListaClienti import VistaListaClienti
 from listadipendenti.views.VistaListaDipendenti import VistaListaDipendenti
 from listaposteggi.views.VistaListaPosteggi import VistaListaPosteggi
-from listaveicoli.view.VistaListaVeicoli import VistaListaVeicoli
+from listaveicoli.view.VistaListaVeicoliAmministratore import VistaListaVeicoliAmministratore
 
 
 class VistaAmministratore(QDialog):
     def __init__(self):
         super(VistaAmministratore, self).__init__()
-        loadUi("Amministratore2.ui", self)
+        loadUi("home/views/VistaAmministratore.ui", self)
 
         self.setWindowTitle("Amministratore")
         self.setFixedHeight(self.height())
@@ -35,7 +35,7 @@ class VistaAmministratore(QDialog):
         self.lista_vista_posteggi.show()
 
     def go_lista_vista_veicoli(self):
-        self.lista_vista_veicoli = VistaListaVeicoli()
+        self.lista_vista_veicoli = VistaListaVeicoliAmministratore()
         self.lista_vista_veicoli.show()
 
     def go_lista_vista_dipendenti(self):

@@ -8,7 +8,7 @@ from dipendente.controller.ControlloreDipendente import ControlloreDipendente
 class VistaDipendente(QDialog):
     def __init__(self,  dipendente, elimina_dipendente, elimina_callback, parent=None):
         super(VistaDipendente, self).__init__(parent)
-        loadUi("VistaDipendente.ui", self)
+        loadUi("dipendente/views/VistaDipendente.ui", self)
 
         self.controller = ControlloreDipendente(dipendente)
         self.elimina_dipendente = elimina_dipendente

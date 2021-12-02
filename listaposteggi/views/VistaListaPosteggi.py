@@ -9,7 +9,7 @@ from posteggio.views.VistaPosteggio import VistaPosteggio
 class VistaListaPosteggi(QDialog):
     def __init__(self):
         super(VistaListaPosteggi, self).__init__()
-        loadUi("listaposteggi.ui", self)
+        loadUi("listaposteggi/views/VistaListaPosteggi.ui", self)
 
         self.controller = ControlloreListaPosteggi()
 

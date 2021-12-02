@@ -4,13 +4,13 @@ from PyQt5.uic import loadUi
 
 from listaveicoli.view.VistaAssociaVeicolo import VistaAssociaVeicolo
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
-from veicolo.view.VistaVeicolo import VistaVeicolo
+from veicolo.view.VistaVeicoloCliente import VistaVeicoloCliente
 
 
 class VistaListaVeicoliCliente(QDialog):
     def __init__(self, callback, get_lista_veicoli, set_lista_veicoli):
         super(VistaListaVeicoliCliente, self).__init__()
-        loadUi("listaveicoli/view/GestioneVeicoli.ui", self)
+        loadUi("listaveicoli/view/VistaListaVeicoliCliente.ui", self)
 
         self.controller = ControlloreListaVeicoli()
         self.callback = callback
@@ -32,8 +32,8 @@ class VistaListaVeicoliCliente(QDialog):
     def show_selected_info(self):
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.get_lista_veicoli()[selected]
-        self.vista_veicolo = VistaVeicolo(veicolo_selezionato, self.elimina_veicolo, self.update_prenotazione,
-                                          self.update_ui)
+        self.vista_veicolo = VistaVeicoloCliente(veicolo_selezionato, self.elimina_veicolo, self.update_prenotazione,
+                                                 self.update_ui)
         self.vista_veicolo.show()
 
     def show_new_veicolo(self):

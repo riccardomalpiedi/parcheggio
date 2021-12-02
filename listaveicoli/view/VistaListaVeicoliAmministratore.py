@@ -6,10 +6,10 @@ from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeic
 from veicolo.view.VistaVeicoloAmministratore import VistaVeicoloAmministratore
 
 
-class VistaListaVeicoli(QDialog):
+class VistaListaVeicoliAmministratore(QDialog):
     def __init__(self):
-        super(VistaListaVeicoli, self).__init__()
-        loadUi("listaveicoliAmministratore.ui", self)
+        super(VistaListaVeicoliAmministratore, self).__init__()
+        loadUi("listaveicoli/view/VistaListaVeicoliAmministratore.ui", self)
 
         self.controller = ControlloreListaVeicoli()
 

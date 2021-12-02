@@ -2,14 +2,14 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 
 from prenotazione.views.VistaInserisciPrenotazione import VistaInserisciPrenotazione
-from prenotazione.views.VistaPrenotazione import VistaPrenotazione
+from prenotazione.views.VistaPrenotazioneCliente import VistaPrenotazioneCliente
 from veicolo.controller.ControlloreVeicolo import ControlloreVeicolo
 
 
-class VistaVeicolo(QDialog):
+class VistaVeicoloCliente(QDialog):
     def __init__(self, veicolo, elimina_veicolo, prenotazione_callback, callback, parent=None):
-        super(VistaVeicolo, self).__init__(parent)
-        loadUi("veicolo/view/vistaveicolo.ui", self)
+        super(VistaVeicoloCliente, self).__init__(parent)
+        loadUi("veicolo/view/VistaVeicoloCliente.ui", self)
 
         self.controller = ControlloreVeicolo(veicolo)
         self.elimina_veicolo = elimina_veicolo
@@ -29,8 +29,8 @@ class VistaVeicolo(QDialog):
 
     def visualizza_prenotazione_click(self):
         if self.controller.get_prenotazione() is not None:
-            self.vista_prenotazione = VistaPrenotazione(self.controller.get_prenotazione(),
-                                                        self.controller.elimina_prenotazione)
+            self.vista_prenotazione = VistaPrenotazioneCliente(self.controller.get_prenotazione(),
+                                                               self.controller.elimina_prenotazione)
             self.vista_prenotazione.show()
         else:
             QMessageBox.critical(self, 'Errore', "Il veicolo selezionato non ha alcuna prenotazione",

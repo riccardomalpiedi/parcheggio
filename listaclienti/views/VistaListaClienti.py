@@ -9,7 +9,7 @@ from listaclienti.controller.ControlloreListaClienti import ControlloreListaClie
 class VistaListaClienti(QDialog):
     def __init__(self):
         super(VistaListaClienti, self).__init__()
-        loadUi("listaclienti.ui", self)
+        loadUi("listaclienti/views/VistaListaClienti.ui", self)
 
         self.controller = ControlloreListaClienti()
         self.list_view = QListView()

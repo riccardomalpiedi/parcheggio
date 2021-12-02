@@ -7,7 +7,7 @@ from dipendente.model.Dipendente import Dipendente
 class VistaInserisciDipendente(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciDipendente, self).__init__()
-        loadUi("listadipendenti/views/NuovoDipendente.ui", self)
+        loadUi("listadipendenti/views/VistaInserisciDipendente.ui", self)
 
         self.controller = controller
         self.callback = callback

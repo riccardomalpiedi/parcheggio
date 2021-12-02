@@ -2,7 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from home.views.VistaLoginCliente import LoginCliente
+from home.views.VistaLoginCliente import VistaLoginCliente
 from ingresso.views.VistaIngresso import VistaIngresso
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
@@ -12,7 +12,7 @@ from uscita.views.VistaUscita import VistaUscita
 class VistaHomeCliente(QDialog):
     def __init__(self):
         super(VistaHomeCliente, self).__init__()
-        loadUi("home/BenvenutoCliente.ui", self)
+        loadUi("home/views/VistaHomeCliente.ui", self)
 
         self.controller = ControlloreListaClienti()
 
@@ -32,7 +32,7 @@ class VistaHomeCliente(QDialog):
         self.close()
 
     def go_accedi(self):
-        self.accedi = LoginCliente()
+        self.accedi = VistaLoginCliente()
         self.accedi.show()
         self.close()
 

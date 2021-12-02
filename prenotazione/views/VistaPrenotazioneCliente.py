@@ -8,10 +8,10 @@ from PyQt5.uic import loadUi
 from prenotazione.controller.ControllorePrenotazione import ControllorePrenotazione
 
 
-class VistaPrenotazione(QDialog):
+class VistaPrenotazioneCliente(QDialog):
     def __init__(self, prenotazione, disdici_prenotazione, parent=None):
-        super(VistaPrenotazione, self).__init__(parent)
-        loadUi("VistaPrenotazione.ui", self)
+        super(VistaPrenotazioneCliente, self).__init__(parent)
+        loadUi("prenotazione/views/VistaPrenotazioneCliente.ui", self)
 
         self.controller = ControllorePrenotazione(prenotazione)
         self.disdisci_prenotazione = disdici_prenotazione

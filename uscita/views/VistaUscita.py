@@ -12,7 +12,8 @@ from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeic
 class VistaUscita(QWidget):
     def __init__(self):
         super(VistaUscita, self).__init__()
-        loadUi("uscita.ui", self)
+        loadUi("uscita/views/VistaUscita.ui", self)
+
         self.controller = ControlloreListaVeicoli()
 
         self.comboveicoli_model = QStandardItemModel(self.comboBox)

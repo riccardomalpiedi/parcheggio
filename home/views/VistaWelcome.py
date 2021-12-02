@@ -10,7 +10,7 @@ from home.views.VistaLogin import VistaLogin
 class WelcomeScreen(QDialog):
     def __init__(self):
         super(WelcomeScreen, self).__init__()
-        loadUi("easyparking.ui", self)
+        loadUi("home/views/VistaWelcome.ui", self)
 
         self.setWindowIcon(QIcon("icone/parking2.png"))
 

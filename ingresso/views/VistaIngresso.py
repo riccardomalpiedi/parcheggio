@@ -13,7 +13,8 @@ from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 class VistaIngresso(QWidget):
     def __init__(self):
         super(VistaIngresso, self).__init__()
-        loadUi("Ingresso.ui", self)
+        loadUi("ingresso/views/VistaIngresso.ui", self)
+
         self.controller = ControlloreListaVeicoli()
         self.update_ui()
 

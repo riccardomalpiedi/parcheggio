@@ -11,7 +11,7 @@ from cliente.model.Cliente import Cliente
 class VistaInserisciCliente(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciCliente, self).__init__()
-        loadUi("RegistrazioneUtente.ui", self)
+        loadUi("listaclienti/views/VistaInserisciCliente.ui", self)
 
         self.controller = controller
         self.callback = callback

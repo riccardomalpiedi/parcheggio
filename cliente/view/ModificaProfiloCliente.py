@@ -6,10 +6,10 @@ from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog
 from PyQt5.uic import loadUi
 
 
-class ModificaProfilo(QDialog):
+class ModificaProfiloCliente(QDialog):
     def __init__(self, controller, callback):
-        super(ModificaProfilo, self).__init__()
-        loadUi("cliente/view/ModificaProfilo2.ui", self)
+        super(ModificaProfiloCliente, self).__init__()
+        loadUi("cliente/view/ModificaProfiloCliente.ui", self)
 
         self.controller = controller
         self.callback = callback
