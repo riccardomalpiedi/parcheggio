@@ -30,6 +30,8 @@ class VistaListaVeicoliCliente(QDialog):
         self.setFixedWidth(self.width())
 
     def show_selected_info(self):
+        if self.list_view.selectedIndexes() is None or not self.list_view.selectedIndexes():
+            return
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.get_lista_veicoli()[selected]
         self.vista_veicolo = VistaVeicoloCliente(veicolo_selezionato, self.elimina_veicolo, self.update_prenotazione,

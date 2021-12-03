@@ -30,6 +30,7 @@ class VistaUscita(QWidget):
         self.esci_button.clicked.connect(self.inserisci_uscita_veicolo)
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
+        self.setWindowTitle("Uscita Parcheggio")
 
     def inserisci_uscita_veicolo(self):
         targa = self.comboBox.currentText()

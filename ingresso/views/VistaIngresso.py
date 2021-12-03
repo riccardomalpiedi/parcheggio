@@ -22,6 +22,7 @@ class VistaIngresso(QWidget):
         self.entra_button.clicked.connect(self.inserisci_ingresso_veicolo)
         self.setFixedHeight(self.height())
         self.setFixedWidth(self.width())
+        self.setWindowTitle("Ingresso Parcheggio")
 
     def update_ui(self):
         self.comboveicoli_model = QStandardItemModel(self.comboBox)

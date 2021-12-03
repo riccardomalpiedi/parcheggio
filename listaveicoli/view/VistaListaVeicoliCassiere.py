@@ -25,6 +25,8 @@ class VistaListaVeicoliCassiere(QDialog):
         self.setFixedWidth(self.width())
 
     def show_selected_info(self):
+        if self.list_view.selectedIndexes() is None or not self.list_view.selectedIndexes():
+            return
         selected = self.list_view.selectedIndexes()[0].row()
         veicolo_selezionato = self.controller.get_veicolo_by_index(selected)
         self.vista_veicolo = VistaVeicoloCassiere(veicolo_selezionato)
