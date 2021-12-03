@@ -56,18 +56,21 @@ class ModificaProfiloCliente(QDialog):
         fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/', 'Images (*.png *.xmp *.jpg)')
         var = fname[0]
         print(var)
-        rand = random.randint(851, 1000)
-        var2 = "cliente/ImmaginiProfilo/" + str(rand) + ".png"
-        print(var2)
-        if os.path.isfile(var2):
-            rand1 = random.randint(1001, 1500)
-            var2 = "cliente/ImmaginiProfilo/" + str(rand1) + ".png"
+        if self.controller.get_image_cliente() == "cliente/placeholder-user-photo.png":
+            rand = random.randint(851, 900)
+            var2 = "cliente/ImmaginiProfilo/" + str(rand) + ".png"
+            print(var2)
+            while os.path.isfile(var2):  # controlla se il file è gia presente
+                rand1 = random.randint(851, 10000)
+                var2 = "cliente/ImmaginiProfilo/" + str(rand1) + ".png"
             shutil.copyfile(var, var2)
             print(var2)
+            self.image_label.setText(var2)
         else:
+            var2 = self.controller.get_image_cliente()
             shutil.copyfile(var, var2)
             print(var2)
-        self.image_label.setText(var2)
+            self.image_label.setText(var2)
 
     def go_back(self):
         self.close()
