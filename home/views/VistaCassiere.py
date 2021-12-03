@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 
-from home.views.ModificaPasswordAmmeCas import ModificaPasswordAmmeCas
+from home.views.ModificaPassword import ModificaPassword
 from listaveicoli.view.VistaListaVeicoliCassiere import VistaListaVeicoliCassiere
 
 
@@ -26,5 +26,5 @@ class VistaCassiere(QDialog):
         self.vista_lista_veicoliDip.show()
 
     def go_modifica_password(self):
-        self.modifica_password = ModificaPasswordAmmeCas("Cassiere")
+        self.modifica_password = ModificaPassword("Cassiere")
         self.modifica_password.show()

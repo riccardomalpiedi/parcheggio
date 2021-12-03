@@ -2,7 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from home.views.ModificaPasswordAmmeCas import ModificaPasswordAmmeCas
+from home.views.ModificaPassword import ModificaPassword
 from listaclienti.views.VistaListaClienti import VistaListaClienti
 from listadipendenti.views.VistaListaDipendenti import VistaListaDipendenti
 from listaposteggi.views.VistaListaPosteggi import VistaListaPosteggi
@@ -43,7 +43,7 @@ class VistaAmministratore(QDialog):
         self.lista_vista_dipendenti.show()
 
     def go_modifica_password(self):
-        self.modifica_password = ModificaPasswordAmmeCas("Amministratore")
+        self.modifica_password = ModificaPassword("Amministratore")
         self.modifica_password.show()
 
     def go_back_button(self):

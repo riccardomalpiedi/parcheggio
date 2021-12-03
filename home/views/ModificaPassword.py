@@ -5,9 +5,9 @@ from PyQt5 import QtWidgets
 from home.controller.ControlloreLogin import ControlloreLogin
 
 
-class ModificaPasswordAmmeCas(QDialog):
+class ModificaPassword(QDialog):
     def __init__(self, id):
-        super(ModificaPasswordAmmeCas, self).__init__()
+        super(ModificaPassword, self).__init__()
         loadUi("cliente/view/ModificaPassword.ui", self)
 
         self.controller = ControlloreLogin()
