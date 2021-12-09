@@ -59,14 +59,14 @@ class VistaInserisciCliente(QDialog):
         fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/', 'Images (*.png *.xmp *.jpg)')   # apre l'esplora risorse
         var = fname[0]                           # prende il percorso del file selezionato
         print(var)
-        rand = random.randint(1, 10)            # rinomina il file con un numero random
+        rand = random.randint(1, 2)            # rinomina il file con un numero random
         var2 = "cliente/ImmaginiProfilo/" + str(rand) + ".png"
         print(var2)
         while os.path.isfile(var2):                 # controlla se il file è gia presente
             rand1 = random.randint(451, 1850)
             var2 = "cliente/ImmaginiProfilo/" + str(rand1) + ".png"
-        shutil.copyfile(var, var2)           # copia il file con il nome modificato nell'apposita cartella
-        print(var2)
+            print(var2)
+        shutil.copyfile(var, var2)   # copia il file con il nome modificato nell'apposita cartella
         self.immagine_profilo_field.setText(var2)
 
     def closeEvent(self, event):

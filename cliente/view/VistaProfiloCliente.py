@@ -72,6 +72,8 @@ class VistaProfiloCliente(QDialog):
                             lista_veicoli.remove(veicolo2)
                 with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
                     pickle.dump(lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
+            os.remove(self.controller.get_image_cliente())
+            print("Cliente eliminato con successo")
             self.close()
 
     def update_ui(self):
