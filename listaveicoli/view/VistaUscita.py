@@ -12,7 +12,7 @@ from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeic
 class VistaUscita(QWidget):
     def __init__(self):
         super(VistaUscita, self).__init__()
-        loadUi("uscita/views/VistaUscita.ui", self)
+        loadUi("listaveicoli/view/VistaUscita.ui", self)
 
         self.controller = ControlloreListaVeicoli()
 

@@ -52,18 +52,26 @@ class VistaProfiloCliente(QDialog):
                                          "si trova ancora all'interno del parcheggio.",
                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
+                if veicolo.prenotazione is not None:
+                    QMessageBox.critical(self, "Attenzione", "Impossibile eliminare il profilo: uno dei suoi veicoli "
+                                         "ha una prenotazione attiva.",
+                                         QMessageBox.Ok, QMessageBox.Ok)
+                    return
         reply = QMessageBox.question(self, "Attenzione", "Sei sicuro? Tutti i tuoi dati andranno persi.",
                                      QMessageBox.Ok, QMessageBox.Cancel)
         if reply == QMessageBox.Ok:
             self.elimina_cliente(self.controller.get_id_cliente())
             if self.controller.get_lista_dei_veicoli() is not None and self.controller.get_lista_dei_veicoli():
+                lista_veicoli = []
                 if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
                     with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                         lista_veicoli = pickle.load(f)
                 for veicolo in self.controller.get_lista_dei_veicoli():
-                    lista_veicoli.rimuovi_veicolo_by_id(veicolo.id)
+                    for veicolo2 in lista_veicoli:
+                        if veicolo.id == veicolo2.id:
+                            lista_veicoli.remove(veicolo2)
                 with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
-                    pickle.dump(self.lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
+                    pickle.dump(lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
             self.close()
 
     def update_ui(self):

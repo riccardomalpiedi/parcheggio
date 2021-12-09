@@ -35,8 +35,6 @@ class VistaLoginCliente(QDialog):
                 if user == cliente.username:
                     if password == cliente.password:
                         self.go_vista_profilo_cliente(cliente)
-                        self.username_field.setText('')
-                        self.password_field.setText('')
                         return
         QMessageBox.critical(self, 'Errore', "Credenziali errate", QMessageBox.Ok, QMessageBox.Ok)
 

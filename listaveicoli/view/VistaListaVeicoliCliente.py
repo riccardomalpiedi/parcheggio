@@ -70,6 +70,8 @@ class VistaListaVeicoliCliente(QDialog):
         self.callback()
 
     def update_prenotazione(self, id, prenotazione):
+        if self.controller.get_veicolo_by_id(id) is None:
+            return
         self.controller.get_veicolo_by_id(id).prenotazione = prenotazione
 
     def closeEvent(self, event):

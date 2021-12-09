@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from home.views.VistaLoginCliente import VistaLoginCliente
-from ingresso.views.VistaIngresso import VistaIngresso
+from listaveicoli.view.VistaIngresso import VistaIngresso
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
-from uscita.views.VistaUscita import VistaUscita
+from listaveicoli.view.VistaUscita import VistaUscita
 
 
 class VistaHomeCliente(QDialog):

@@ -45,6 +45,10 @@ class VistaVeicoloCliente(QDialog):
             self.vista_inserisci_prenotazione.show()
 
     def elimina_veicolo_click(self):
+        if self.controller.get_prenotazione() is not None:
+            QMessageBox.critical(self, 'Errore', "Il veicolo selezionato ha una prenotazione attiva",
+                                 QMessageBox.Ok, QMessageBox.Ok)
+            return
         self.elimina_veicolo(self.controller.get_id_veicolo())
         self.callback()
         self.close()

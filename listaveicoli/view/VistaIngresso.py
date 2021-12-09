@@ -13,7 +13,7 @@ from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 class VistaIngresso(QWidget):
     def __init__(self):
         super(VistaIngresso, self).__init__()
-        loadUi("ingresso/views/VistaIngresso.ui", self)
+        loadUi("listaveicoli/view/VistaIngresso.ui", self)
 
         self.controller = ControlloreListaVeicoli()
         self.update_ui()
@@ -59,23 +59,24 @@ class VistaIngresso(QWidget):
                 if reply == QMessageBox.Ok:
                     veicolo.entrato_con_prenotazione = True
                     veicolo.posteggio_occupato = veicolo.prenotazione.posteggio
-                    self.ingresso_function(veicolo, lista_posteggi_salvata)
+                    self.ingresso_function(veicolo, lista_posteggi_salvata, veicolo.posteggio_occupato)
             # Ingresso di un veicolo senza prenotazione
             else:
                 for posteggio in lista_posteggi_salvata:
                     if veicolo.tipo == posteggio.tipo and posteggio.is_disponibile():
                         posteggio.disponibile = False
                         veicolo.posteggio_occupato = posteggio
-                        self.ingresso_function(veicolo, lista_posteggi_salvata)
+                        self.ingresso_function(veicolo, lista_posteggi_salvata, posteggio)
                         return
                 QMessageBox.critical(self, 'Errore', "Ci dispiace, non ci sono posti disponibili",
                                      QMessageBox.Ok, QMessageBox.Ok)
 
-    def ingresso_function(self, veicolo, lista_posteggi_salvata):
+    def ingresso_function(self, veicolo, lista_posteggi_salvata, posteggio):
         veicolo.set_orario_ingresso(datetime.now())
         with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as f:
             pickle.dump(lista_posteggi_salvata, f, pickle.HIGHEST_PROTOCOL)
-        QMessageBox.information(self, "Operazione riuscita", "Benvenuto nel nostro parcheggio")
+        QMessageBox.information(self, "Operazione riuscita", "Benvenuto nel nostro parcheggio, può accomodarsi al " +
+                                posteggio.nome)
         self.close()
 
     def closeEvent(self, event):
