@@ -21,40 +21,40 @@ class VistaProfiloCliente(QDialog):
         self.update_ui()
         self.elimina_cliente = elimina_cliente
 
-        self.gestione_veicoli_button.clicked.connect(self.go_gestione_veicoli_function)
-        self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo_function)
+        self.gestione_veicoli_button.clicked.connect(self.go_lista_veicoli)
+        self.modifica_profilo_button.clicked.connect(self.go_modifica_profilo)
         self.modifica_password_button.clicked.connect(self.go_modifica_password)
-        self.elimina_profilo_button.clicked.connect(self.go_elimina_profilo_function)
+        self.elimina_profilo_button.clicked.connect(self.elimina_profilo_function)
 
         self.setWindowTitle("Profilo Utente")
         self.setWindowIcon(QIcon("icone/user2.png"))
         self.setFixedWidth(self.width())
         self.setFixedHeight(self.height())
 
-    def go_gestione_veicoli_function(self):
-        self.gestione_veicoli_function = VistaListaVeicoliCliente(self.update_ui, self.controller.get_lista_dei_veicoli,
-                                                                  self.controller.set_lista_dei_veicoli)
-        self.gestione_veicoli_function.show()
+    def go_lista_veicoli(self):
+        self.lista_veicoli = VistaListaVeicoliCliente(self.update_ui, self.controller.get_lista_dei_veicoli,
+                                                      self.controller.set_lista_dei_veicoli)
+        self.lista_veicoli.show()
 
-    def go_modifica_profilo_function(self):
-        self.modifica_profilo_function = ModificaProfiloCliente(self.controller, self.update_ui)
-        self.modifica_profilo_function.show()
+    def go_modifica_profilo(self):
+        self.modifica_profilo = ModificaProfiloCliente(self.controller, self.update_ui)
+        self.modifica_profilo.show()
 
     def go_modifica_password(self):
         self.modifica_password = ModificaPasswordCliente(self.controller)
         self.modifica_password.show()
 
-    def go_elimina_profilo_function(self):
+    def elimina_profilo_function(self):
         if self.controller.get_lista_dei_veicoli() is not None:
             for veicolo in self.controller.get_lista_dei_veicoli():
                 if veicolo.orario_ingresso is not None:
                     QMessageBox.critical(self, "Attenzione", "Impossibile eliminare il profilo: uno dei suoi veicoli "
-                                         "si trova ancora all'interno del parcheggio.",
+                                                             "si trova ancora all'interno del parcheggio.",
                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
                 if veicolo.prenotazione is not None:
                     QMessageBox.critical(self, "Attenzione", "Impossibile eliminare il profilo: uno dei suoi veicoli "
-                                         "ha una prenotazione attiva.",
+                                                             "ha una prenotazione attiva.",
                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
         reply = QMessageBox.question(self, "Attenzione", "Sei sicuro? Tutti i tuoi dati andranno persi.",
@@ -73,7 +73,6 @@ class VistaProfiloCliente(QDialog):
                 with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'wb') as handle:
                     pickle.dump(lista_veicoli, handle, pickle.HIGHEST_PROTOCOL)
             os.remove(self.controller.get_image_cliente())
-            print("Cliente eliminato con successo")
             self.close()
 
     def update_ui(self):

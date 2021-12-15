@@ -19,26 +19,26 @@ class VistaAmministratore(QDialog):
         self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/administrator2.png"))
 
-        self.vista_lista_clienti_button.clicked.connect(self.go_lista_vista_clienti)
-        self.vista_lista_posteggi_button.clicked.connect(self.go_lista_vista_posteggi)
-        self.vista_lista_veicoli_button.clicked.connect(self.go_lista_vista_veicoli)
-        self.vista_lista_dipendenti_button.clicked.connect(self.go_lista_vista_dipendenti)
+        self.vista_lista_clienti_button.clicked.connect(self.go_vista_lista_clienti)
+        self.vista_lista_posteggi_button.clicked.connect(self.go_vista_lista_posteggi)
+        self.vista_lista_veicoli_button.clicked.connect(self.go_vista_lista_veicoli)
+        self.vista_lista_dipendenti_button.clicked.connect(self.go_vista_lista_dipendenti)
         self.modifica_password_button.clicked.connect(self.go_modifica_password)
         self.back_button.clicked.connect(self.go_back_button)
 
-    def go_lista_vista_clienti(self):
+    def go_vista_lista_clienti(self):
         self.lista_vista_clienti = VistaListaClienti()
         self.lista_vista_clienti.show()
 
-    def go_lista_vista_posteggi(self):
+    def go_vista_lista_posteggi(self):
         self.lista_vista_posteggi = VistaListaPosteggi()
         self.lista_vista_posteggi.show()
 
-    def go_lista_vista_veicoli(self):
+    def go_vista_lista_veicoli(self):
         self.lista_vista_veicoli = VistaListaVeicoliAmministratore()
         self.lista_vista_veicoli.show()
 
-    def go_lista_vista_dipendenti(self):
+    def go_vista_lista_dipendenti(self):
         self.lista_vista_dipendenti = VistaListaDipendenti()
         self.lista_vista_dipendenti.show()
 

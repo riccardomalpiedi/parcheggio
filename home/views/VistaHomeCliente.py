@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from home.views.VistaLoginCliente import VistaLoginCliente
-from listaveicoli.view.VistaIngresso import VistaIngresso
+from listaveicoli.view.VistaIngressoVeicolo import VistaIngressoVeicolo
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 from listaclienti.views.VistaInserisciCliente import VistaInserisciCliente
-from listaveicoli.view.VistaUscita import VistaUscita
+from listaveicoli.view.VistaUscitaVeicolo import VistaUscitaVeicolo
 
 
 class VistaHomeCliente(QDialog):
@@ -27,7 +27,7 @@ class VistaHomeCliente(QDialog):
         self.setWindowIcon(QIcon("icone/user2.png"))
 
     def go_registrazione(self):
-        self.registrazione = VistaInserisciCliente(self.controller, self.update_ui)
+        self.registrazione = VistaInserisciCliente(self.controller)
         self.registrazione.show()
         self.close()
 
@@ -37,12 +37,9 @@ class VistaHomeCliente(QDialog):
         self.close()
 
     def go_vista_ingresso(self):
-        self.ingresso = VistaIngresso()
+        self.ingresso = VistaIngressoVeicolo()
         self.ingresso.show()
 
     def go_vista_uscita(self):
-        self.uscita = VistaUscita()
+        self.uscita = VistaUscitaVeicolo()
         self.uscita.show()
-
-    def update_ui(self):
-        pass

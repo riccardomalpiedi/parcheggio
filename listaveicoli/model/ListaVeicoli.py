@@ -6,7 +6,6 @@ class ListaVeicoli():
     def __init__(self):
         super(ListaVeicoli, self).__init__()
         self.lista_veicoli = []
-        self.lista_clienti = []
         if os.path.isfile('listaveicoli/data/lista_veicoli_salvata.pickle'):
             with open('listaveicoli/data/lista_veicoli_salvata.pickle', 'rb') as f:
                 self.lista_veicoli = pickle.load(f)

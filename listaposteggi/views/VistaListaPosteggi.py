@@ -29,8 +29,8 @@ class VistaListaPosteggi(QDialog):
         self.open_button.clicked.connect(self.show_selected_info)
 
         self.setWindowTitle("Lista Posteggi")
-        self.setFixedHeight(361)
-        self.setFixedWidth(709)
+        self.setFixedHeight(self.height())
+        self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/car2.png"))
 
     def closeEvent(self, event):

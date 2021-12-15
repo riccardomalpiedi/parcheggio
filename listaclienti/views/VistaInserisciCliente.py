@@ -9,12 +9,11 @@ from cliente.model.Cliente import Cliente
 
 
 class VistaInserisciCliente(QDialog):
-    def __init__(self, controller, callback):
+    def __init__(self, controller):
         super(VistaInserisciCliente, self).__init__()
         loadUi("listaclienti/views/VistaInserisciCliente.ui", self)
 
         self.controller = controller
-        self.callback = callback
 
         self.ok_button.clicked.connect(self.add_cliente)
         self.back_button.clicked.connect(self.go_back)
@@ -49,7 +48,6 @@ class VistaInserisciCliente(QDialog):
                 self.controller.aggiungi_cliente(
                     Cliente((nome + cognome).lower(), nome, cognome, cf, indirizzo, email, telefono, None,
                             username, password, image))
-            self.callback()
             self.close()
 
     def go_back(self):

@@ -10,10 +10,10 @@ from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeic
 from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
-class VistaIngresso(QWidget):
+class VistaIngressoVeicolo(QWidget):
     def __init__(self):
-        super(VistaIngresso, self).__init__()
-        loadUi("listaveicoli/view/VistaIngresso.ui", self)
+        super(VistaIngressoVeicolo, self).__init__()
+        loadUi("listaveicoli/view/VistaIngressoVeicolo.ui", self)
 
         self.controller = ControlloreListaVeicoli()
         self.update_ui()

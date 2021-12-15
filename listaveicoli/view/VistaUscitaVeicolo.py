@@ -9,10 +9,10 @@ from PyQt5.uic import loadUi
 from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeicoli
 
 
-class VistaUscita(QWidget):
+class VistaUscitaVeicolo(QWidget):
     def __init__(self):
-        super(VistaUscita, self).__init__()
-        loadUi("listaveicoli/view/VistaUscita.ui", self)
+        super(VistaUscitaVeicolo, self).__init__()
+        loadUi("listaveicoli/view/VistaUscitaVeicolo.ui", self)
 
         self.controller = ControlloreListaVeicoli()
 

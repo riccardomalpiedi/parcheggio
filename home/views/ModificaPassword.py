@@ -32,7 +32,6 @@ class ModificaPassword(QDialog):
         else:
             if nuova_password == conferma_password:
                 self.controller.set_password(self.id, nuova_password)
-                print(nuova_password)
                 self.controller.save_data()
                 self.close()
             else:

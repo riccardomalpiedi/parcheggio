@@ -22,8 +22,8 @@ class VistaCassiere(QDialog):
         self.setWindowIcon(QIcon("icone/cash2.png"))
 
     def go_vista_lista_veicoli(self):
-        self.vista_lista_veicoliDip = VistaListaVeicoliCassiere()
-        self.vista_lista_veicoliDip.show()
+        self.vista_lista_veicoli = VistaListaVeicoliCassiere()
+        self.vista_lista_veicoli.show()
 
     def go_modifica_password(self):
         self.modifica_password = ModificaPassword("Cassiere")
