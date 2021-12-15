@@ -68,6 +68,5 @@ class VistaInserisciCliente(QDialog):
         self.immagine_profilo_field.setText(var2)
 
     def closeEvent(self, event):
-        print("ON CLOSE")
         self.controller.save_data()
         event.accept()

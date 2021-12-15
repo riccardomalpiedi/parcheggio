@@ -34,7 +34,6 @@ class VistaListaPosteggi(QDialog):
         self.setWindowIcon(QIcon("icone/car2.png"))
 
     def closeEvent(self, event):
-        print("ON CLOSE")
         self.controller.save_data()
         event.accept()
 

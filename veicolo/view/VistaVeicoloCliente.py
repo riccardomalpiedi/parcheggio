@@ -55,4 +55,3 @@ class VistaVeicoloCliente(QDialog):
 
     def closeEvent(self, event):
         self.prenotazione_callback(self.controller.get_id_veicolo(), self.controller.get_prenotazione())
-        print('ON CLOSE')

@@ -80,6 +80,5 @@ class VistaIngressoVeicolo(QWidget):
         self.close()
 
     def closeEvent(self, event):
-        print("ON CLOSE")
         self.controller.save_data()
         event.accept()
