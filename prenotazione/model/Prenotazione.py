@@ -14,3 +14,5 @@ class Prenotazione():
     def is_scaduta(self):
         return datetime.now() > self.data_fine
 
+    def calcola_importo_prenotazione(self):
+        return (self.data_fine - self.data_inizio).days * int(self.posteggio.tariffa_giornaliera_prenotazioni)

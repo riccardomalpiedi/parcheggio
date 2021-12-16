@@ -47,3 +47,9 @@ class ControlloreVeicolo():
 
     def check_prenotazione_scaduta(self):
         self.model.check_prenotazione_scaduta()
+
+    def calcola_importo_veicolo(self):
+        return self.model.calcola_importo_veicolo()
+
+    def calcola_importo_prenotazione(self):
+        return self.model.calcola_importo_prenotazione()

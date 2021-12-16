@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Veicolo():
     def __init__(self, id, targa, tipo):
         super(Veicolo, self).__init__()
@@ -35,3 +38,9 @@ class Veicolo():
 
     def elimina_prenotazione(self):
         self.prenotazione = None
+
+    def calcola_importo_veicolo(self):
+        return ((datetime.now() - self.orario_ingresso).seconds // 3600 + 1) * self.posteggio_occupato.tariffa_oraria
+
+    def calcola_importo_prenotazione(self):
+        return self.prenotazione.calcola_importo_prenotazione()

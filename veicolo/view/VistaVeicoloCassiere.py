@@ -31,9 +31,8 @@ class VistaVeicoloCassiere(QDialog):
         elif self.controller.get_entrato_con_prenotazione():
             importo = 0
             if not self.controller.get_prenotazione().pagata:
-                importo += (self.controller.get_prenotazione().data_fine -
-                             self.controller.get_prenotazione().data_inizio).days * \
-                           int(self.controller.get_prenotazione().posteggio.tariffa_giornaliera_prenotazioni)
+                importo += self.controller.calcola_importo_prenotazione()
+            # se la prenotazione è scaduta viene applicato un costo aggiuntivo
             if self.controller.get_prenotazione().is_scaduta():
                 importo += (datetime.now() - self.controller.get_prenotazione().data_fine).hour *\
                            int(self.controller.get_prenotazione().posteggio.tariffa_oraria)
@@ -55,9 +54,7 @@ class VistaVeicoloCassiere(QDialog):
                 QMessageBox.critical(self, 'Errore', "Il pagamento è già stato effettuato",
                                      QMessageBox.Ok, QMessageBox.Ok)
             else:
-                print((datetime.now() - self.controller.get_orario_ingresso()).seconds)
-                importo = (((datetime.now() - self.controller.get_orario_ingresso()).seconds//3600 + 1) *
-                           self.controller.get_posteggio_occupato().tariffa_oraria)
+                importo = self.controller.calcola_importo_veicolo()
                 reply = QMessageBox.question(self, "Attenzione", "L'importo è pari a " + str(importo) +
                                              " euro: confermare il pagamento?", QMessageBox.Ok, QMessageBox.Cancel)
                 if reply == QMessageBox.Ok:
