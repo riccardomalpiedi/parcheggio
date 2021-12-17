@@ -4,6 +4,9 @@ from PyQt5.uic import loadUi
 from listaveicoli.view.VistaInserisciVeicolo import VistaInserisciVeicolo
 
 
+# Vista che consente al cliente di associare un veicolo registrato a sistema a sé stesso. Se il veicolo non è già stato
+# registrato dal cliente potrà farlo aprendo la VistaInserisciVeicolo. Il costruttore di questa classe prende in input
+# dei metodi per aggiornare la lista dei veicoli associati al cliente.
 class VistaAssociaVeicolo(QDialog):
     def __init__(self, controller, callback, get_lista_veicoli, set_lista_veicoli):
         super(VistaAssociaVeicolo, self).__init__()
@@ -25,6 +28,9 @@ class VistaAssociaVeicolo(QDialog):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.callback)
         self.vista_inserisci_veicolo.show()
 
+    # Metodo per l'associazione di un veicolo. Il cliente inserirà la targa del veicolo che vuole associare a sé stesso:
+    # se verrà trovato un veicolo con quella targa nella lista dei veicoli, la variabile "associato" di quel veicolo
+    # verrà settata su True e quel veicolo sarà aggiunto alla lista dei veicoli associati al cliente.
     def add_veicolo(self):
         targa = self.targa_lineEdit.text()
 

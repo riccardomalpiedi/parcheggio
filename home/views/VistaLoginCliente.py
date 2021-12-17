@@ -7,6 +7,7 @@ from cliente.view.VistaProfiloCliente import VistaProfiloCliente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
 
+# Vista per il login del cliente. Ogni cliente nella lista dei clienti ha uno username e una password
 class VistaLoginCliente(QDialog):
     def __init__(self):
         super(VistaLoginCliente, self).__init__()
@@ -22,6 +23,7 @@ class VistaLoginCliente(QDialog):
         self.setFixedWidth(self.width())
         self.setWindowTitle("Login")
 
+    # Se lo username e la password corrispondono a un determinato cliente verrà aperta la sua schermata
     def login_function(self):
         user = self.username_field.text()
         password = self.password_field.text()

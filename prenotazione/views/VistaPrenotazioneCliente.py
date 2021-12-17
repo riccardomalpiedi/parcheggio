@@ -28,6 +28,7 @@ class VistaPrenotazioneCliente(QDialog):
         self.setFixedWidth(self.width())
         self.setWindowIcon(QIcon("icone/booking2.png"))
 
+    # metodo per la disdetta di una prenotazione
     def disdici_prenotazione_click(self):
         if os.path.isfile('listaposteggi/data/lista_posteggi_salvata.pickle'):
             with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'rb') as f:

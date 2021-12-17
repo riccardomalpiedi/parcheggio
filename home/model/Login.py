@@ -3,6 +3,8 @@ import pickle
 import os.path
 
 
+# Classe per il lonig del personale (amministratore/cassiere). Le credenziali iniziali sono salvate su un file json.
+# In caso vengano modificate verrà creato un file pickle.
 class Login:
 
     def __init__(self):
@@ -18,6 +20,8 @@ class Login:
                 self.lista_credenziali.append(Credenziali(credenziali_iniziali["id"], credenziali_iniziali["username"],
                                                           credenziali_iniziali["password"]))
 
+    # metodo per il login. Prende in input lo username e la password restituisce l'id dell'utente corrispondente.
+    # In caso non lo trovi restituirà None
     def login_function(self, username, password):
         for credenziali in self.lista_credenziali:
             if username == credenziali.username and password == credenziali.password:

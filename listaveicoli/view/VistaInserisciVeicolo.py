@@ -5,6 +5,7 @@ from PyQt5.uic import loadUi
 from veicolo.model.Veicolo import Veicolo
 
 
+# Vista per la registrazione di un veicolo
 class VistaInserisciVeicolo(QDialog):
     def __init__(self, controller, callback):
         super(VistaInserisciVeicolo, self).__init__()

@@ -11,6 +11,7 @@ from cliente.view.ModificaProfiloCliente import ModificaProfiloCliente
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
+# Questa vista si aprirà al cliente dopo che avrà fatto il login
 class VistaProfiloCliente(QDialog):
     def __init__(self, cliente, update_list, elimina_cliente):
         super(VistaProfiloCliente, self).__init__()
@@ -44,6 +45,9 @@ class VistaProfiloCliente(QDialog):
         self.modifica_password = ModificaPasswordCliente(self.controller)
         self.modifica_password.show()
 
+    # metodo per l'eliminazione del profilo di un cliente. Al momento dell'eliminazione saranno eliminati dal sistema
+    # anche tutti i veicoli associati al cliente. Non sarà consentita l'eliminazione del profilo se uno dei veicoli del
+    # cliente si trova ancora nel parcheggio o ha una prenotazione attiva.
     def elimina_profilo_function(self):
         if self.controller.get_lista_dei_veicoli() is not None:
             for veicolo in self.controller.get_lista_dei_veicoli():
@@ -102,5 +106,6 @@ class VistaProfiloCliente(QDialog):
 
         self.photo_label.setPixmap(QPixmap(self.controller.get_image_cliente()))
 
+    # La lista dei clienti viene aggiornata alla chiusura di questa vista
     def closeEvent(self, event):
         self.update_list()

@@ -40,6 +40,7 @@ class VistaIngressoVeicolo(QWidget):
         self.vista_inserisci_veicolo = VistaInserisciVeicolo(self.controller, self.update_ui)
         self.vista_inserisci_veicolo.show()
 
+    # metodo per l'igresso di un veicolo. Si occupa anche di aggiornare la lista dei posteggi
     def inserisci_ingresso_veicolo(self):
         targa = self.comboBox.currentText()
         veicolo = self.controller.get_veicolo_by_targa(targa)
@@ -52,6 +53,7 @@ class VistaIngressoVeicolo(QWidget):
         else:
             if veicolo.prenotazione is not None:
                 veicolo.check_prenotazione_scaduta()
+            # Ingresso di un veicolo con prenotazione
             if veicolo.prenotazione is not None and veicolo.prenotazione.data_inizio < datetime.now():
                 reply = QMessageBox.question(self, "Attenzione", "Il veicolo ha una prenotazione per il " +
                                              veicolo.prenotazione.posteggio.nome +
@@ -71,6 +73,7 @@ class VistaIngressoVeicolo(QWidget):
                 QMessageBox.critical(self, 'Errore', "Ci dispiace, non ci sono posti disponibili",
                                      QMessageBox.Ok, QMessageBox.Ok)
 
+    # Questo metodo viene chiamato da inserisci_ingresso_veicolo
     def ingresso_function(self, veicolo, lista_posteggi_salvata, posteggio):
         veicolo.set_orario_ingresso(datetime.now())
         with open('listaposteggi/data/lista_posteggi_salvata.pickle', 'wb') as f:

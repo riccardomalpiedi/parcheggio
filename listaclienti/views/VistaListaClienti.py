@@ -5,7 +5,7 @@ from PyQt5.uic import loadUi
 from cliente.view.VistaCliente import VistaCliente
 from listaclienti.controller.ControlloreListaClienti import ControlloreListaClienti
 
-
+# Vista contenente la lista di tutti i cliente, accedibile solo all'amministratore
 class VistaListaClienti(QDialog):
     def __init__(self):
         super(VistaListaClienti, self).__init__()

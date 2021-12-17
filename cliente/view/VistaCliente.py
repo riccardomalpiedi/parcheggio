@@ -5,6 +5,7 @@ from PyQt5.uic import loadUi
 from cliente.controller.ControlloreCliente import ControlloreCliente
 
 
+# Vista del cliente accedibile dall'amministratore. Sono solo riportate le informazioni del cliente
 class VistaCliente(QDialog):
     def __init__(self, cliente, parent=None):
         super(VistaCliente, self).__init__(parent)

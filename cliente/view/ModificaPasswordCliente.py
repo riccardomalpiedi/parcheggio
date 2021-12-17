@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 
-
+# Vista per la modifica della password del cliente
 class ModificaPasswordCliente(QDialog):
     def __init__(self, controller):
         super(ModificaPasswordCliente, self).__init__()

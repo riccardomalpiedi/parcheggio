@@ -5,7 +5,7 @@ import shutil
 from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog
 from PyQt5.uic import loadUi
 
-
+# Vista che consente al cliente di modificare le informazioni del proprio profilo.
 class ModificaProfiloCliente(QDialog):
     def __init__(self, controller, callback):
         super(ModificaProfiloCliente, self).__init__()
@@ -52,6 +52,7 @@ class ModificaProfiloCliente(QDialog):
             self.callback()
             self.close()
 
+    # metodo che consente al cliente di cambiare la propria immagine
     def go_cambia_immagine(self):
         fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/', 'Images (*.png *.xmp *.jpg)')
         var = fname[0]

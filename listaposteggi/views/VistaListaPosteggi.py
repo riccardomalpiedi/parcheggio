@@ -6,6 +6,7 @@ from listaposteggi.controller.ControlloreListaPosteggi import ControlloreListaPo
 from posteggio.views.VistaPosteggio import VistaPosteggio
 
 
+# vista che mostra la lista di tutti i posteggi, accedibile solo all'amministratore
 class VistaListaPosteggi(QDialog):
     def __init__(self):
         super(VistaListaPosteggi, self).__init__()

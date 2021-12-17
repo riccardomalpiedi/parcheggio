@@ -23,6 +23,7 @@ class VistaVeicoloCassiere(QDialog):
         self.setFixedWidth(self.width())
         self.setWindowTitle(veicolo.targa)
 
+    # metodo per il pagamento
     def pagamento_veicolo_click(self):
         if self.controller.get_orario_ingresso() is None:
             QMessageBox.critical(self, 'Errore', "Il veicolo non si trova nel parcheggio",

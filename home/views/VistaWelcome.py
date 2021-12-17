@@ -7,6 +7,7 @@ from home.views.VistaHelpButton import VistaHelpButton
 from home.views.VistaLogin import VistaLogin
 
 
+# vista che si apre all'avvio del programma
 class VistaWelcome(QDialog):
     def __init__(self):
         super(VistaWelcome, self).__init__()

@@ -7,7 +7,7 @@ from PyQt5.uic import loadUi
 
 from cliente.model.Cliente import Cliente
 
-
+# Vista per la registrazione di un cliente
 class VistaInserisciCliente(QDialog):
     def __init__(self, controller):
         super(VistaInserisciCliente, self).__init__()

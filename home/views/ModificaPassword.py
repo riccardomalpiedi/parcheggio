@@ -5,6 +5,7 @@ from PyQt5 import QtWidgets
 from home.controller.ControlloreLogin import ControlloreLogin
 
 
+# classe per la modifica della password per l'amministratore e il cassiere
 class ModificaPassword(QDialog):
     def __init__(self, id):
         super(ModificaPassword, self).__init__()

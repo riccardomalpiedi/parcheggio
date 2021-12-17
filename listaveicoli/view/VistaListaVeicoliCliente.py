@@ -7,6 +7,10 @@ from listaveicoli.controller.ControlloreListaVeicoli import ControlloreListaVeic
 from veicolo.view.VistaVeicoloCliente import VistaVeicoloCliente
 
 
+# Vista della lista dei veicoli associati a un cliente. Il controller di questa classe è il ControlloreListaVeicoli
+# poiché il cliente quando assocerà un veicolo a sé o eliminerà uno dei suoi veicoli andrà a modificare la lista dei
+# veicoli registrati a sistema, ma dovrà modificare anche la lista dei veicoli associati a sé stesso, per questo motivo
+# questa classe prende in input i metodi get_lista_veicoli e set_lista_veicoli del ControlloreCliente
 class VistaListaVeicoliCliente(QDialog):
     def __init__(self, callback, get_lista_veicoli, set_lista_veicoli):
         super(VistaListaVeicoliCliente, self).__init__()
@@ -38,6 +42,7 @@ class VistaListaVeicoliCliente(QDialog):
                                                  self.update_ui)
         self.vista_veicolo.show()
 
+    # Ogni cliente potrà associare a sé un massimo di 2 veicoli
     def show_new_veicolo(self):
         if self.get_lista_veicoli() is not None and len(self.get_lista_veicoli()) > 1:
             QMessageBox.critical(self, 'Errore', "Limite massimo di veicoli raggiunto",

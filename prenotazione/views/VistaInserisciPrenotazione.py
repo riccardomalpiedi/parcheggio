@@ -9,6 +9,7 @@ from PyQt5.uic import loadUi
 from prenotazione.model.Prenotazione import Prenotazione
 
 
+# Vista per l'inserimento di una prenotazione. Il cliente dovrà selezionare la data, un numero di giorni e il posteggio.
 class VistaInserisciPrenotazione(QDialog):
     def __init__(self, controller):
         super(VistaInserisciPrenotazione, self).__init__()
@@ -40,6 +41,7 @@ class VistaInserisciPrenotazione(QDialog):
         self.calendarWidget.selectionChanged.connect(self.print_date)
         self.ok_button.clicked.connect(self.add_prenotazione_click)
 
+    # metodo che mostra al cliente la data da lui selezionata
     def print_date(self):
         selected_date = self.calendarWidget.selectedDate()
         font = self.label.font()
@@ -52,6 +54,7 @@ class VistaInserisciPrenotazione(QDialog):
             self.label.setText("<font color='white'>" + "(data non disponibile)" + str(selected_date.toPyDate()))
             self.label.setFont(font)
 
+    # metodo per l'inserimento di una prenotazione
     def add_prenotazione_click(self):
         selected_date = self.calendarWidget.selectedDate().toPyDate()
         if selected_date < date.today():

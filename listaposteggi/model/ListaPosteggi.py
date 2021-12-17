@@ -5,6 +5,7 @@ import os.path
 from posteggio.model.Posteggio import Posteggio
 
 
+# La lista dei posteggi iniziali è stata salvata su un file json, poi verrà generato un file pickle
 class ListaPosteggi():
 
     def __init__(self):

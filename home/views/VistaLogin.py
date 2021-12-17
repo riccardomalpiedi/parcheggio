@@ -7,6 +7,7 @@ from home.views.VistaAmministratore import VistaAmministratore
 from home.views.VistaCassiere import VistaCassiere
 
 
+# schermata di login per il personale (amministratore e cassiere)
 class VistaLogin(QDialog):
     def __init__(self):
         super(VistaLogin, self).__init__()
@@ -22,6 +23,7 @@ class VistaLogin(QDialog):
         self.setFixedWidth(self.width())
         self.setWindowTitle("Login")
 
+    # metodo per il login: se le credenziali sono giuste, si aprirà la schermata dell'amministratore/cassiere
     def login_function(self):
         user = self.email_field.text()
         password = self.password_field.text()

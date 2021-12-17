@@ -29,6 +29,7 @@ class Veicolo():
     def add_prenotazione(self, prenotazione):
         self.prenotazione = prenotazione
 
+    # Questo metodo setta la prenotazione su None se è scaduta
     def check_prenotazione_scaduta(self):
         if self.prenotazione is not None and self.prenotazione.is_scaduta() and not self.entrato_con_prenotazione:
             self.prenotazione = None
