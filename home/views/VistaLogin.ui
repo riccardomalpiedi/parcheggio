@@ -22,7 +22,7 @@ background-color: rgb(61, 61, 61);}</string>
     <rect>
      <x>170</x>
      <y>220</y>
-     <width>71</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -73,7 +73,7 @@ font-size:14pt;</string>
     <rect>
      <x>170</x>
      <y>290</y>
-     <width>71</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -100,9 +100,9 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>140</x>
      <y>160</y>
-     <width>311</width>
+     <width>351</width>
      <height>41</height>
     </rect>
    </property>
@@ -111,7 +111,7 @@ font-size:14pt;</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Sing in to your existing account</string>
+    <string>Inserisci le tue credenziali</string>
    </property>
   </widget>
   <widget class="QPushButton" name="login_button">
@@ -141,9 +141,9 @@ font-size:14pt;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>220</x>
      <y>40</y>
-     <width>121</width>
+     <width>171</width>
      <height>81</height>
     </rect>
    </property>

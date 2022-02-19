@@ -43,9 +43,9 @@
   <widget class="QLabel" name="nome_label">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>30</y>
-     <width>231</width>
+     <width>241</width>
      <height>81</height>
     </rect>
    </property>
@@ -53,7 +53,7 @@
     <string notr="true">color:rgb(236, 236, 236); font-size:28pt;</string>
    </property>
    <property name="text">
-    <string>Bentronato</string>
+    <string>Bentornato</string>
    </property>
   </widget>
   <widget class="QPushButton" name="modifica_password_button">
